@@ -1,0 +1,83 @@
+<div class="manast-inner-page page-0">
+ 
+    <div class="container">
+    
+      <div class="col-sm-3">
+       
+      </div>
+      <div class="col-sm-6 npm">
+        <div class="inner-content-section-middile">
+          <div class="inner-content-section-middile-top"> 
+           
+
+          </div><br><br>
+          <div class="inner-content-section-middile-bottom">
+          
+            <div class="middile-bottom-header">
+                <h4>Search result : {{ search_contain }}</h4>
+                <div class="bredcum pull-left">
+                    <ol>
+                        <!-- <li><a href="https://www.manastlouis.com/index.php">Home</a></li>
+                        <li><a href="">noPosts</a></li> -->
+                    </ol>
+                </div>
+
+          <form method="POST" action="" id="formForFilter">
+              <input type="hidden" id="filter-val" name="filterBy" value="">
+          </form>
+
+                <div class="middile-bottom-header-select pull-right">
+                    <!--select box-->
+                     
+                    <div class="category">
+                        <div class="category_select"> 
+                          
+                        </div>
+                     </div>
+                    &nbsp;&nbsp;
+                    <div class="category">
+                        <div class="category_select" > 
+                            
+                        </div>
+                     </div>
+                     
+                <!--select box-->
+                </div>
+
+            </div>
+            
+            
+            <div class="middile-bottom">
+                <h2> No search found! </h2>    
+            </div>
+            <div class="middile-bottom">
+                <a type="button" onclick="GoBackWithRefresh();return false;" class="btn btn-info"><p> Go Back </p>  </a> 
+            </div>
+            
+            
+          
+          </div>
+        </div>
+      </div>      
+      <div class="col-sm-3">
+        
+      </div>
+      
+    </div>
+ 
+ 
+ </div>
+
+ <script>
+    
+    function GoBackWithRefresh(event) {
+        if ('referrer' in document) {
+            window.location = document.referrer;
+            /* OR */
+            //location.replace(document.referrer);
+        } else {
+            window.history.back();
+        }
+    }
+
+    </script>

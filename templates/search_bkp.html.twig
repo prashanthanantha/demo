@@ -1,0 +1,140 @@
+
+<div class="manast-inner-page page-0">
+ 
+  <div class="container cust-container">
+    
+     <form method="POST" action="" id="formForFilter">
+              <input type="hidden" id="filter-val" name="filterBy" value="">
+              <input type="hidden" id="sort-val" name="sortBy" value="">
+      </form>
+      <div class="col-sm-8 col-sm-offset-1 npl">
+        <div class="inner-content-section-middile">
+          <div class="inner-content-section-middile-top"> 
+            <div class="add-top">
+              {% for ads in ads_result %} 
+      <a href="#"><img src="{{ GLOBAL_DIR_PATH }}uploads/post_image/{{ ads.mnst_ads.ad_image }}" height="100" width="100" alt="{{ ads.mnst_ads.ad_title }}"></a>
+      {% endfor %}
+          </div>
+          <div class="inner-content-section-middile-bottom" id="search-box">
+      
+      <div class="middile-bottom-header">
+        <!-- <h1>{{ posts_result.0.category_name }} > {{ posts_result.0.subcategory_name }}  </h1> -->
+        <!--<div class="bredcum pull-left">
+          <ol>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Inner-page</a></li>
+          </ol>
+        </div>-->
+        <div class="pull-right category_right_margin">
+          <!--select box-->
+                    <!-- <div class="category">
+                             <select class="selectpicker" id="filter-by">
+                                <option value="{{category_id}}">{{ posts_result.0.category_name }}</option> 
+                                 {% for subcategory in posts_category_result %}
+                                <option value="{{ subcategory.mnst_subcategory.id}}" {% if(subcategory.mnst_subcategory.id == sub_cat_id) %} selected {% endif %}>{{ subcategory.mnst_subcategory.subcategory_name }}</option>
+                                {% endfor %}
+                                
+                             </select>
+                        </div> -->
+                     
+                   <!--  &nbsp;&nbsp;
+                   {% set sort_by_val = sort_by %}
+                   <div class="category">
+                       <div class="category_select"> 
+                            <select class="selectpicker" id="sort-by">
+                               <option value="asc" {% if(sort_by == 'asc') %} selected {% endif %}> Ascending </option>
+                               <option value="desc"  {% if(sort_by == 'desc') %} selected {% endif %}> Descending </option>
+                            </select>
+                       </div>
+                    </div> -->
+                     
+                    
+                     
+                <!--select box-->
+        </div>
+
+      </div>
+       {% for posts in posts_result %}   
+       {% set catname = posts.category_name|replace({' ': '-'}) %}
+       {% set sub_cat = posts.subcategory_name %}
+        {% set forurl = posts.url_name %}   
+          <div class="media" >
+            <div class="media-left left-image">
+              <img src="{{ GLOBAL_DIR_PATH }}uploads/post_image/{{ posts.post_image.0 }}" alt="{{ posts.post_name }}">        
+            </div>        
+            <div class="media-body media-h4">       
+              <h3 class="media-heading ">{{ posts.post_name }} </h3>
+              <p>{{ posts.description|raw}}</p>
+              <!-- <span style="font-size: 16px;">Date: {{ posts.created_at }}</span> -->
+              <div class="read-more-inner-button-right">  
+                <a href="{{ GLOBAL_DIR_PATH }}services.php/{{catname}}/{{sub_cat}}/{{forurl}}">Read More</a>
+              </div>
+            </div>        
+          </div>      
+            <hr>
+        {% endfor %}
+             
+            <div class="pagination-cus">
+          {% set page_pagination = pagination %}
+
+            {% if total_pages is defined and total_pages > 0 %}
+            {% if(pagination == 1) or (pagination < 1)%}
+                {% set left_arrow_style = "disableArrow" %}
+                {% set left_arrow_anchor_style = "disabledAnch" %}
+                {% set page_pagination = 1 %}
+            {% endif %}
+            {% if(pagination >= total_pages) %} 
+                {% set right_arrow_style = "disableArrow" %}
+                {% set right_arrow_anchor_style = "disabledAnch" %}
+                {% set page_pagination = total_pages %}
+            {% endif %}     
+        {% if(sort_by_pagination == 'sort_pag') %}
+        <ul class="pager">
+          <li class="page-item"><a class="page-link {{ left_arrow_anchor_style }}" href="/posts.php/post-sort-by/{{category_id}}/{{sub_category_id}}/{{page_pagination-1}}/{{sort_by}}" >Previous</a></li>
+                    <input id="" name="page_pagination" type="text" class="off-page" value=" {{ page_pagination }} of {{ total_pages }} " readonly/>
+                    <li class="page-item"><a class="page-link {{ right_arrow_anchor_style }}" href="/posts.php/post-sort-by/{{category_id}}/{{sub_category_id}}/{{page_pagination+1}}/{{sort_by}}" >Next</a></li>
+        </ul>
+        {% else %}
+        <ul class="pager">
+
+          <li class="page-item"><a class="page-link {{ left_arrow_anchor_style }}" href="/search.php/search_result/{{search_val}}/{{page_pagination-1}}" >Previous</a></li>
+          <input id="" name="page_pagination" type="text" class="off-page" value=" {{ page_pagination }} of {{ total_pages }} " readonly/>
+          <li class="page-item"><a class="page-link {{ right_arrow_anchor_style }}" href="/search.php/search_result/{{search_val}}/{{page_pagination+1}}" >Next</a></li>
+        </ul>
+
+        {% endif %}
+            </div>
+      {% endif %} 
+      </div>
+        </div>
+      </div>      
+      
+      
+    </div>
+ 
+    <div class="col-sm-2 ">
+        <div class="main-content-section-right">
+           {% for ads1 in ads1_result %} 
+          <a href="#"><div class="subscribe"> <img src="{{ GLOBAL_DIR_PATH }}uploads/post_image/{{ ads1.mnst_ads1.ad_image }}" alt="{{ ads1.mnst_ads1.ad_title }}"></div></a>
+          {% endfor %} 
+          {% for ads2 in ads2_result %} 
+          <a href="#"><div class="subscribe"> <img src="{{ GLOBAL_DIR_PATH }}uploads/post_image/{{ ads2.mnst_ads2.ad_image }}" alt="{{ ads2.mnst_ads2.ad_title }}"></div></a>
+          {% endfor %} 
+          {% for ads3 in ads3_result %} 
+          <a href="#"><div class="subscribe"> <img src="{{ GLOBAL_DIR_PATH }}uploads/post_image/{{ ads3.mnst_ads3.ad_image }}" alt="{{ ads3.mnst_ads3.ad_title }}"></div></a>
+          {% endfor %} 
+          {% for ads4 in ads4_result %} 
+          <a href="#"><div class="subscribe"> <img src="/uploads/post_image/{{ ads4.mnst_ads4.ad_image }}" alt="{{ ads4.mnst_ads4.ad_title }}"></div></a>
+          {% endfor %}      
+      
+        </div>
+      </div>
+    <div class="col-sm-1 npm">
+        <div class="main-content-section-right">
+          <a href="#"><div class="subscribe"> <!--<img src="images/adds.png">--></div></a> 
+      <a href="#"><div class="subscribe"><!-- <img src="images/img-5.jpg">--></div></a> 
+      
+        </div>
+      </div>
+ </div>
+</div>

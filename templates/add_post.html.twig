@@ -1,0 +1,2605 @@
+<div class="container">
+    <h1 class="container-h2">Add Post</h1>
+        
+    <form action="" name="myform"  class="form-horizontal add-site multi_form_bg" method="post" enctype="multipart/form-data" id="multi-form-id">
+        <input type="hidden" name="created_by" value="{{user_id}}">
+        <div class="form-group">
+            <label for="category" class="col-md-3 control-label">Category</label>
+            <div class="col-md-9">
+                <select class="form-control st_louis_categories_and_sub_category" name="catagory_id" id="category" onchange="subCategoryListOne(this);"> 
+                    <option value="0" selected="selected">Select a category</option>
+                    {% for category in category_result %}
+                    <option value="{{ category.mnst_category.id }}">{{ category.mnst_category.category_name }}</option>
+                                        {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="subcategories" class="col-md-3 control-label">Sub Category</label>
+            <div class="col-md-9">
+                <select class="form-control div-toggle car_type st_louis_categories_and_sub_category" name="sub_catagory_id" id="subcategories" data-target=".my-info-1" >
+                    <option value="0" selected="selected">Select a Category First</option>
+                    <option value="1" data-show=".one" >tourist places</option>
+                    <option value="2" data-show=".one" >useful places</option>
+                    <option value="3" data-show=".two"  >appartment</option>
+                    <option value="4" data-show=".three"  >universities</option>
+                    <!--one category-->
+                    <option value="5" data-show=".four"  >temple</option>
+                    <option value="6" data-show=".five">church</option>
+                    <option value="7" data-show=".six" >mosque</option>
+                    <option value="8" data-show=".seven" >other</option>
+                    <!--two category-->
+                    <option value="9" data-show=".eight" >desi stores</option>
+                    <option value="10" data-show=".eight" >other stores</option>
+                    <!--three category-->
+                    <option value="11" data-show=".eight"  >indian</option>
+                    <option value="12" data-show=".eight" >thai</option>
+                    <option value="13" data-show=".eight">american</option>
+                    <option value="14" data-show=".eight" >italian</option>
+                    <option value="15" data-show=".eight" >mexican</option>
+                    <!--four category-->
+                    <option value="16" data-show=".eight" >doctor clinics</option>
+                    <option value="17" data-show=".eight">hospitals</option>
+                    <option value="18" data-show=".eight" >diagnostics labs</option>
+                    <option value="19" data-show=".eight" >physiotherapy</option>
+                    <option value="20" data-show=".eight" >urgent cares</option>
+                    <!--Five category-->
+                    <option value="21" data-show=".nine" >hindi</option>
+                    <option value="22" data-show=".nine" >telugu</option>
+                    <option value="23" data-show=".nine" >english</option>
+                    <option value="24" data-show=".nine" >tamil</option>
+                    <option value="25" data-show=".nine" >malayanam</option>
+                    <!--Six category-->
+                    <option value="28" data-show=".ten" >part time</option>
+                    <option value="29" data-show=".ten" >full time</option>
+                    <!--seven category-->
+                    <option value="30" data-show=".two" >accommodations</option>
+                    <option value="31" data-show=".two" >child care</option>
+                    <option value="32" data-show=".eleven">catering</option>
+                    <option value="33" data-show=".two" >for sell</option>
+                    <!--eight category-->
+                    <option value="34" data-show=".twelve" >lawyer</option>
+                    <option value="35" data-show=".twelve" >insurance agents</option>
+                    <option value="36" data-show=".twelve" >travel agents</option>
+                    <option value="37" data-show=".twelve" >accountant</option>
+                    <!--nine category-->
+                    <option value="38" data-show=".thirteen" >temple events</option>
+                    <option value="39" data-show=".thirteen" >Mosque events</option>
+                    <option value="40" data-show=".thirteen" >church events</option>
+                    <option value="41" data-show=".thirteen" >movie events</option>
+                    <option value="42" data-show=".thirteen" >arts and entertainment events</option>
+                    <option value="43" data-show=".thirteen" >music events</option>
+                    <option value="44" data-show=".thirteen" >sports events</option>
+                    <option value="45" data-show=".thirteen" >dance events</option>
+                    <option value="46" data-show=".thirteen" >universities events</option>
+                    <option value="47" data-show=".thirteen" >others events</option>
+                    <!--nine category-->
+                </select>
+            </div>
+        </div>
+        <div class="my-info-1">
+                <!--*************************************
+                ************************************
+                    tourist Places and useful places form 
+                *************************************
+                ************************************-->
+            <div class="one panel1 "  id="one">
+                <div class="form-group">
+                    <label for="tourist_title" class="col-md-3 control-label ">Title : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="post_name" id="post_title"  placeholder="Title" onkeyup="postNameExist(this)" >
+                    </div>
+                    <span class="exist-post-error text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="image-file" class="col-md-3 control-label ">Images : </label>
+                    <div class="col-md-9">
+                        <input type="file" class="form-control" name="post_image[]" id="image-file" multiple  >
+                    </div>
+                </div>			  
+                <div class="form-group">
+                    <label for="stlouis-url" class="col-md-3 control-label ">Web-site Link : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control  " name="post_url" id="stlouis-url"  placeholder="www.example.com" >
+                    </div>
+                </div>	
+                <div class="form-group">
+                    <label for="stlouis-email" class="col-md-3 control-label ">Email : </label>
+                    <div class="col-md-9">
+                        <input type="text" name="email" class="form-control " id="stlouis-email"  placeholder="Email Id" >
+                    </div>
+                </div>             
+                
+                <div class="form-group">
+                    <label for="stlouis-mobile" class="col-md-3 control-label ">Mobile : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control phoneNumber" maxlength="12" name="mobile_num" id="stlouis-mobile"  placeholder="Mobile Number" >
+                    </div>
+                </div>	
+                <div class="form-group">
+                    <label for="stlouis-location" class="col-md-3 control-label ">Location : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control" name="location" id="stlouis-location"  placeholder="Location" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="stlouis-street" class="col-md-3 control-label ">street : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control" name="st-street" id="stlouis-street"  placeholder="155 15thStreet " >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="stlouis-state-city" class="col-md-3 control-label ">City and State : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="st-city" id="stlouis-state-city" value="St Louis, MO" readonly>
+                    </div>
+                </div> 
+                <div class="form-group">
+                    <label for="stlouis-country" class="col-md-3 control-label ">Country : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control "  name="st-country" id="stlouis-country" value="USA" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="stlouis-zip" class="col-md-3 control-label ">Zip Code : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control "  name="st-zip" id="stlouis-zip"  placeholder="63105" >
+                    </div>
+                </div>  	
+                <div class="form-group">
+                    <label for="opendays" class="col-md-3 control-label ">Open Days : </label>
+                    <div class="col-md-9">
+                        <!-- primary -->
+                        <div class="pretty p-default">
+                            <input type="checkbox" name="open_monday" class="stlouis-checkbox" value="Monday" />
+                            <div class="state p-success">
+                                <label>Monday</label>
+                            </div>
+                        </div>
+
+                        <!-- success -->
+                        <div class="pretty p-default">
+                            <input type="checkbox" name="open_tuesday" class="stlouis-checkbox" value="Tuesday"  />
+                            <div class="state p-success">
+                                <label>Tuesday</label>
+                            </div>
+                        </div>
+
+                        <!-- info -->
+                        <div class="pretty p-default">
+                            <input type="checkbox" name="open_wednesday" class="stlouis-checkbox" value="Wednesday"  />
+                            <div class="state p-success">
+                                <label>Wednesday</label>
+                            </div>
+                        </div>
+
+                        <!-- warning -->
+                        <div class="pretty p-default">
+                            <input type="checkbox" name="open_thursday" class="stlouis-checkbox" value="Thursday" />
+                            <div class="state p-success">
+                                <label>Thursday</label>
+                            </div>
+                        </div>
+
+                        <!-- danger -->
+                        <div class="pretty p-default">
+                            <input type="checkbox" name="open_friday" class="stlouis-checkbox" value="Friday" />
+                            <div class="state p-success">
+                                <label>Friday</label>
+                            </div>
+                        </div>
+                        
+                        <div class="pretty p-default">
+                            <input type="checkbox" name="open_saturday" class="stlouis-checkbox" value="Saturday"  />
+                            <div class="state p-success">
+                                <label>Saturday</label>
+                            </div>
+                        </div>
+                        
+                        <div class="pretty p-default">
+                            <input type="checkbox" name="open_sunday" class="stlouis-checkbox" value="Sunday" />
+                            <div class="state p-success">
+                                <label>Sunday</label>
+                            </div>
+                        </div>
+                        <div id="stlouisCheckBoxErrorMessage"></div>
+                    </div>
+                </div>	
+
+                <div class="form-group">
+                    <label for="openhours" class="col-md-3 control-label ">Open hours : </label>
+                    <div class="col-md-9">
+                        <div class="manast_open_hours_bg">
+                            <ul class="manast_open_hours">
+                                <li class="col-md-4">
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="monday" class="manast_open_hours_label">MON</label>
+                                        </div>                                        
+                                        <div class="manast_open_hours_right">
+                                            <input type="time" id="stlous-monday" class="manast_open_hours_input_time stlouis-time-one" name="monday_usr_time_from"> 
+                                            <label for="mondaytohour" class="manast_open_hours_label_to " >-</label>
+                                            <input id="mondaytohour" class="manast_open_hours_input_time stlouis-time-one" type="time" name="monday_usr_time_to">
+                                        </div> 
+                                    </div> 
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="tuesday" class="manast_open_hours_label">tue</label>
+                                        </div>                                        
+                                        <div class="manast_open_hours_right">
+                                            <input type="time" id="tuesday" class="manast_open_hours_input_time stlouis-time-one" name="tuesday_usr_time_from"> 
+                                            <label for="tuesdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="tuesdaytohour" class="manast_open_hours_input_time stlouis-time-one" type="time" name="tuesday_usr_time_to">
+                                        </div> 
+                                    </div> 
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="wednesday" class="manast_open_hours_label">WED</label>
+                                        </div>   
+                                        <div class="manast_open_hours_right"> 
+                                            <input type="time" id="wednesday" class="manast_open_hours_input_time stlouis-time-one" name="wednesday_usr_time_from"> 
+                                            <label for="wednesdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="wednesdaytohour" class="manast_open_hours_input_time stlouis-time-one" type="time" name="wednesday_usr_time_to">                                     
+                                        </div>
+                                    </div>    
+                                </li>
+                                <li class="col-md-4">
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="thursday" class="manast_open_hours_label">THUR</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input type="time" id="thursday" class="manast_open_hours_input_time stlouis-time-one" name="thursday_usr_time_from"> 
+                                            <label for="thursdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="thursdaytohour" class="manast_open_hours_input_time stlouis-time-one" type="time" name="thursday_usr_time_to">
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="friday" class="manast_open_hours_label">FRI</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input type="time" id="friday" class="manast_open_hours_input_time stlouis-time-one" name="friday_usr_time_from"> 
+                                            <label for="fridaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="fridaytohour" class="manast_open_hours_input_time stlouis-time-one" type="time" name="friday_usr_time_to">
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">    
+                                            <label for="saturday" class="manast_open_hours_label">SAT</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">    
+                                            <input type="time" id="saturday" class="manast_open_hours_input_time stlouis-time-one" name="saturday_usr_time_from"> 
+                                            <label for="saturdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="saturdaytohour" class="manast_open_hours_input_time stlouis-time-one" type="time" name="saturday_usr_time_to">        
+                                        </div>
+                                    </div>
+
+                                </li>
+                                <li class="col-md-4">
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="sunday" class="manast_open_hours_label">SUN</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">   
+                                            <input type="time" id="sunday" class="manast_open_hours_input_time stlouis-time-one" name="sunday_usr_time_from"> 
+                                            <label for="sundaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="sundaytohour" class="manast_open_hours_input_time stlouis-time-one" type="time" name="sunday_usr_time_to">
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>				
+                        </div>
+                        <div id="open-hour-error-message"></div>
+                    </div>
+                </div>	
+
+                <div class="form-group">
+                    <label for="stlouis-description" class="col-md-3 control-label ">Description : </label>
+                    <div class="col-md-9">
+                            <textarea  class="form-control counter-description" onkeyup="countChar(this)" id="stlouis-description" name="description" rows="4" cols="50" maxlength="500" placeholder="Description"></textarea>
+                            <div class="stlouisCounter"></div>
+                    </div>
+                </div>							
+            </div>
+            <!--*************************************
+                ************************************
+                    END tourist Places and useful places form 
+                *************************************
+                ************************************-->
+
+
+
+                <!--*************************************
+                ************************************
+                    Appartments, Accomadation, Child Care and For sell form 
+                *************************************
+                ************************************-->
+            <div class="two panel1">
+                <div class="form-group">
+                    <label for="two-and-six-category-title" class="col-md-3 control-label ">Title : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control  " name="two_post_name" id="two-and-six-category-title"  placeholder="Title" onkeyup="postNameExist(this)" >
+                    </div>
+                    <span class="exist-post-error text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="two-and-six-category-image-file" class="col-md-3 control-label ">Images : </label>
+                    <div class="col-md-9">
+                        <input type="file" class="form-control  " name="two_post_image[]" id="two-and-six-category-image-file" multiple  >
+                    </div>
+                </div>	
+                <div class="form-group">
+                    <label for="two-and-six-category-email" class="col-md-3 control-label ">Email : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="two_email" id="two-and-six-category-email"  placeholder="Email Id" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="two-and-six-category-mobile" class="col-md-3 control-label ">Mobile : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control phoneNumber" maxlength="12" id="two-and-six-category-mobile" name="two_mobile_num"  placeholder="Mobile Number" >
+                    </div>
+                </div>	
+                <div class="form-group ">
+                    <label for="two-and-six-category-price" class="col-md-3 control-label ">Price : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control manast_price_input_type_text" name="two_price" id="two-and-six-category-price"  placeholder="Price in Dollars"  >
+                        <div class="manast_price_image"><i class="fas fa-dollar-sign"></i></div>
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="two-and-six-category-ownername" class="col-md-3 control-label ">Owner Name : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="two_owner_name" id="two-and-six-category-ownername"  placeholder="Owner Name" >
+
+                    </div>
+                </div>
+
+                    
+                <div class="form-group">
+                    <label for="two-and-six-category-location" class="col-md-3 control-label ">Location : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="two_address" id="two-and-six-category-location"  placeholder="Location" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="two-and-six-category-street" class="col-md-3 control-label ">street : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="two_street" id="two-and-six-category-street"  placeholder="155 15thStreet " >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="two-and-six-category-state-city" class="col-md-3 control-label ">City and State : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="st-city" id="two-and-six-category-state-city" value="St Louis, MO" readonly>
+                    </div>
+                </div>               
+                <div class="form-group">
+                    <label for="two-and-six-category-country" class="col-md-3 control-label ">Country : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="st-country" id="two-and-six-category-country" value="USA" readonly >
+                    </div>
+                </div> 
+                <div class="form-group">
+                    <label for="two-and-six-category-zip" class="col-md-3 control-label ">Zip Code : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="two_zip" id="two-and-six-category-zip"  placeholder="63105" >
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="two-and-six-category-description" class="col-md-3 control-label ">Description : </label>
+                    <div class="col-md-9">
+                        <textarea  class="form-control counter-description" onkeyup="countChar(this)" id="two-and-six-category-description" name="two_description" rows="4" cols="50" maxlength="500" placeholder="Description"></textarea>
+                        <div class="stlouisCounter"></div>
+                    </div>
+                </div>	
+            </div>
+            <!--*************************************
+                ************************************
+                    END  Appartments , Accomadation, Child Care and For sell form 
+                *************************************
+                ************************************-->
+
+
+
+                <!--*************************************
+                ************************************
+                    Universities Form
+                *************************************
+                ************************************-->
+            <div class="three panel1" >
+                <div class="form-group">
+                    <label for="universities-title" class="col-md-3 control-label ">Title : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control  " name="three_post_name" id="universities-title"  placeholder="Title" onkeyup="postNameExist(this)">
+                    </div>
+                    <span class="exist-post-error text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="image-file-universities" class="col-md-3 control-label ">Images : </label>
+                    <div class="col-md-9">
+                        <input type="file" class="form-control  " name="three_post_image[]" id="image-file-universities" multiple  >
+                    </div>
+                </div>			  
+                <div class="form-group">
+                    <label for="universities-url" class="col-md-3 control-label ">Web-site Link : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " id="universities-url" name="three_post_url"  placeholder="www.example.com" >
+                    </div>
+                </div>	
+                <div class="form-group">
+                    <label for="universities-email" class="col-md-3 control-label ">Email : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="three_email" id="universities-email"  placeholder="Email Id" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="universities-mobile" class="col-md-3 control-label ">Mobile : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control phoneNumber" maxlength="12" id="universities-mobile" name="three_mobile_num" placeholder="Mobile Number" >
+                    </div>
+                </div>	
+                <div class="form-group">
+                    <label for="universities-location" class="col-md-3 control-label ">Location : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="three_address" id="universities-location"  placeholder="Location" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="universities-street" class="col-md-3 control-label ">street : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="three_street" id="universities-street"  placeholder="155 15thStreet " >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="universities-state-city" class="col-md-3 control-label ">City and State : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="st-city" id="universities-state-city" value="St Louis, MO" readonly >
+                    </div>
+                </div>               
+                <div class="form-group">
+                    <label for="universities-country" class="col-md-3 control-label ">Country : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="st-country" id="universities-country" value="USA" readonly >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="universities-zip" class="col-md-3 control-label ">Zip Code : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="three_zip" id="universities-zip"  placeholder="63105" >
+                    </div>
+                </div> 	
+                <div class="form-group ">
+                    <label for="universities-application-fee" class="col-md-3 control-label ">Application Fee : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control manast_price_input_type_text"  id="universities-application-fee" name="three_price"  placeholder="Application Fee" >
+                        <div class="manast_price_image"><i class="fas fa-dollar-sign"></i></div>
+                    </div>
+                </div>	
+                <div class="form-group ">
+                    <label for="universities-intakes" class="col-md-3 control-label ">Intakes : </label>
+                    <div class="col-md-9">
+                        <select class="form-control"  id="universities-intakes" name="three_intakes"  >
+                        <option value="">Select Intakes</option>
+                        <option value="Spring">Spring</option>
+                        <option value="Fall">Fall</option>
+                        <option value="Summer">Summer</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="opendays" class="col-md-3 control-label ">Open Days : </label>
+                    <div class="col-md-9">
+                            <!-- primary -->
+                        <div class="pretty p-default">
+                            <input type="checkbox" name="three_open_monday"  class="universities-open-days" />
+                            <div class="state p-success">
+                                <label>Monday</label>
+                            </div>
+                        </div>
+
+                        <!-- success -->
+                        <div class="pretty p-default">
+                            <input type="checkbox" name="three_open_tuesday" class="universities-open-days" />
+                            <div class="state p-success">
+                                <label>Tuesday</label>
+                            </div>
+                        </div>
+
+                        <!-- info -->
+                        <div class="pretty p-default">
+                            <input type="checkbox" name="three_open_wednesday" class="universities-open-days" />
+                            <div class="state p-success">
+                                <label>Wednesday</label>
+                            </div>
+                        </div>
+
+                        <!-- warning -->
+                        <div class="pretty p-default">
+                            <input type="checkbox" name="three_open_thursday" class="universities-open-days" />
+                            <div class="state p-success">
+                                <label>Thursday</label>
+                            </div>
+                        </div>
+
+                        <!-- danger -->
+                        <div class="pretty p-default">
+                            <input type="checkbox" name="three_open_friday" class="universities-open-days" />
+                            <div class="state p-success">
+                                <label>Friday</label>
+                            </div>
+                        </div>
+                        
+                        <div class="pretty p-default">
+                            <input type="checkbox" name="three_open_saturday" class="universities-open-days" />
+                            <div class="state p-success">
+                                <label>Saturday</label>
+                            </div>
+                        </div>
+                        
+                        <div class="pretty p-default">
+                            <input type="checkbox" name="three_open_sunday" class="universities-open-days" />
+                            <div class="state p-success">
+                                <label>Sunday</label>
+                            </div>
+                        </div>
+                        <div id="universitiesCheckBoxErrorMessage"></div>
+                    </div>
+                </div>		
+
+                <div class="form-group">
+                    <label for="description" class="col-md-3 control-label ">Description : </label>
+                    <div class="col-md-9">
+                        <textarea  class="form-control counter-description" onkeyup="countChar(this)" id="universities-description" name="three_description" rows="4" cols="50" maxlength="500" placeholder="Description"></textarea>
+                        <div class="stlouisCounter"></div>
+                    </div>
+                </div>	
+            </div>
+            <!--*************************************
+                ************************************
+                    END Universities Form
+                *************************************
+                ************************************-->
+
+
+
+                <!--*************************************
+                ************************************
+                    Temple Form
+                *************************************
+                ************************************-->	
+            <div class="four panel1" >
+                <div class="form-group">
+                    <label for="placeofworship-title" class="col-md-3 control-label ">Title : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control  " name="four_post_name" id="placeofworship-title"  placeholder="Title" onkeyup="postNameExist(this)" >
+                    </div>
+                    <span class="exist-post-error text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="placeofworship-image-file" class="col-md-3 control-label ">Images : </label>
+                    <div class="col-md-9">
+                        <input type="file" class="form-control  " name="four_post_image[]" id="placeofworship-image-file" multiple  >
+                    </div>
+                </div>			  
+                <div class="form-group">
+                    <label for="placeofworship-url" class="col-md-3 control-label ">Web-site Link : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " id="placeofworship-url"  name="four_post_url" placeholder="www.example.com" >
+                    </div>
+                </div>	
+                <div class="form-group">
+                    <label for="placeofworship-location" class="col-md-3 control-label ">Location : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="four_address" id="placeofworship-location"  placeholder="Location" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="placeofworship-street" class="col-md-3 control-label ">street : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="four_street" id="placeofworship-street"  placeholder="155 15thStreet " >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="placeofworship-state-city" class="col-md-3 control-label ">City and State : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="st-city" id="placeofworship-state-city" value="St Louis, MO" readonly >
+                    </div>
+                </div>               
+                <div class="form-group">
+                    <label for="placeofworship-country" class="col-md-3 control-label ">Country : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="st-country" id="placeofworship-country" value="USA"  readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="placeofworship-zip" class="col-md-3 control-label ">Zip Code : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="four_zip" id="placeofworship-zip"  placeholder="63105" >
+                    </div>
+                </div> 
+                <div class="form-group">
+                    <label for="opendays" class="col-md-3 control-label ">Open Days : </label>
+                    <div class="col-md-9">
+                            <!-- primary -->
+                        <div class="pretty p-default">
+                            <input type="checkbox" name="four_open_monday" class="placeofworship-open-days"/>
+                            <div class="state p-success">
+                                <label>Monday</label>
+                            </div>
+                        </div>
+
+                        <!-- success -->
+                        <div class="pretty p-default">
+                            <input type="checkbox" name="four_open_tuesday" class="placeofworship-open-days"/>
+                            <div class="state p-success">
+                                <label>Tuesday</label>
+                            </div>
+                        </div>
+
+                        <!-- info -->
+                        <div class="pretty p-default">
+                            <input type="checkbox" name="four_open_wednesday" class="placeofworship-open-days"/>
+                            <div class="state p-success">
+                                <label>Wednesday</label>
+                            </div>
+                        </div>
+
+                        <!-- warning -->
+                        <div class="pretty p-default">
+                            <input type="checkbox" name="four_open_thursday" class="placeofworship-open-days"/>
+                            <div class="state p-success">
+                                <label>Thursday</label>
+                            </div>
+                        </div>
+
+                        <!-- danger -->
+                        <div class="pretty p-default">
+                            <input type="checkbox" name="four_open_friday" class="placeofworship-open-days"/>
+                            <div class="state p-success">
+                                <label>Friday</label>
+                            </div>
+                        </div>
+                        
+                        <div class="pretty p-default">
+                            <input type="checkbox" name="four_open_saturday" class="placeofworship-open-days"/>
+                            <div class="state p-success">
+                                <label>Saturday</label>
+                            </div>
+                        </div>
+                        
+                        <div class="pretty p-default">
+                            <input type="checkbox" name="four_open_sunday" class="placeofworship-open-days"/>
+                            <div class="state p-success">
+                                <label>Sunday</label>
+                            </div>
+                        </div>
+                        <div id="placeofworshipCheckBoxErrorMessage"></div>
+                    </div>
+                </div>	
+                <div class="form-group">
+                    <label for="openhours" class="col-md-3 control-label ">Open hours : </label>
+                    <div class="col-md-9">
+                        <div class="manast_open_hours_bg">
+                            <ul class="manast_open_hours">
+                                <li class="col-md-4">
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="monday" class="manast_open_hours_label">MON</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input type="time" id="monday" class="manast_open_hours_input_time placeofworship-time-one" name="four_monday_usr_time_from"> 
+                                            <label for="mondaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="mondaytohour" class="manast_open_hours_input_time placeofworship-time-one" type="time" name="four_monday_usr_time_to">
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="tuesday"  class="manast_open_hours_label">TUE</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input type="time" id="tuesday" class="manast_open_hours_input_time placeofworship-time-one" name="four_tuesday_usr_time_from"> 
+                                            <label for="tuesdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="tuesdaytohour" class="manast_open_hours_input_time placeofworship-time-one" type="time" name="four_tuesday_usr_time_to">
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="wednesday" class="manast_open_hours_label">WED</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input type="time" id="wednesday" class="manast_open_hours_input_time placeofworship-time-one" name="four_wednesday_usr_time_from"> 
+                                            <label for="wednesdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="wednesdaytohour" class="manast_open_hours_input_time placeofworship-time-one" type="time" name="four_wednesday_usr_time_to">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-md-4">
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="thursday" class="manast_open_hours_label">THUR</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input type="time" id="thursday" class="manast_open_hours_input_time placeofworship-time-one" name="four_thursday_usr_time_from"> 
+                                            <label for="thursdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="thursdaytohour" class="manast_open_hours_input_time placeofworship-time-one" type="time" name="four_thursday_usr_time_to">
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="friday" class="manast_open_hours_label">FRI</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input type="time" id="friday" class="manast_open_hours_input_time placeofworship-time-one" name="four_friday_usr_time_from"> 
+                                            <label for="fridaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="fridaytohour" class="manast_open_hours_input_time placeofworship-time-one" type="time" name="four_friday_usr_time_to">
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="saturday" class="manast_open_hours_label">SAT</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input type="time" id="saturday" class="manast_open_hours_input_time placeofworship-time-one" name="four_saturday_usr_time_from"> 
+                                            <label for="saturdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="saturdaytohour" class="manast_open_hours_input_time placeofworship-time-one" type="time" name="four_saturday_usr_time_to">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-md-4">
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="sunday" class="manast_open_hours_label">SUN</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input type="time" id="sunday" class="manast_open_hours_input_time placeofworship-time-one" name="four_sunday_usr_time_from"> 
+                                            <label for="sundaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="sundaytohour" class="manast_open_hours_input_time placeofworship-time-one" type="time" name="four_sunday_usr_time_to">
+                                        </div>
+                                    </div>
+                                </li>
+                                
+                            </ul>				
+                        </div>
+                        <div id="open-hour-error-message"></div>
+                    </div>
+                </div>	
+                <div class="form-group">
+                    <label for="openhours" class="col-md-3 control-label ">Pooja Timings : </label>
+                    <div class="col-md-9">
+                        <div class="manast_open_hours_bg">
+                            <ul class="manast_open_hours">
+                                <li class="col-md-4">
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="monday" class="manast_open_hours_label">MON</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input type="time" id="monday" class="manast_open_hours_input_time placeofworship-time-two" name="pooja_four_monday_usr_time_from"> 
+                                            <label for="mondaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="mondaytohour" class="manast_open_hours_input_time placeofworship-time-two" type="time" name="pooja_four_monday_usr_time_to">
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="tuesday"  class="manast_open_hours_label">TUE</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input type="time" id="tuesday" class="manast_open_hours_input_time placeofworship-time-two" name="pooja_four_tuesday_usr_time_from"> 
+                                            <label for="tuesdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="tuesdaytohour" class="manast_open_hours_input_time placeofworship-time-two" type="time" name="pooja_four_tuesday_usr_time_to">
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="wednesday" class="manast_open_hours_label">WED</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input type="time" id="wednesday" class="manast_open_hours_input_time placeofworship-time-two" name="pooja_four_wednesday_usr_time_from"> 
+                                            <label for="wednesdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="wednesdaytohour" class="manast_open_hours_input_time placeofworship-time-two" type="time" name="pooja_four_wednesday_usr_time_to">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-md-4">
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="thursday" class="manast_open_hours_label">THUR</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input type="time" id="thursday" class="manast_open_hours_input_time placeofworship-time-two" name="pooja_four_thursday_usr_time_from"> 
+                                            <label for="thursdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="thursdaytohour" class="manast_open_hours_input_time placeofworship-time-two" type="time" name="pooja_four_thursday_usr_time_to">
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="friday" class="manast_open_hours_label">FRI</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input type="time" id="friday" class="manast_open_hours_input_time placeofworship-time-two" name="pooja_four_friday_usr_time_from"> 
+                                            <label for="fridaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="fridaytohour" class="manast_open_hours_input_time placeofworship-time-two" type="time" name="pooja_four_friday_usr_time_to">
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="saturday" class="manast_open_hours_label">SAT</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input type="time" id="saturday" class="manast_open_hours_input_time placeofworship-time-two" name="pooja_four_saturday_usr_time_from"> 
+                                            <label for="saturdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="saturdaytohour" class="manast_open_hours_input_time placeofworship-time-two" type="time" name="pooja_four_saturday_usr_time_to">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-md-4">
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="sunday" class="manast_open_hours_label">SUN</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input type="time" id="sunday" class="manast_open_hours_input_time placeofworship-time-two" name="pooja_four_sunday_usr_time_from"> 
+                                            <label for="sundaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="sundaytohour" class="manast_open_hours_input_time placeofworship-time-two" type="time" name="pooja_four_sunday_usr_time_to">
+                                        </div>
+                                    </div>
+                                </li>                                
+                            </ul>				
+                        </div>
+                        <div id="open-hour-error-message-two"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="placeofworship-description" class="col-md-3 control-label ">Description : </label>
+                    <div class="col-md-9">
+                        <textarea  class="form-control" onkeyup="countChar(this)" id="placeofworship-description" rows="4" cols="50" placeholder="Description" maxlength="500" name="four_description"></textarea>
+                        <div class="stlouisCounter"></div>
+                    </div>
+                </div>	
+            </div>	
+            <!--*************************************
+                ************************************
+                    END Temple Form
+                *************************************
+                ************************************-->
+
+
+
+                <!--*************************************
+                ************************************
+                    Church Form
+                *************************************
+                ************************************-->
+            <div class="five panel1">
+                <div class="form-group">
+                    <label for="church-title" class="col-md-3 control-label ">Title : </label>
+                    <div class="col-md-9">
+                        <input  name="five_post_name" type="text" class="form-control  "  id="church-title"  placeholder="Title" onkeyup="postNameExist(this)">
+                    </div>
+                    <span class="exist-post-error text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="church-image-file" class="col-md-3 control-label ">Images : </label>
+                    <div class="col-md-9">
+                        <input  name="five_post_image[]" type="file" class="form-control  "  id="church-image-file" multiple  >
+                    </div>
+                </div>			  
+                <div class="form-group">
+                    <label for="church-url" class="col-md-3 control-label ">Web-site Link : </label>
+                    <div class="col-md-9">
+                        <input  name="five_post_url" type="text" class="form-control "  id="church-url"  placeholder="www.example.com" >
+                    </div>
+                </div>	
+                    
+                <div class="form-group">
+                    <label for="church-location" class="col-md-3 control-label ">Location : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="five_address" id="church-location"  placeholder="Location" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="church-street" class="col-md-3 control-label ">street : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="five_street" id="church-street"  placeholder="155 15thStreet " >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="church-state-city" class="col-md-3 control-label ">City and State : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="st-city" id="church-state-city" value="St Louis, MO" placeholder="St Louis, MO " readonly>
+                    </div>
+                </div>               
+                <div class="form-group">
+                    <label for="church-country" class="col-md-3 control-label ">Country : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="st-country" id="church-country" value="USA" placeholder="USA " readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="church-zip" class="col-md-3 control-label ">Zip Code : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="five_zip" id="church-zip"  placeholder="63105" >
+                    </div>
+                </div> 
+                <div class="form-group">
+                    <label for="opendays" class="col-md-3 control-label ">Open Days : </label>
+                    <div class="col-md-9">
+                            <!-- primary -->
+                        <div class="pretty p-default">
+                            <input  name="five_open_monday" type="checkbox" class="church-open-days" />
+                            <div class="state p-success">
+                                <label>Monday</label>
+                            </div>
+                        </div>
+
+                        <!-- success -->
+                        <div class="pretty p-default">
+                            <input  name="five_open_tuesday" type="checkbox" class="church-open-days" />
+                            <div class="state p-success">
+                                <label>Tuesday</label>
+                            </div>
+                        </div>
+
+                        <!-- info -->
+                        <div class="pretty p-default">
+                            <input  name="five_open_wednesday" type="checkbox"  class="church-open-days"/>
+                            <div class="state p-success">
+                                <label>Wednesday</label>
+                            </div>
+                        </div>
+
+                        <!-- warning -->
+                        <div class="pretty p-default">
+                            <input  name="five_open_thursday" type="checkbox" class="church-open-days" />
+                            <div class="state p-success">
+                                <label>Thursday</label>
+                            </div>
+                        </div>
+
+                        <!-- danger -->
+                        <div class="pretty p-default">
+                            <input  name="five_open_friday" type="checkbox" class="church-open-days" />
+                            <div class="state p-success">
+                                <label>Friday</label>
+                            </div>
+                        </div>
+                        
+                        <div class="pretty p-default">
+                            <input  name="five_open_saturday" type="checkbox"  class="church-open-days"/>
+                            <div class="state p-success">
+                                <label>Saturday</label>
+                            </div>
+                        </div>
+                        
+                        <div class="pretty p-default">
+                            <input  name="five_open_sunday" type="checkbox" class="church-open-days" />
+                            <div class="state p-success">
+                                <label>Sunday</label>
+                            </div>
+                        </div>
+                        <div id="churchCheckBoxErrorMessage"></div>
+                    </div>
+                </div>	
+                <div class="form-group">
+                    <label for="openhours" class="col-md-3 control-label ">Open hours : </label>
+                    <div class="col-md-9">
+                        <div class="manast_open_hours_bg">
+                            <ul class="manast_open_hours">
+                                <li class="col-md-4">
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left"> 
+                                            <label for="monday" class="manast_open_hours_label">MON</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input  name="five_monday_usr_time_from" type="time" id="monday" class="manast_open_hours_input_time church-time-one" > 
+                                            <label for="mondaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="mondaytohour" class="manast_open_hours_input_time church-time-one"  name="five_monday_usr_time_to" type="time" >
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left"> 
+                                            <label for="tuesday"  class="manast_open_hours_label">TUE</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input  name="five_tuesday_usr_time_from" type="time" id="tuesday" class="manast_open_hours_input_time church-time-one" > 
+                                            <label for="tuesdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="tuesdaytohour" class="manast_open_hours_input_time church-time-one"  name="five_tuesday_usr_time_to" type="time" >
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="wednesday" class="manast_open_hours_label">WED</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input  name="five_wednesday_usr_time_from" type="time" id="wednesday" class="manast_open_hours_input_time church-time-one" > 
+                                            <label for="wednesdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="wednesdaytohour" class="manast_open_hours_input_time church-time-one"  name="five_wednesday_usr_time_to" type="time" >
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-md-4">
+                                    <div class="manast_open_hours_box">
+                                            <div class="manast_open_hours_left">
+                                            <label for="thursday" class="manast_open_hours_label">THUR</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input  name="five_thursday_usr_time_from" type="time" id="thursday" class="manast_open_hours_input_time church-time-one" > 
+                                            <label for="thursdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="thursdaytohour" class="manast_open_hours_input_time church-time-one"  name="five_thursday_usr_time_to" type="time" >
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="friday" class="manast_open_hours_label">FRI</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input  name="five_friday_usr_time_from" type="time" id="friday" class="manast_open_hours_input_time church-time-one" > 
+                                            <label for="fridaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="fridaytohour" class="manast_open_hours_input_time church-time-one"  name="five_friday_usr_time_to" type="time" >
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="saturday" class="manast_open_hours_label">SAT</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input  name="five_saturday_usr_time_from" type="time" id="saturday" class="manast_open_hours_input_time church-time-one" >
+                                            <label for="saturdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="saturdaytohour" class="manast_open_hours_input_time church-time-one"  name="five_saturday_usr_time_to" type="time" >
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-md-4">
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="sunday" class="manast_open_hours_label">SUN</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input  name="five_sunday_usr_time_from" type="time" id="sunday" class="manast_open_hours_input_time church-time-one" > 
+                                            <label for="sundaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="sundaytohour" class="manast_open_hours_input_time church-time-one"  name="five_sunday_usr_time_to" type="time" >
+                                        </div>
+                                    </div>
+                                </li>                                
+                            </ul>				
+                        </div>
+                        <div id="open-hour-error-message"></div>
+                    </div>
+                </div>	
+                <div class="form-group">
+                    <label for="prayertimings" class="col-md-3 control-label ">Prayer Timings : </label>
+                    <div class="col-md-9">
+                        <div class="manast_open_hours_bg">
+                            <ul class="manast_open_hours">
+                                <li class="col-md-4">
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="monday" class="manast_open_hours_label">MON</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">     
+                                            <input  name="prayer_five_monday_usr_time_from" type="time" id="monday" class="manast_open_hours_input_time church-time-two" > 
+                                            <label for="mondaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="mondaytohour" class="manast_open_hours_input_time church-time-two"  name="prayer_five_monday_usr_time_to" type="time" >
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="tuesday"  class="manast_open_hours_label">TUE</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">     
+                                            <input  name="prayer_five_tuesday_usr_time_from" type="time" id="tuesday" class="manast_open_hours_input_time church-time-two" > 
+                                            <label for="tuesdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="tuesdaytohour" class="manast_open_hours_input_time church-time-two"  name="prayer_five_tuesday_usr_time_to" type="time" >
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">   
+                                            <label for="wednesday" class="manast_open_hours_label">WED</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">  
+                                            <input  name="prayer_five_wednesday_usr_time_from" type="time" id="wednesday" class="manast_open_hours_input_time church-time-two"  > 
+                                            <label for="wednesdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="wednesdaytohour" class="manast_open_hours_input_time church-time-two"  name="prayer_five_wednesday_usr_time_to" type="time" >
+                                        </div>
+                                    </div>        
+                                </li>
+                                <li class="col-md-4">
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left"> 
+                                            <label for="thursday" class="manast_open_hours_label">THUR</label>
+                                        </div>
+                                        <div class="manast_open_hours_right"> 
+                                            <input  name="prayer_five_thursday_usr_time_from" type="time" id="thursday" class="manast_open_hours_input_time church-time-two" > 
+                                            <label for="thursdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="thursdaytohour" class="manast_open_hours_input_time church-time-two"  name="prayer_five_thursday_usr_time_to" type="time" >
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left"> 
+                                            <label for="friday" class="manast_open_hours_label">FRI</label>
+                                        </div>
+                                        <div class="manast_open_hours_right"> 
+                                            <input  name="prayer_five_friday_usr_time_from" type="time" id="friday" class="manast_open_hours_input_time church-time-two" > 
+                                            <label for="fridaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="fridaytohour" class="manast_open_hours_input_time church-time-two"  name="prayer_five_friday_usr_time_to" type="time" >
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="saturday" class="manast_open_hours_label">SAT</label>
+                                        </div>
+                                        <div class="manast_open_hours_right"> 
+                                            <input  name="prayer_five_saturday_usr_time_from" type="time" id="saturday" class="manast_open_hours_input_time church-time-two" > 
+                                            <label for="saturdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="saturdaytohour" class="manast_open_hours_input_time church-time-two"  name="prayer_five_saturday_usr_time_to" type="time" >
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-md-4">
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="sunday" class="manast_open_hours_label">SUN</label>
+                                        </div>
+                                        <div class="manast_open_hours_right"> 
+                                            <input  name="prayer_five_sunday_usr_time_from" type="time" id="sunday" class="manast_open_hours_input_time church-time-two" > 
+                                            <label for="sundaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="sundaytohour" class="manast_open_hours_input_time church-time-two"  name="prayer_five_sunday_usr_time_to" type="time" >
+                                        </div>
+                                    </div>
+                                </li>
+                                
+                            </ul>				
+                        </div>
+                        <div id="open-hour-error-message-two"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="church-description" class="col-md-3 control-label ">Description : </label>
+                    <div class="col-md-9">
+                        <textarea  class="form-control" onkeyup="countChar(this)" id="church-description" rows="4" cols="50" placeholder="Description" maxlength="500" name="five_description"></textarea>
+                        <div class="stlouisCounter"></div>
+                    </div>
+                </div>	
+            </div>
+            <!--*************************************
+                ************************************
+                    END Church Form
+                *************************************
+                ************************************-->
+
+
+
+                <!--*************************************
+                ************************************
+                    Mosque Form
+                *************************************
+                ************************************-->
+            <div class="six panel1" >
+                <div class="form-group">
+                    <label for="mosque-title" class="col-md-3 control-label ">Title : </label>
+                    <div class="col-md-9">
+                        <input name="six_post_name" type="text" class="form-control" id="mosque-title"  placeholder="Title" onkeyup="postNameExist(this)" >
+                    </div>
+                    <span class="exist-post-error text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="mosque-image-file" class="col-md-3 control-label ">Images : </label>
+                    <div class="col-md-9">
+                        <input name="six_post_image[]" type="file" class="form-control  " id="mosque-image-file" multiple  >
+                    </div>
+                </div>            
+                <div class="form-group">
+                    <label for="mosque-url" class="col-md-3 control-label ">Web-site Link : </label>
+                    <div class="col-md-9">
+                        <input name="six_post_url" type="text" class="form-control " id="mosque-url"  placeholder="www.example.com" >
+                    </div>
+                </div> 	
+                    
+                <div class="form-group">
+                    <label for="mosque-location" class="col-md-3 control-label ">Location : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="six_address" id="mosque-location"  placeholder="Location" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="mosque-street" class="col-md-3 control-label ">street : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="six_street" id="mosque-street"  placeholder="155 15thStreet " >
+                    </div>
+                </div>
+                <div class="form-group">   
+                    <label for="mosque-state-city" class="col-md-3 control-label ">City and State : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="st-city" id="mosque-state-city" value="St Louis, MO" placeholder="St Louis, MO " readonly>
+                    </div>
+                </div>               
+                <div class="form-group">
+                    <label for="mosque-country" class="col-md-3 control-label ">Country : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="st-country" id="mosque-country" value="USA" placeholder="USA " readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="mosque-zip" class="col-md-3 control-label ">Zip Code : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="six_zip" id="mosque-zip"  placeholder="63105" >
+                    </div>
+                </div> 
+                <div class="form-group">
+                    <label for="opendays" class="col-md-3 control-label ">Open Days : </label>
+                    <div class="col-md-9">
+                            <!-- primary -->
+                        <div class="pretty p-default">
+                            <input name="six_open_monday" type="checkbox" class="mosque-open-days" />
+                            <div class="state p-success">
+                                <label>Monday</label>
+                            </div>
+                        </div>
+
+                        <!-- success -->
+                        <div class="pretty p-default">
+                            <input name="six_open_tuesday" type="checkbox" class="mosque-open-days" />
+                            <div class="state p-success">
+                                <label>Tuesday</label>
+                            </div>
+                        </div>
+
+                        <!-- info -->
+                        <div class="pretty p-default">
+                            <input name="six_open_wednesday" type="checkbox" class="mosque-open-days" />
+                            <div class="state p-success">
+                                <label>Wednesday</label>
+                            </div>
+                        </div>
+
+                        <!-- warning -->
+                        <div class="pretty p-default">
+                            <input name="six_open_thursday" type="checkbox" class="mosque-open-days" />
+                            <div class="state p-success">
+                                <label>Thursday</label>
+                            </div>
+                        </div>
+
+                        <!-- danger -->
+                        <div class="pretty p-default"> 
+                            <input name="six_open_friday" type="checkbox" class="mosque-open-days" />
+                            <div class="state p-success">
+                                <label>Friday</label>
+                            </div>
+                        </div>
+                        
+                        <div class="pretty p-default">
+                            <input name="six_open_saturday" type="checkbox" class="mosque-open-days"/>
+                            <div class="state p-success">
+                                <label>Saturday</label>
+                            </div>
+                        </div>
+                        
+                        <div class="pretty p-default">
+                            <input name="six_open_sunday" type="checkbox" class="mosque-open-days"/>
+                            <div class="state p-success">
+                                <label>Sunday</label>
+                            </div>
+                        </div>
+                        <div id="mosqueCheckBoxErrorMessage"></div>
+                    </div>
+                </div>  
+                <div class="form-group">
+                    <label for="openhours" class="col-md-3 control-label ">Open hours : </label>
+                    <div class="col-md-9">
+                        <div class="manast_open_hours_bg">
+                            <ul class="manast_open_hours">
+                                <li class="col-md-4">
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="monday" class="manast_open_hours_label">MON</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input name="six_monday_usr_time_from" type="time" id="monday" class="manast_open_hours_input_time mosque-time-one" name="usr_time"> 
+                                            <label for="mondaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="mondaytohour" class="manast_open_hours_input_time mosque-time-one" name="six_monday_usr_time_to" type="time" name="usr_time">
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="tuesday"  class="manast_open_hours_label">TUE</label>
+                                        </div>    
+                                        <div class="manast_open_hours_right">
+                                            <input name="six_tuesday_usr_time_from" type="time" id="tuesday" class="manast_open_hours_input_time mosque-time-one" name="usr_time"> 
+                                            <label for="tuesdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="tuesdaytohour" class="manast_open_hours_input_time mosque-time-one" name="six_tuesday_usr_time_to" type="time" name="usr_time">
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="wednesday" class="manast_open_hours_label">WED</label>
+                                        </div>   
+                                        <div class="manast_open_hours_right"> 
+                                            <input name="six_wednesday_usr_time_from" type="time" id="wednesday" class="manast_open_hours_input_time mosque-time-one" name="usr_time"> 
+                                            <label for="wednesdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="wednesdaytohour" class="manast_open_hours_input_time mosque-time-one" name="six_wednesday_usr_time_to" type="time" name="usr_time">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-md-4">
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="thursday" class="manast_open_hours_label">THUR</label>
+                                        </div>
+                                        <div class="manast_open_hours_right"> 
+                                            <input name="six_thursday_usr_time_from" type="time" id="thursday" class="manast_open_hours_input_time mosque-time-one" name="usr_time"> 
+                                            <label for="thursdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="thursdaytohour" class="manast_open_hours_input_time mosque-time-one" name="six_thursday_usr_time_to" type="time" name="usr_time">
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="friday" class="manast_open_hours_label">FRI</label>
+                                        </div>    
+                                        <div class="manast_open_hours_right"> 
+                                            <input name="six_friday_usr_time_from" type="time" id="friday" class="manast_open_hours_input_time mosque-time-one" name="usr_time"> 
+                                            <label for="fridaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="fridaytohour" class="manast_open_hours_input_time mosque-time-one" name="six_friday_usr_time_to" type="time" name="usr_time">
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="saturday" class="manast_open_hours_label">SAT</label>
+                                        </div>          
+                                        <div class="manast_open_hours_right">                              
+                                            <input name="six_saturday_usr_time_from" type="time" id="saturday" class="manast_open_hours_input_time mosque-time-one" name="usr_time"> 
+                                            <label for="saturdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="saturdaytohour" class="manast_open_hours_input_time mosque-time-one" name="six_saturday_usr_time_to" type="time" name="usr_time">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-md-4">
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="sunday" class="manast_open_hours_label">SUN</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input name="six_sunday_usr_time_from" type="time" id="sunday" class="manast_open_hours_input_time mosque-time-one" name="usr_time"> 
+                                            <label for="sundaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="sundaytohour" class="manast_open_hours_input_time mosque-time-one" name="six_sunday_usr_time_to" type="time" name="usr_time">
+                                        </div>
+                                    </div>
+                                </li>
+                                
+                            </ul>               
+                        </div>
+                        <div id="open-hour-error-message"></div>
+                    </div>
+                </div>  
+                <div class="form-group">
+                    <label for="prayertimings" class="col-md-3 control-label ">Namaz Timings : </label>
+                    <div class="col-md-9">
+                        <div class="manast_open_hours_bg">
+                            <ul class="manast_open_hours">
+                                <li class="col-md-4">
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="monday" class="manast_open_hours_label">MON</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input name="namaz_six_monday_usr_time_from" type="time" id="monday" class="manast_open_hours_input_time mosque-time-two" name="usr_time"> 
+                                            <label for="mondaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="mondaytohour" class="manast_open_hours_input_time mosque-time-two" name="namaz_six_monday_usr_time_to" type="time" name="usr_time">
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="tuesday"  class="manast_open_hours_label">TUE</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input name="namaz_six_tuesday_usr_time_from" type="time" id="tuesday" class="manast_open_hours_input_time mosque-time-two" name="usr_time"> 
+                                            <label for="tuesdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="tuesdaytohour" class="manast_open_hours_input_time mosque-time-two" name="namaz_six_tuesday_usr_time_to" type="time" name="usr_time">
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">    
+                                            <label for="wednesday" class="manast_open_hours_label">WED</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">    
+                                            <input name="namaz_six_wednesday_usr_time_from" type="time" id="wednesday" class="manast_open_hours_input_time mosque-time-two" name="usr_time"> 
+                                            <label for="wednesdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="wednesdaytohour" class="manast_open_hours_input_time mosque-time-two" name="namaz_six_wednesday_usr_time_to" type="time" name="usr_time">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-md-4">
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">  
+                                            <label for="thursday" class="manast_open_hours_label">THUR</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input name="namaz_six_thursday_usr_time_from" type="time" id="thursday" class="manast_open_hours_input_time mosque-time-two" name="usr_time"> 
+                                            <label for="thursdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="thursdaytohour" class="manast_open_hours_input_time mosque-time-two" name="namaz_six_thursday_usr_time_to" type="time" name="usr_time">
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left"> 
+                                            <label for="friday" class="manast_open_hours_label">FRI</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input name="namaz_six_friday_usr_time_from" type="time" id="friday" class="manast_open_hours_input_time mosque-time-two" name="usr_time"> 
+                                            <label for="fridaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="fridaytohour" class="manast_open_hours_input_time mosque-time-two" name="namaz_six_friday_usr_time_to" type="time" name="usr_time">
+                                        </div>
+                                    </div>    
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left"> 
+                                            <label for="satrday" class="manast_open_hours_label">SAT</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input name="namaz_six_saturday_usr_time_from" type="time" id="saturday" class="manast_open_hours_input_time mosque-time-two" name="usr_time"> 
+                                            <label for="saturdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="saturdaytohour" class="manast_open_hours_input_time mosque-time-two" name="namaz_six_saturday_usr_time_to" type="time" name="usr_time">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-md-4">
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left"> 
+                                            <label for="sunday" class="manast_open_hours_label">SUN</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input name="namaz_six_sunday_usr_time_from" type="time" id="sunday" class="manast_open_hours_input_time mosque-time-two" name="usr_time"> 
+                                            <label for="sundaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="sundaytohour" class="manast_open_hours_input_time mosque-time-two" name="namaz_six_sunday_usr_time_to" type="time" name="usr_time">
+                                        </div>
+                                    </div>
+                                </li>
+                                
+                            </ul>               
+                        </div>
+                        <div id="open-hour-error-message-two"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="church-description" class="col-md-3 control-label ">Description : </label>
+                    <div class="col-md-9">
+                        <textarea  class="form-control" onkeyup="countChar(this)" id="church-description" rows="4" cols="50" placeholder="Description" maxlength="500" name="six_description"></textarea>
+                        <div class="stlouisCounter"></div>
+                    </div>
+                </div> 
+            </div>  
+            <!--*************************************
+                ************************************
+                    END Mosque Form
+                *************************************
+                ************************************-->
+
+
+
+                <!--*************************************
+                ************************************
+                    Others Form
+                *************************************
+                ************************************-->
+            <div class="seven panel1" >
+                <div class="form-group">
+                    <label for="others-title" class="col-md-3 control-label ">Title : </label>
+                    <div class="col-md-9">
+                        <input name="seven_post_name" type="text" class="form-control  " id="others-title"  placeholder="Title" onkeyup="postNameExist(this)" >
+                    </div>
+                    <span class="exist-post-error text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="others-image-file" class="col-md-3 control-label ">Images : </label>
+                    <div class="col-md-9">
+                        <input name="seven_post_image[]" type="file" class="form-control  " id="others-image-file" multiple  >
+                    </div>
+                </div>            
+                <div class="form-group">
+                    <label for="others-url" class="col-md-3 control-label ">Web-site Link : </label>
+                    <div class="col-md-9">
+                        <input name="seven_post_url" type="text" class="form-control " id="others-url"  placeholder="www.example.com" >
+                    </div>
+                </div>	
+                    
+                <div class="form-group">
+                    <label for="others-location" class="col-md-3 control-label ">Location : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="seven_address" id="others-location"  placeholder="Location" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="others-street" class="col-md-3 control-label ">street : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="seven_street" id="others-street"  placeholder="155 15thStreet " >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="others-state-city" class="col-md-3 control-label ">City and State : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="st-city" id="others-state-city" value="St Louis, MO"   placeholder="St Louis, MO " readonly>
+                    </div>
+                </div>               
+                <div class="form-group">
+                    <label for="others-country" class="col-md-3 control-label ">Country : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="st-country" id="others-country" value="USA" placeholder="USA " readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="others-zip" class="col-md-3 control-label ">Zip Code : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="seven_zip" id="others-zip"  placeholder="63105" >
+                    </div>
+                </div> 
+                <div class="form-group">
+                    <label for="opendays" class="col-md-3 control-label ">Open Days : </label>
+                    <div class="col-md-9">
+                            <!-- primary -->
+                        <div class="pretty p-default">
+                            <input name="seven_open_monday" type="checkbox" class="others-open-days"/>
+                            <div class="state p-success">
+                                <label>Monday</label>
+                            </div>
+                        </div>
+
+                        <!-- success -->
+                        <div class="pretty p-default">
+                            <input name="seven_open_tuesday" type="checkbox" class="others-open-days" />
+                            <div class="state p-success">
+                                <label>Tuesday</label>
+                            </div>
+                        </div>
+
+                        <!-- info -->
+                        <div class="pretty p-default">
+                            <input name="seven_open_wednesday" type="checkbox"  class="others-open-days"/>
+                            <div class="state p-success">
+                                <label>Wednesday</label>
+                            </div>
+                        </div>
+
+                        <!-- warning -->
+                        <div class="pretty p-default">
+                            <input name="seven_open_thursday" type="checkbox" class="others-open-days"/>
+                            <div class="state p-success">
+                                <label>Thursday</label>
+                            </div>
+                        </div>
+
+                        <!-- danger -->
+                        <div class="pretty p-default">
+                            <input name="seven_open_friday" type="checkbox" class="others-open-days"/>
+                            <div class="state p-success">
+                                <label>Friday</label>
+                            </div>
+                        </div>
+                        
+                        <div class="pretty p-default">
+                            <input name="seven_open_saturday" type="checkbox" class="others-open-days"/>
+                            <div class="state p-success">
+                                <label>Saturday</label>
+                            </div>
+                        </div>
+                        
+                        <div class="pretty p-default">
+                            <input name="seven_open_sunday" type="checkbox" class="others-open-days"/>
+                            <div class="state p-success">
+                                <label>Sunday</label>
+                            </div>
+                        </div>
+                        <div id="othersCheckBoxErrorMessage"></div>
+                    </div>
+                </div>  
+                <div class="form-group">
+                    <label for="openhours" class="col-md-3 control-label ">Open hours : </label>
+                    <div class="col-md-9">
+                        <div class="manast_open_hours_bg">
+                            <ul class="manast_open_hours">
+                                <li class="col-md-4">
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="monday" class="manast_open_hours_label">MON</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input name="seven_monday_usr_time_from" type="time" id="monday" class="manast_open_hours_input_time others-time-one" name="usr_time"> 
+                                            <label for="mondaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="mondaytohour" class="manast_open_hours_input_time others-time-one" name="seven_monday_usr_time_to" type="time" name="usr_time">
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="tuesday"  class="manast_open_hours_label">TUE</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input name="seven_tuesday_usr_time_from" type="time" id="tuesday" class="manast_open_hours_input_time others-time-one" name="usr_time"> 
+                                            <label for="tuesdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="tuesdaytohour" class="manast_open_hours_input_time others-time-one" name="seven_tuesday_usr_time_to" type="time" name="usr_time">
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="wednesday" class="manast_open_hours_label">WED</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input name="seven_wednesday_usr_time_from" type="time" id="wednesday" class="manast_open_hours_input_time others-time-one" name="usr_time"> 
+                                            <label for="wednesdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="wednesdaytohour" class="manast_open_hours_input_time others-time-one" name="seven_wednesday_usr_time_to" type="time" name="usr_time">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-md-4">
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="thursday" class="manast_open_hours_label">THUR</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input name="seven_thursday_usr_time_from" type="time" id="thursday" class="manast_open_hours_input_time others-time-one" name="usr_time"> 
+                                            <label for="thursdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="thursdaytohour" class="manast_open_hours_input_time others-time-one" name="seven_thursday_usr_time_to" type="time" name="usr_time">
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="friday" class="manast_open_hours_label">FRI</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input name="seven_friday_usr_time_from" type="time" id="friday" class="manast_open_hours_input_time others-time-one" name="usr_time"> 
+                                            <label for="fridaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="fridaytohour" class="manast_open_hours_input_time others-time-one" name="seven_friday_usr_time_to" type="time" name="usr_time">
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="saturday" class="manast_open_hours_label">SAT</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input name="seven_saturday_usr_time_from" type="time" id="saturday" class="manast_open_hours_input_time others-time-one" name="usr_time"> 
+                                            <label for="saturdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="saturdaytohour" class="manast_open_hours_input_time others-time-one" name="seven_saturday_usr_time_to" type="time" name="usr_time">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-md-4">
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="sunday" class="manast_open_hours_label">SUN</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input name="seven_sunday_usr_time_from" type="time" id="sunday" class="manast_open_hours_input_time others-time-one" name="usr_time"> 
+                                            <label for="sundaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="sundaytohour" class="manast_open_hours_input_time others-time-one" name="seven_sunday_usr_time_to" type="time" name="usr_time">
+                                        </div>
+                                    </div>
+                                </li>
+                                
+                            </ul>               
+                        </div>
+                        <div id="open-hour-error-message"></div>
+                    </div>
+                </div>  
+                <div class="form-group">
+                    <label for="prayertimings" class="col-md-3 control-label ">Prayer Timings : </label>
+                    <div class="col-md-9">
+                        <div class="manast_open_hours_bg">
+                            <ul class="manast_open_hours">
+                                <li class="col-md-4">
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="monday" class="manast_open_hours_label">MON</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input name="other_seven_monday_usr_time_from" type="time" id="monday" class="manast_open_hours_input_time others-time-two" name="usr_time"> 
+                                            <label for="mondaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="mondaytohour" class="manast_open_hours_input_time others-time-two" name="other_seven_monday_usr_time_to" type="time" name="usr_time">
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="tuesday"  class="manast_open_hours_label">TUE</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input name="other_seven_tuesday_usr_time_from" type="time" id="tuesday" class="manast_open_hours_input_time others-time-two" name="usr_time"> 
+                                            <label for="tuesdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="tuesdaytohour" class="manast_open_hours_input_time others-time-two" name="other_seven_tuesday_usr_time_to" type="time" name="usr_time">
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="wednesday" class="manast_open_hours_label">WED</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input name="other_seven_wednesday_usr_time_from" type="time" id="wednesday" class="manast_open_hours_input_time others-time-two" name="usr_time"> 
+                                            <label for="wednesdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="wednesdaytohour" class="manast_open_hours_input_time others-time-two" name="other_seven_wednesday_usr_time_to" type="time" name="usr_time">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-md-4">
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="thursday" class="manast_open_hours_label">THUR</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input name="other_seven_thursday_usr_time_from" type="time" id="thursday" class="manast_open_hours_input_time others-time-two" name="usr_time"> 
+                                            <label for="thursdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="thursdaytohour" class="manast_open_hours_input_time others-time-two" name="other_seven_thursday_usr_time_to" type="time" name="usr_time">
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="friday" class="manast_open_hours_label">FRI</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input name="other_seven_friday_usr_time_from" type="time" id="friday" class="manast_open_hours_input_time others-time-two" name="usr_time"> 
+                                            <label for="fridaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="fridaytohour" class="manast_open_hours_input_time others-time-two" name="other_seven_friday_usr_time_to" type="time" name="usr_time">
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="saturday" class="manast_open_hours_label">SAT</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input name="other_seven_saturday_usr_time_from" type="time" id="saturday" class="manast_open_hours_input_time others-time-two" name="usr_time"> 
+                                            <label for="saturdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="saturdaytohour" class="manast_open_hours_input_time others-time-two" name="other_seven_saturday_usr_time_to" type="time" name="usr_time">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-md-4">
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="sunday" class="manast_open_hours_label">SUN</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input name="other_seven_sunday_usr_time_from" type="time" id="sunday" class="manast_open_hours_input_time others-time-two" name="usr_time"> 
+                                            <label for="sundaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="sundaytohour" class="manast_open_hours_input_time others-time-two" name="other_seven_sunday_usr_time_to" type="time" name="usr_time">
+                                        </div>
+                                    </div>
+                                    
+                                </li>
+                                
+                            </ul>               
+                        </div>
+                        <div id="open-hour-error-message-two"></div>
+                    </div>
+                </div>  
+                <div class="form-group">
+                    <label for="others-description" class="col-md-3 control-label ">Description : </label>
+                    <div class="col-md-9">
+                        <textarea  class="form-control" onkeyup="countChar(this)" id="others-description" rows="4" cols="50" placeholder="Description" maxlength="500" name="seven_description"></textarea>
+                        <div class="stlouisCounter"></div>
+                    </div>
+                </div>
+            </div> 
+            <!--*************************************
+                ************************************
+                    END others Form
+                *************************************
+                ************************************-->
+
+
+
+                <!--*************************************
+                ************************************
+                    desi stores, others stores, Indian restaurant, Thai , 
+                    American , Italian, Mexican restaurants , 
+                    Doctors clinic, Hospitals, Diagnostics-labs, 
+                    Physiotheraphy and Urgent cares Form
+                *************************************
+                ************************************-->
+            <div class="eight panel1" >
+                <div class="form-group">
+                    <label for="eight-title" class="col-md-3 control-label ">Title : </label>
+                    <div class="col-md-9">
+                        <input name="eight_post_name" type="text" class="form-control  " id="eight-title"  placeholder="Title" onkeyup="postNameExist(this)" >
+                    </div>
+                    <span class="exist-post-error text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="eight-image-file" class="col-md-3 control-label ">Images : </label>
+                    <div class="col-md-9">
+                        <input name="eight_post_image[]" type="file" class="form-control  " id="eight-image-file" multiple  >
+                    </div>
+                </div>            
+                <div class="form-group">
+                    <label for="eight-url" class="col-md-3 control-label ">Web-site Link : </label>
+                    <div class="col-md-9">
+                        <input name="eight_post_url" type="text" class="form-control " id="eight-url"  placeholder="www.youtube.com" >
+                    </div>
+                </div>  
+                <div class="form-group"> 
+                    <label for="eight-email" class="col-md-3 control-label ">Email : </label>
+                    <div class="col-md-9">
+                        <input name="eight_email" type="text" class="form-control " id="eight-email"  placeholder="Email Id" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="eight-mobile" class="col-md-3 control-label ">Mobile : </label>
+                    <div class="col-md-9">
+                        <input name="eight_mobile_num" type="text" class="form-control phoneNumber" maxlength="12" id="eight-mobile"  placeholder="Mobile Number" >
+                    </div>
+                </div> 	
+                    
+                <div class="form-group">
+                    <label for="eight-location" class="col-md-3 control-label ">Location : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="eight_address" id="eight-location"  placeholder="Location" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="eight-street" class="col-md-3 control-label ">street : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="eight_street" id="eight-street"  placeholder="155 15thStreet " >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="eight-state-city" class="col-md-3 control-label ">City and State : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="st-city" id="eight-state-city" value="St Louis, MO" disabled  placeholder="St Louis, MO " >
+                    </div>
+                </div>               
+                <div class="form-group">
+                    <label for="eight-country" class="col-md-3 control-label ">Country : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="st-country" id="eight-country" value="USA"  disabled placeholder="USA " >
+                    </div>
+                </div> 
+                <div class="form-group">
+                    <label for="eight-zip" class="col-md-3 control-label ">Zip Code : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="eight_zip" id="eight-zip"  placeholder="63105" >
+                    </div>
+                </div> 
+                <div class="form-group">
+                    <label for="opendays" class="col-md-3 control-label ">Open Days : </label>
+                    <div class="col-md-9">
+                            <!-- primary -->
+                        <div class="pretty p-default">
+                            <input name="eight_open_monday" type="checkbox" class="eight-open-days"/>
+                            <div class="state p-success">
+                                <label>Monday</label>
+                            </div>
+                        </div>
+
+                        <!-- success -->
+                        <div class="pretty p-default">
+                            <input name="eight_open_tuesday" type="checkbox" class="eight-open-days"/>
+                            <div class="state p-success">
+                                <label>Tuesday</label>
+                            </div>
+                        </div>
+
+                        <!-- info -->
+                        <div class="pretty p-default">
+                            <input name="eight_open_wednesday" type="checkbox" class="eight-open-days"/>
+                            <div class="state p-success">
+                                <label>Wednesday</label>
+                            </div>
+                        </div>
+
+                        <!-- warning -->
+                        <div class="pretty p-default">
+                            <input name="eight_open_thursday" type="checkbox" class="eight-open-days"/>
+                            <div class="state p-success">
+                                <label>Thursday</label>
+                            </div>
+                        </div>
+
+                        <!-- danger -->
+                        <div class="pretty p-default">
+                            <input name="eight_open_friday" type="checkbox" class="eight-open-days"/>
+                            <div class="state p-success">
+                                <label>Friday</label>
+                            </div>
+                        </div>
+                        
+                        <div class="pretty p-default">
+                            <input name="eight_open_saturday" type="checkbox" class="eight-open-days"/>
+                            <div class="state p-success">
+                                <label>Saturday</label>
+                            </div>
+                        </div>
+                        
+                        <div class="pretty p-default">
+                            <input name="eight_open_sunday" type="checkbox" class="eight-open-days"/>
+                            <div class="state p-success">
+                                <label>Sunday</label>
+                            </div>
+                        </div>
+                        <div id="eightCheckBoxErrorMessage"></div>
+                    </div>
+                </div> 
+                <div class="form-group">
+                    <label for="openhours" class="col-md-3 control-label ">Open hours : </label>
+                    <div class="col-md-9">
+                        <div class="manast_open_hours_bg">
+                            <ul class="manast_open_hours">
+                                <li class="col-md-4">
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="monday" class="manast_open_hours_label">MON</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input name="eight_monday_usr_time_from" type="time" id="monday" class="manast_open_hours_input_time eight-time-one" name="eight_usr_time"> 
+                                            <label for="mondaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="mondaytohour" class="manast_open_hours_input_time eight-time-one" name="eight_monday_usr_time_to" type="time" name="eight_usr_time">
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="tuesday"  class="manast_open_hours_label">TUE</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input name="eight_tuesday_usr_time_from" type="time" id="tuesday" class="manast_open_hours_input_time eight-time-one" name="eight_usr_time"> 
+                                            <label for="tuesdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="tuesdaytohour" class="manast_open_hours_input_time eight-time-one" name="eight_tuesday_usr_time_to" type="time" name="eight_usr_time">
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="wednesday" class="manast_open_hours_label">WED</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input name="eight_wednesday_usr_time_from" type="time" id="wednesday" class="manast_open_hours_input_time eight-time-one" name="eight_usr_time"> 
+                                            <label for="wednesdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="wednesdaytohour" class="manast_open_hours_input_time eight-time-one" name="eight_wednesday_usr_time_to" type="time" name="eight_usr_time">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-md-4">
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">                                                                 
+                                            <label for="thursday" class="manast_open_hours_label">THUR</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input name="eight_thursday_usr_time_from" type="time" id="thursday" class="manast_open_hours_input_time eight-time-one" name="eight_usr_time"> 
+                                            <label for="thursdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="thursdaytohour" class="manast_open_hours_input_time eight-time-one" name="eight_thursday_usr_time_to" type="time" name="eight_usr_time">
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">                                
+                                            <label for="friday" class="manast_open_hours_label">FRI</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input name="eight_friday_usr_time_from" type="time" id="friday" class="manast_open_hours_input_time eight-time-one" name="eight_usr_time"> 
+                                            <label for="fridaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="fridaytohour" class="manast_open_hours_input_time eight-time-one" name="eight_friday_usr_time_to" type="time" name="eight_usr_time">
+                                        </div>
+                                    </div>
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">                                
+                                            <label for="saturday" class="manast_open_hours_label">SAT</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input name="eight_saturday_usr_time_from" type="time" id="saturday" class="manast_open_hours_input_time eight-time-one" name="eight_usr_time"> 
+                                            <label for="saturdaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="saturdaytohour" class="manast_open_hours_input_time eight-time-one" name="eight_saturday_usr_time_to" type="time" name="eight_usr_time">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-md-4">
+                                    <div class="manast_open_hours_box">
+                                        <div class="manast_open_hours_left">
+                                            <label for="sunday" class="manast_open_hours_label">SUN</label>
+                                        </div>
+                                        <div class="manast_open_hours_right">
+                                            <input name="eight_sunday_usr_time_from" type="time" id="sunday" class="manast_open_hours_input_time eight-time-one" name="eight_usr_time"> 
+                                            <label for="sundaytohour" class="manast_open_hours_label_to" >-</label>
+                                            <input id="sundaytohour" class="manast_open_hours_input_time eight-time-one" name="eight_sunday_usr_time_to" type="time" name="eight_usr_time">
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>               
+                        </div>
+                        <div id="open-hour-error-message"></div>
+                    </div>
+                </div>  
+                <div class="form-group">
+                    <label for="eight-description" class="col-md-3 control-label ">Description : </label>
+                    <div class="col-md-9">
+                        <textarea  class="form-control" onkeyup="countChar(this)" id="eight-description" rows="4" cols="50" placeholder="Description" maxlength="500" name="eight_description"></textarea>
+                        <div class="stlouisCounter"></div>
+                    </div>
+                </div>  
+            </div>	
+            <!--*************************************
+                ************************************
+                    --------END-------
+                desi stores, others stores, Indian restaurant, Thai , 
+                    American , Italian, Mexican restaurants , 
+                    Doctors clinic, Hospitals, Diagnostics-labs, 
+                    Physiotheraphy and Urgent cares Form
+
+                *************************************
+                ************************************-->
+
+
+
+                <!--*************************************
+                ************************************
+                    Telugu Movie, tamil movie, hindi, english
+                    malayanam Form
+                *************************************
+                ************************************-->
+            <div  class="nine panel1">
+                <div class="form-group">
+                    <label for="nine-title" class="col-md-3 control-label ">Title : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control  " name="nine_post_name" id="nine-title"  placeholder="Title" onkeyup="postNameExist(this)" >
+                    </div>
+                    <span class="exist-post-error text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="nine-image-file" class="col-md-3 control-label ">Images : </label>
+                    <div class="col-md-9">
+                        <input type="file" class="form-control  " name="nine_post_image[]" id="nine-image-file" multiple  >
+                    </div>
+                </div>			  
+                <div class="form-group">
+                    <label for="nine-director" class="col-md-3 control-label ">Director : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="nine_director" id="nine-director"  placeholder="Director" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="nine-producer" class="col-md-3 control-label ">Producer : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="nine_producer" id="nine-producer"  placeholder="Producer" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="nine-music" class="col-md-3 control-label ">Music By: </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="nine_music" id="nine-music"  placeholder="Music By" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="nine-theaters" class="col-md-3 control-label ">Theaters In : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="nine_theaters" id="nine-theaters"  placeholder="Theaters In" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="nine-castcrew" class="col-md-3 control-label ">Cast & Crew : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="nine_cast_crew" id="nine-castcrew"  placeholder="Cast & Crew" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="nine-releasedate" class="col-md-3 control-label ">Release Date: </label>
+                    <div class="col-md-9">
+                        <input type="date" class="form-control form_control_date_and_time" name="nine_date" id="nine-releasedate" >
+                        <div id="nine-release-date-error-message"></div>
+                    </div>
+                </div>
+                    
+                <div class="form-group">
+                    <label for="nine-location" class="col-md-3 control-label ">Location : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="nine_address" id="nine-location"  placeholder="Location" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="nine-street" class="col-md-3 control-label ">street : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="nine_street" id="nine-street"  placeholder="155 15thStreet " >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="nine-state-city" class="col-md-3 control-label ">City and State : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="st-city" id="nine-state-city" value="St Louis, MO" readonly  placeholder="St Louis, MO " >
+                    </div>
+                </div>              
+                <div class="form-group">
+                    <label for="nine-country" class="col-md-3 control-label ">Country : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="st-country" id="nine-country" value="USA" placeholder="USA " readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="nine-zip" class="col-md-3 control-label ">Zip Code : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="nine_zip" id="nine-zip"  placeholder="63105" >
+                    </div>
+                </div>  
+                <div class="form-group">
+                    <label for="nine-description" class="col-md-3 control-label ">Description : </label>
+                    <div class="col-md-9">
+                        <textarea  class="form-control" onkeyup="countChar(this)" id="nine-description" rows="4" cols="50" placeholder="Description" maxlength="500" name="nine_description"></textarea>
+                        <div class="stlouisCounter"></div>
+                    </div>
+                </div>
+                        
+            </div>
+            <!--*************************************
+                ************************************
+                    --------END-------
+                Telugu Movie, tamil movie, hindi, english
+                    malayanam Form
+
+                *************************************
+                ************************************-->
+
+
+
+                <!--*************************************
+                ************************************
+                    part time and full time
+                    Form
+                *************************************
+                ************************************-->	
+            <div class="ten panel1">
+                <div class="form-group">
+                    <label for="job-title" class="col-md-3 control-label ">Title : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control  " name="ten_post_name" id="job-title"  placeholder="Title" onkeyup="postNameExist(this)">
+                    </div>
+                    <span class="exist-post-error text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="job-image-file" class="col-md-3 control-label ">Images : </label>
+                    <div class="col-md-9">
+                        <input type="file" class="form-control  " name="ten_post_image[]" id="job-image-file" multiple  >
+                    </div>
+                </div>			  
+                <div class="form-group">
+                    <label for="job-url" class="col-md-3 control-label ">Web-site Link : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="ten_post_url" id="job-url"  placeholder="www.example.com" >
+                    </div>
+                </div>	
+                <div class="form-group">
+                    <label for="job-email" class="col-md-3 control-label ">Email : </label>
+                    <div class="col-md-9">
+                        <input type="email" class="form-control " name="ten_email" id="job-email"  placeholder="Email Id" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="job-mobile" class="col-md-3 control-label ">Mobile : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control phoneNumber" name="ten_mobile_num" maxlength="12" id="job-mobile"  placeholder="Mobile Number" >
+                    </div>
+                </div>	
+                    
+                <div class="form-group">
+                    <label for="job-location" class="col-md-3 control-label ">Location : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="ten_address" id="job-location"  placeholder="Location" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="job-street" class="col-md-3 control-label ">street : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="ten_street" id="job-street"  placeholder="155 15thStreet " >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="job-state-city" class="col-md-3 control-label ">City and State : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="st-city" id="job-state-city" value="St Louis, MO"  placeholder="St Louis, MO " readonly>
+                    </div>
+                </div>               
+                <div class="form-group">
+                    <label for="job-country" class="col-md-3 control-label ">Country : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="st-country" id="job-country" value="USA" placeholder="USA" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="job-zip" class="col-md-3 control-label ">Zip Code : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="ten_zip" id="job-zip"  placeholder="63105" >
+                    </div>
+                </div> 
+                <div class="form-group">
+                    <label for="job-description" class="col-md-3 control-label ">Description : </label>
+                    <div class="col-md-9">
+                        <textarea  class="form-control" onkeyup="countChar(this)" id="job-description" rows="4" cols="50" placeholder="Description" maxlength="500" name="ten_description"></textarea>
+                        <div class="stlouisCounter"></div>
+                    </div>
+                </div>						
+            </div>	
+            <!--*************************************
+                ************************************
+                    --------END-------
+                part time and full time
+                    Form
+
+                *************************************
+                ************************************-->
+
+
+
+                <!--*************************************
+                ************************************
+                        Catering Form
+                *************************************
+                ************************************-->	
+            <div class="eleven panel1" >
+                <div class="form-group">
+                    <label for="catering-title" class="col-md-3 control-label ">Title : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control  " name="eleven_post_name" id="catering-title"  placeholder="Title" onkeyup="postNameExist(this)">
+                    </div>
+                    <span class="exist-post-error text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="catering-image-file" class="col-md-3 control-label ">Images : </label>
+                    <div class="col-md-9">
+                        <input type="file" class="form-control  " name="eleven_post_image[]" id="catering-image-file" multiple  >
+                    </div>
+                </div>	
+                <div class="form-group">
+                    <label for="catering-email" class="col-md-3 control-label ">Email : </label>
+                    <div class="col-md-9">
+                        <input type="email" class="form-control " name="eleven_email" id="catering-email"  placeholder="Email Id" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="catering-mobile" class="col-md-3 control-label ">Mobile : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control phoneNumber " maxlength="12" name="eleven_mobile_num" id="catering-mobile"  placeholder="Mobile Number" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="catering-url" class="col-md-3 control-label ">Web-site Link : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " id="catering-url" name="eleven_post_url"  placeholder="www.example.com" >
+                    </div>
+                </div>
+                <div class="form-group manast_price_image_position">
+                    <label for="catering-price" class="col-md-3 control-label ">Price : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control manast_price_input_type_text" name="eleven_price" id="catering-price"  placeholder="Price in Dollars" >
+                        <div class="manast_price_image"><i class="fas fa-dollar-sign"></i></div>
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="catering-ownername" class="col-md-3 control-label ">Owner Name : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="eleven_owner" id="catering-ownername"  placeholder="Owner Name" >
+
+                    </div>
+                </div>
+                    
+                <div class="form-group">
+                    <label for="catering-location" class="col-md-3 control-label ">Location : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="eleven_address" id="catering-location"  placeholder="Location" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="catering-street" class="col-md-3 control-label ">street : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="eleven_street" id="catering-street"  placeholder="155 15thStreet " >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="catering-state-city" class="col-md-3 control-label ">City and State : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="st-city" id="catering-state-city" value="St Louis, MO"  placeholder="St Louis, MO" readonly>
+                    </div>
+                </div>                
+                <div class="form-group">
+                    <label for="catering-country" class="col-md-3 control-label ">Country : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="st-country" id="catering-country" value="USA" placeholder="USA" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="catering-zip" class="col-md-3 control-label ">Zip Code : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="eleven_zip" id="catering-zip"  placeholder="63105" >
+                    </div>
+                </div>	
+
+                <div class="form-group">
+                    <label for="catering-description" class="col-md-3 control-label ">Description : </label>
+                    <div class="col-md-9">
+                        <textarea  class="form-control" onkeyup="countChar(this)" id="catering-description" rows="4" cols="50" placeholder="Description" maxlength="500" name="eleven_description"></textarea>
+                        <div class="stlouisCounter"></div>
+                    </div>
+                </div>	
+            </div>
+            <!--*************************************
+                ************************************
+                    --------END-------
+                    Catering Form
+
+                *************************************
+                ************************************-->
+
+
+
+                <!--*************************************
+                ************************************
+                    Lawyer, Insurance-agents, 
+                    Travel-agents And Accountant Form  
+                *************************************
+                ************************************-->	
+            <div class="twelve panel1" >
+                <div class="form-group">
+                    <label for="services-title" class="col-md-3 control-label ">Title : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control  " name="twelve_post_name" id="services-title"  placeholder="Title" onkeyup="postNameExist(this)" >
+                    </div>
+                    <span class="exist-post-error text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="services-image-file" class="col-md-3 control-label ">Images : </label>
+                    <div class="col-md-9">
+                        <input type="file" class="form-control  " name="twelve_post_image[]" id="services-image-file" multiple  >
+                    </div>
+                </div>	
+                <div class="form-group">
+                    <label for="services-email" class="col-md-3 control-label ">Email : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="twelve_email" id="services-email"  placeholder="Email Id" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="services-mobile" class="col-md-3 control-label ">Mobile : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control phoneNumber" maxlength="12" name="twelve_mobile_num" id="services-mobile"  placeholder="Mobile Number" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="services-url" class="col-md-3 control-label ">Web-site Link : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="twelve_post_url"  id="services-url"  placeholder="www.youtube.com" >
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="services-ownername" class="col-md-3 control-label ">Owner Name : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="twelve_owner" id="services-ownername"  placeholder="Owner Name" >
+
+                    </div>
+                </div>
+                    
+                <div class="form-group">
+                    <label for="services-location" class="col-md-3 control-label ">Location : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="twelve_address" id="services-location"  placeholder="Location" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="services-street" class="col-md-3 control-label ">street : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="twelve_street" id="services-street"  placeholder="155 15thStreet " >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="services-state-city" class="col-md-3 control-label ">City and State : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="st-city" id="services-state-city" value="St Louis, MO" disabled  placeholder="St Louis, MO " >
+                    </div>
+                </div>               
+                <div class="form-group">
+                    <label for="services-country" class="col-md-3 control-label ">Country : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="st-country" id="services-country" value="USA"  disabled placeholder="USA " >
+                    </div>
+                </div> 
+                <div class="form-group">
+                    <label for="services-zip" class="col-md-3 control-label ">Zip Code : </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control " name="twelve_zip" id="services-zip"  placeholder="63105" >
+                    </div>
+                </div>	
+                <div class="form-group">
+                    <label for="services-description" class="col-md-3 control-label ">Description : </label>
+                    <div class="col-md-9">
+                        <textarea  class="form-control" onkeyup="countChar(this)" id="services-description" rows="4" cols="50" placeholder="Description" maxlength="500" name="twelve_description"></textarea>
+                        <div class="stlouisCounter"></div>
+                    </div>
+                </div>
+            </div>
+            <!--*************************************
+                ************************************
+                    --------END-------
+                    Lawyer, Insurance-agents, 
+                    Travel-agents And Accountant Form
+
+                *************************************
+                ************************************-->
+
+            <!--*************************************
+                ************************************
+                    Events 
+                *************************************
+                ************************************-->	
+                <div class="thirteen panel1" >
+                    <div class="form-group">
+                        <label for="upcomig-events-title" class="col-md-3 control-label ">Events Title : </label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control  " name="thirteen_post_name" id="upcomig-events-title"  placeholder="Title" onkeyup="postNameExist(this)" >
+                        </div>
+                        <span class="exist-post-error text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="upcomig-events-image-file" class="col-md-3 control-label ">Event Images : </label>
+                        <div class="col-md-9">
+                            <input type="file" class="form-control  " name="thirteen_post_image[]" id="upcomig-events-image-file" multiple  >
+                        </div>
+                    </div>	
+                    <div class="form-group">
+                        <label for="upcomig-events-email" class="col-md-3 control-label ">Email : </label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control " name="thirteen_email" id="upcomig-events-email"  placeholder="Email Id" >
+                        </div>
+                    </div>                                              
+                    <div class="form-group">
+                        <label for="upcomig-events-mobile" class="col-md-3 control-label ">Mobile : </label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control phoneNumber" maxlength="12" name="thirteen_mobile_num" id="upcomig-events-mobile"  placeholder="Mobile Number" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="upcomig-events-url" class="col-md-3 control-label ">Web-site Link : </label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control " name="thirteen_post_url"  id="upcomig-events-url"  placeholder="www.example.com" >
+                        </div>
+                    </div>
+                    <div class="form-group manast_price_image_position">
+                        <label for="upcomig-events-price" class="col-md-3 control-label ">Price : </label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control manast_price_input_type_text" name="thirteen_price" id="upcomig-events-price"  placeholder="Price in Dollars" >
+                            <div class="manast_price_image"><i class="fas fa-dollar-sign"></i></div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label for="upcomig-events-ownername" class="col-md-3 control-label ">Organizer Name : </label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control " name="thirteen_owner" id="upcomig-events-ownername"  placeholder="Organizer Name" >
+    
+                        </div>
+                    </div>
+                        
+                    <div class="form-group">
+                        <label for="upcomig-events-location" class="col-md-3 control-label ">Location / Venue: </label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control " name="thirteen_address" id="upcomig-events-location"  placeholder="Location / Venue " >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="upcomig-events-street" class="col-md-3 control-label ">street : </label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control " name="thirteen_street" id="upcomig-events-street"  placeholder="155 15thStreet " >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="upcomig-events-state-city" class="col-md-3 control-label ">City and State : </label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control " name="st-city" id="upcomig-events-state-city" value="St Louis, MO" placeholder="St Louis, MO " readonly>
+                        </div>
+                    </div> 
+                    <div class="form-group">
+                        <label for="upcomig-events-country" class="col-md-3 control-label ">Country : </label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control " name="st-country" id="upcomig-events-country" value="USA" placeholder="USA " readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="upcomig-events-zip" class="col-md-3 control-label ">Zip Code : </label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control " name="thirteen_zip" id="upcomig-events-zip"  placeholder="63105" >
+                        </div>
+                    </div> 
+                    <div class="form-group">
+                        <label for="upcomig-events-mobile" class="col-md-3 control-label "> </label>
+                        <div class="col-md-9">
+                            <label class="checkbox-inline" id="full-day-event-label" >
+                                <input type="checkbox" value="full day event" id="full-day-event-check-box" onclick="hideEndTimeEvent()" >Full Day Event
+                            </label>
+                            <label class="checkbox-inline" id="add-end-day-event-label">
+                                <input type="checkbox" value="" id="add-end-day-event-check-box" onclick="hideAddTimeEvent()">Add End Time
+                            </label>   
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="upcomig-events-mobile" class="col-md-3 control-label ">Event Time : </label>
+                        <div class="col-md-9">
+                            <div class="row">
+                                <div id="full_day_event_date_bg">
+                                    <div class='col-sm-6'>
+                                        <div class="full_day_event_date_bg">
+                                            <label for="upcomig-events-start-date" class="control-label event_time_date_label">Start Date
+                                            <input type="date" name="event_start_date" id="upcomig-events-start-date" class="form-control form_control_date_and_time" ></label>
+                                        </div>
+                                    </div>
+                                    
+                                </div>    
+                                <div id="add_end_time_event_bg">
+                                    <div class='col-sm-6'>
+                                        <div class="add_end_time_event_bg">
+                                            <label for="upcomig-events-start-time" class="control-label event_time_date_label">Start Time
+                                            <input type="time" name="event_start_time" id="upcomig-events-start-time" class="form-control form_control_date_and_time" ></label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class='col-sm-6'>
+                                        <div class="add_end_time_event_bg hiding_end_time">    
+                                            <label for="upcomig-events-end-date" class="control-label event_time_date_label">End Date
+                                            <input type="date" name="event_end_date" id="upcomig-events-end-date" class="form-control form_control_date_and_time" ></label>
+                                        </div>
+                                    </div>
+                                    <div class='col-sm-6'>
+                                        <div class="add_end_time_event_bg hiding_end_time">   
+                                            <label for="upcomig-events-end-time" class="control-label event_time_date_label">End Time   
+                                            <input type="time" name="event_end_time" id="upcomig-events-end-time" class="form-control form_control_date_and_time" ></label>
+                                        </div>
+                                    </div>    
+                                </div>    
+                            </div>
+                            <div id="full-day-event-error-message"></div>
+                        </div>
+                    </div>	
+                    <div class="form-group">
+                        <label for="upcomig-events-description" class="col-md-3 control-label ">Description : </label>
+                        <div class="col-md-9">
+                            <textarea  class="form-control" onkeyup="countChar(this)" id="upcomig-events-description" rows="4" cols="50" placeholder="Description" maxlength="500" name="thirteen_description"></textarea>
+                            <div class="stlouisCounter"></div>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <!--*************************************
+                ************************************
+                        --------END-------
+                            Events 
+                *************************************
+                ************************************-->	
+
+
+        </div>    
+        
+            <div class="form-group">
+                <div class="col-lg-8 col-lg-offset-4 col-md-8 col-md-offset-4 col-sm-12 col-xs-12">
+                    <button type="submit" onclick="return multiFormValidation();" class="btn btn-success">Submit</button>
+                    <button type="button" class="btn btn-danger" onclick="GoBackWithRefresh();return false;">Cancel</button>
+                </div>	
+            </div>	
+    </form>  
+</div>	
+<script>
+    function postNameExist(obj) {
+         var post_name = obj.value;
+         var sub_catagory_id = $('#subcategories').val();
+
+         if(post_name =='' && sub_catagory_id ==''){
+            return false;
+         }
+
+         $.ajax({
+            url: "{{ GLOBAL_DIR_PATH }}add-post.php/post_exist",
+            type: "post",
+            data: {"post_name":post_name,"sub_catagory_id":sub_catagory_id},
+            success: function(response){
+                var response = JSON.parse(response);
+                if(response.existPost == 1){
+                    $(".exist-post-error").html('sorry, this post already exits. please change post name');
+                    
+                }else{
+                    $(".exist-post-error").html('');
+
+                }
+            },
+            error: function(responce){
+                alert('error');
+            }
+         });
+
+     } 
+</script>
+<script src="{{GLOBAL_DIR_PATH}}view_library/js/new-js.js"></script>
+<script src="{{ GLOBAL_DIR_PATH }}view_library/js/validation-for-multi-form.js"></script> 

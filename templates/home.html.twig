@@ -1,0 +1,133 @@
+<section>
+            <div class="index_page_banner_ads_outter_bg">
+                <div class="index_page_banner_ads_inner_bg">
+                    <div class="index_page_banner_ads_inner_left_bg">
+                        <div class="index_page_banner_ads_inner_left_top_bg">
+                            <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">  
+                                <ol class="carousel-indicators">
+                                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                    <li data-target="#myCarousel" data-slide-to="1" ></li>
+                                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                                </ol>           
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <a href="#">
+                                            <img src="https://webmeup.com/upload/blog/mc_banner.jpg" alt="slider one">
+                                        </a>                                            
+                                    </div>
+                                    <div class="item ">
+                                        <a href="#">
+                                            <img src="https://www.manastlouis.com/uploads/post_image/dst-usa-worldwide-3-for-stlouis-1580x400-min1549455285.jpg" alt="slider two">
+                                        </a>    
+                                    </div>
+                                    <div class="item">
+                                        <a href="#">
+                                            <img src="https://www.manastlouis.com/uploads/post_image/dst-usa-worldwide-for-stlouis-1580x400-min1549455304.jpg" alt="slider three">
+                                        </a>    
+                                    </div>
+                                </div>       
+                            </div>
+                            <!-- <a href="#">
+                                <img src="https://webmeup.com/upload/blog/mc_banner.jpg">
+                            </a> -->
+                        </div>
+                        <div class="index_page_banner_ads_inner_left_bottom_bg">
+                                <div id="myCarousel2" class="carousel slide" data-ride="carousel" data-interval="4000"> 
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
+                                        <li data-target="#myCarousel2" data-slide-to="1" ></li>
+                                        <li data-target="#myCarousel2" data-slide-to="2"></li>
+                                    </ol>           
+                                    <div class="carousel-inner">
+                                        <div class="item active">
+                                            <a href="#">
+                                                <img src="https://webmeup.com/upload/blog/mc_banner.jpg" alt="slider one">
+                                            </a>                                            
+                                        </div>
+                                        <div class="item ">
+                                            <a href="#">
+                                                <img src="https://www.manastlouis.com/uploads/post_image/dst-usa-worldwide-3-for-stlouis-1580x400-min1549455285.jpg" alt="slider two">
+                                            </a>    
+                                        </div>
+                                        <div class="item">
+                                            <a href="#">
+                                                <img src="https://www.manastlouis.com/uploads/post_image/dst-usa-worldwide-for-stlouis-1580x400-min1549455304.jpg" alt="slider three">
+                                            </a>    
+                                        </div>
+                                    </div>       
+                                </div>
+                            <!-- <a href="#">
+                                <img src="https://cdn-images-1.medium.com/max/1600/1*lEyU2zS2TBaOl_fbXqPChA.png">
+                            </a> -->
+                        </div>
+                    </div>
+                    <div class="index_page_banner_ads_inner_right_bg">
+                        <div class="index_page_banner_ads_inner_right_top_bg">
+                            <a href="#">
+                                <img src="https://webmeup.com/upload/blog/mc_banner.jpg">
+                            </a>                            
+                        </div>
+                    </div>
+                </div>   
+            </div>              
+        </section> 
+        <section>
+            <div class="section__wrapper__60 section__background__color--1">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-9 col-md-9">
+                            <div class="new_index_page_listing_posts_inner_heading_bg">
+                                <h1 class="new_index_page_listing_posts_inner_heading">
+                                    <span class="new_index_page_explore_categories_heading_inner_first">explore </span>
+                                    <span class="new_index_page_explore_categories_heading_inner_second">by location</span>
+                                </h1>
+                                <p class="home__page__paragraph--1">sell &amp; buy anything</p>
+                            </div>
+                            <div class="home__page__module">
+                                <div class="home__page__module--flex-container">
+                                    {% for cities in city_result %}
+                                    <div class="home__page__module--flex-item">
+                                        <div class="home__page__module--image-bg">
+                                            <a href="http://localhost/manast_curl_changes/california/{{cities.mnst_city.city_name|lower|replace(' ', '-')}}" title="{{cities.mnst_city.city_name|lower|replace(' ', '-')}}" class="home__page__module--link" onclick="myCity(this.title);">
+                                                <img src="view_library/images/gateway-arch.jpg" alt="usa" class="home__page__module--photo">
+                                                <div class="home__page__module--title">                                               
+                                                    <div class="home__page__module--country-name">{{cities.mnst_city.city_name}}</div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    
+                                </div>
+                            </div>
+                        </div><!--left column end-->
+                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                            <div class="listing_right_side_ads_margin_top_bg">
+                                <!--right side ads-->
+                                <div class="right_side_new_read_more_page_sponser_ads_bg">
+                                    <div class="right_side_new_read_more_page_sponser_ads_heading_bg">
+                                        <h5 class="right_side_new_read_more_page_sponser_ads_heading"><i class="fas fa-ad"></i>sponsored ads</h5>
+                                    </div>
+                                    <div class="right_side_new_read_more_page_sponser_ads">
+                                        <a href="#">
+                                            <img src="https://images-na.ssl-images-amazon.com/images/I/5169XnIsYsL.jpg" class="img-responsive" alt="sponsored ads">
+                                        </a>    
+                                    </div>
+                                    <div class="right_side_new_read_more_page_sponser_ads">
+                                        <a href="#">
+                                            <img src="https://images-na.ssl-images-amazon.com/images/I/5169XnIsYsL.jpg" class="img-responsive" alt="sponsored ads">
+                                        </a>    
+                                    </div>
+                                    <div class="right_side_new_read_more_page_sponser_ads">
+                                        <a href="#">
+                                            <img src="https://images-na.ssl-images-amazon.com/images/I/5169XnIsYsL.jpg" class="img-responsive" alt="sponsored ads">
+                                        </a>    
+                                    </div>                                 
+                                </div>
+                                <!--END right side ads-->
+                            </div>    
+                        </div>
+                    </div>    
+                </div>
+            </div>
+        </section>

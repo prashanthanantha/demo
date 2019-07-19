@@ -1,0 +1,84 @@
+ <div class="user_post_wrapper_bg">
+        <section>
+            <div class="new_user_post_view_all_page_section_bg">
+                <div class="container">
+                    <div class="new_user_post_view_all_page_bg">
+                        <div class="new_user_post_view_all_page_user_details_top_bg">
+                            <div class="new_user_post_view_all_page_user_details_top_image_bg_user_details_bg">
+                                <div class="new_user_post_view_all_page_user_details_top_image_bg">
+                                    {% if posts_result.0.user_image !='' %}
+                                    <img src="{{GLOBAL_DIR_PATH}}uploads/user_image/{{posts_result.0.user_image}}" alt="posts_result.0.create_by" class="new_user_post_view_all_page_user_details_top_image">
+                                    {% else %}
+                                    <div class="new_user_post_view_all_page_user_details_top_user_name_bg ">
+                                        <div class="new_user_post_view_all_page_user_details_top_user_name_letters ">
+                                            <span class="new_user_post_view_all_page_user_details_top_user_name_initial_letters ">{{posts_result.0.firstname}}{{posts_result.0.lastname}}</span>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                    
+                                </div>
+                                <div class="user_post_edit_profile_link_bg">
+                                    <a href="{{GLOBAL_DIR_PATH}}accountInfo.php/accountInfo/{{posts_result.0.user_id}}/get" class="user_post_edit_profile_link">edit profile</a>
+                                </div>
+                                <ul class="new_user_post_view_all_page_user_details_top_details_bg">
+                                    <li >
+                                        <i class="fas fa-user"></i>
+                                        <span >{{posts_result.0.create_by}}</span>
+                                        <span >({{posts_result.0.counts}} posts)</span>
+                                    </li>
+                                    <li >Member Since {{posts_result.0.user_created_at}}</li>
+                                    <li ><i class="far fa-envelope"></i><a href="mailto:{{posts_result.0.email}}" >{{posts_result.0.email}}</a></li>
+                                    <li ><i class="fas fa-mobile-alt"></i>{{posts_result.0.phone}}</li>
+                                </ul>
+                            </div>    
+                            <div class="new_user_post_view_all_page_user_details_top_my_search_box_bg">
+                                <form action="#" class="user_post_page_form_bg">
+                                    <input type="text" class="new_user_post_input_type_text" placeholder="Search A Keyword" readonly>
+                                    <button type="submit" class="new_user_post_input_type_submit"><i class="fas fa-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                                  
+                                <div class="if_search_results_not_found_bg">
+                                    <div class="no_search_results_bg">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="no_search_results_left_bg">
+                                                    <i class="fas fa-search"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="no_search_results_right_bg">
+                                                    <span>sorry</span>
+                                                    <span>no result </span>
+                                                    <span>found </span>
+                                                </div>
+                                            </div>   
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="search_page_go_home_link_bg">
+                                                    {% if(first_name == 'login') %}
+                                                    <a href="{{GLOBAL_DIR_PATH}}login.php/login-form" class="search_page_go_home_link"><i class="fas fa-plus"></i>post ad</a>
+                                                    {% else %}
+                                                    <a href="{{GLOBAL_DIR_PATH}}add-post.php/add-post-form" class="search_page_go_home_link"><i class="fas fa-plus"></i>post ad</a>
+                                                     {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                    <!--END if search results not found-->
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>    
+    <script src="{{GLOBAL_DIR_PATH}}view_library/js/new-js.js"></script>

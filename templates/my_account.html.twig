@@ -1,0 +1,1590 @@
+<div class="user_post_wrapper_bg">
+<section>
+<div class="my_account_page_outter_bg">
+<div class="container">
+<div class="my_account_page_inner_bg">
+<div class="my_account_page_top_bg ">
+<div class="my_account_page_top_inner_bg">
+<div class="my_account_user_image_bg ">
+    {% if user_details_result.0.usr.user_image !='' %}
+<img src="{{user_details_result.0.usr.user_image}}" alt="{{user_details_result.0.usr.username}}" class="my_account_image_resposive">
+{% else %}
+<div class="new_user_post_view_all_page_user_details_top_user_name_bg ">
+<div class="new_user_post_view_all_page_user_details_top_user_name_letters my_account_box_shadow" >
+<span class="new_user_post_view_all_page_user_details_top_user_name_initial_letters ">{{user_details_result.0.usr.firstname|slice(0,1)}}{{user_details_result.0.usr.lastname|slice(0,1)}}</span>
+</div>
+</div>
+{% endif %}
+</div>
+<div class="my_account_user_details_bg">
+<div class="my_account_user_name_bg">
+<h5 class="my_account_user_name">{{user_details_result.0.usr.username}}</h5>
+</div>   
+<ul class="my_account_profile_and_edit_profile_links_bg">
+<li class="my_account_tabs" onclick="openTabs('my-profile', this)" id="defaultTab">
+<span><i class="fas fa-user"></i></span>
+<span>profile</span>
+</li>    
+<li class="my_account_tabs" onclick="openTabs('edit-profile', this)" >
+<span><i class="far fa-edit"></i></span>
+<span>edit profile</span>
+</li>    
+</ul>
+</div>
+<div class="my_account_number_of_posts_details_bg">
+<ul class="my_account_number_of_posts_details">
+<li>
+<span>{{user_details_result.0.0.0.my_posts}}</span>
+<span>My posts</span>
+</li>
+<li>
+<span>{{user_details_result.0.0.0.pending_posts}}</span>
+<span>pending posts</span>
+</li>
+<li>
+<span>{{user_details_result.0.0.0.disaprooval_posts}}</span>
+<span>disapproved posts</span>
+</li>
+</ul>
+</div>
+</div>  
+<div class="my_account_page_top_inner_bottom_bg"  >
+<ul class="my_account_page_top_inner_bottom">
+<li class="my_account_tabs" onclick="openTabs('my-posts', this)">my posts</li>
+<li class="my_account_tabs" onclick="openTabs('pending-posts', this)">pending posts</li>
+<li class="my_account_tabs" onclick="openTabs('dis-approved-posts', this)">disapproved posts</li>
+</ul>
+</div>
+</div>
+<div class="my_account_page_bottom_bg">
+<div class="my_account_tab_content_outter_bg">
+<!--my profile tab content-->
+<div id="my-profile" class="tabs_content">
+<div class="my_account_tab_content_inner_bg">
+<div class="my_account_tab_content_heading_bg">
+<h5 class="my_account_tab_content_heading">
+    Your profile
+</h5>
+</div>
+<div class="my_profile_tab_content_user_details_bg">
+<ul class="my_profile_tab_content_user_details">
+    <li>
+        <div class="my_profile_tab_content_user_details_left">
+            your name :
+        </div>
+        <div class="my_profile_tab_content_user_details_right">
+           {{user_details_result.0.usr.username}}
+        </div>
+    </li>
+    <li>
+        <div class="my_profile_tab_content_user_details_left">
+            your email :
+        </div>
+        <div class="my_profile_tab_content_user_details_right user_profile_for_email">
+           {{user_details_result.0.usr.email}}
+        </div>
+    </li>
+    <li>
+        <div class="my_profile_tab_content_user_details_left">
+            your password :
+        </div>
+        <div class="my_profile_tab_content_user_details_right ">
+          *******
+        </div>
+    </li>
+    <li>
+        <div class="my_profile_tab_content_user_details_left">
+            your date of birth :
+        </div>
+        <div class="my_profile_tab_content_user_details_right ">
+           {{user_details_result.0.usr.date_of_birth|date('d M Y')}}
+        </div>
+    </li>
+    <li>
+        <div class="my_profile_tab_content_user_details_left">
+            your mobile :
+        </div>
+        <div class="my_profile_tab_content_user_details_right ">
+          {{user_details_result.0.usr.phone}}
+        </div>
+    </li>
+    <li>
+        <div class="my_profile_tab_content_user_details_left">
+            your gender :
+        </div>
+        <div class="my_profile_tab_content_user_details_right ">
+          {% if user_details_result.0.usr.gender == 1 %}Male {%else%} Female {% endif %}
+        </div>
+    </li>
+    <li>
+        <div class="my_profile_tab_content_user_details_left">
+            your city & State :
+        </div>
+        <div class="my_profile_tab_content_user_details_right ">
+          {{user_details_result.0.ct.city_name}} ,{{user_details_result.0.st.state_name}}
+        </div>
+    </li>
+    <li>
+        <div class="my_profile_tab_content_user_details_left">
+            your Zip code :
+        </div>
+        <div class="my_profile_tab_content_user_details_right ">
+           {{user_details_result.0.usr.zip}}
+        </div>
+    </li>
+    <li>
+        <div class="my_profile_tab_content_user_details_left">
+            your country :
+        </div>
+        <div class="my_profile_tab_content_user_details_right ">
+          {{user_details_result.0.cn.country_name}} 
+        </div>
+    </li>
+</ul>
+</div>
+</div>
+</div>
+<!-- END my profile tab content-->
+<!--edit profile tab content-->
+<div id="edit-profile" class="tabs_content">
+<div class="my_account_tab_content_inner_bg">
+<div class="my_account_tab_content_heading_bg">
+<h5 class="my_account_tab_content_heading">
+    edit profile
+</h5>
+<div class="my_account_tab_content_change_password_bg">
+    <a href="{{GLOBAL_DIR_PATH}}change-password.php/change-password/{{user_details_result.0.usr.id}}" class="my_account_tab_content_change_password">change password</a>
+</div>
+</div>
+<div class="edit_profile_tab_content_user_details_bg">
+<form action="#" method="POST">
+    <div class="edit_profile_tab_content_user_details_inner_form_bg">
+        <!--top details-->
+        <div class="edit_profile_tab_content_user_details_top_bg">
+            <!--left details-->
+            <div class="edit_profile_tab_content_user_details_inner_form_left_bg">
+                <input type="text" name="user_id" id="user_id" value="{{user_details_result.0.usr.id}}">
+                <div class="edit_profile_tab_content_user_details_inner_form_group">
+                    <div class="user_profile_label_bg">
+                        <label for="user-first-name">first name</label>
+                    </div>
+                    <div class="user_profile_input_type_text_bg">
+                        <input id="user-first-name" type="text" class="user_profile_input_type_text " value="{{user_details_result.0.usr.firstname}}" name="firstname" placeholder="First Name">
+                    </div>
+                </div>
+                <div class="edit_profile_tab_content_user_details_inner_form_group">
+                    <div class="user_profile_label_bg">
+                        <label for="user-last-name">last name</label>
+                    </div>
+                    <div class="user_profile_input_type_text_bg">
+                        <input id="user-last-name" type="text" class="user_profile_input_type_text " value="{{user_details_result.0.usr.lastname}}" name="lastname" placeholder="Last Name">
+                    </div>
+                </div>
+                <div class="edit_profile_tab_content_user_details_inner_form_group">
+                    <div class="user_profile_label_bg">
+                        <label for="user-email">email</label>
+                    </div>
+                    <div class="user_profile_input_type_text_bg">
+                        <input id="user-email" type="text" class="user_profile_input_type_text combine_email_and_mobile" name="email" value="{{user_details_result.0.usr.email}}" placeholder="Email" readonly>
+                    </div>
+                </div>
+                <!-- <div class="edit_profile_tab_content_user_details_inner_form_group">
+                    <div class="user_profile_label_bg">
+                        <label for="user-password">password</label>
+                    </div>
+                    <div class="user_profile_input_type_text_bg">
+                        <input id="user-password" type="password" class="user_profile_input_type_text " name="password" value="sridhar" placeholder="Password" readonly>
+                    </div>
+                </div> -->
+                <div class="edit_profile_tab_content_user_details_inner_form_group">
+                    <div class="user_profile_label_bg">
+                        <label for="user-dob">date of birth</label>
+                    </div>
+                    <div class="user_profile_input_type_text_bg">
+                        <input id="user-dob" type="date" class="user_profile_input_type_text " value="{{user_details_result.0.usr.date_of_birth}}" name="date" >
+                    </div>
+                </div>
+            </div> 
+            <!--END left details-->  
+            <!-- right details-->  
+            <div class="edit_profile_tab_content_user_details_inner_form_right_bg">
+                <div class="edit_profile_tab_content_user_details_inner_form_group">
+                    <div class="user_profile_label_bg">
+                        <label for="user-mobile-number">mobile</label>
+                    </div>
+                    <div class="user_profile_input_type_text_bg">
+                        <input id="user-mobile-number" type="text" class="user_profile_input_type_text  phone-number combine_email_and_mobile" maxlength="12" name="number" placeholder="Mobile Number" value="{{user_details_result.0.usr.phone}}">
+                    </div>
+                </div>
+                <div class="edit_profile_tab_content_user_details_inner_form_group">
+                    <div class="user_profile_label_bg">
+                        <label for="user-gender">gender</label>
+                    </div>
+                    <div class="user_profile_input_type_text_bg">
+                        <select id="user-gender"  class="user_profile_input_type_text " name="gender">
+                            <option value="0">Select Gender</option>
+                            <option value="1" {%if user_details_result.0.usr.gender == 1 %} selected {% endif %}>Male</option>
+                            <option value="2" {%if user_details_result.0.usr.gender == 2 %} selected {% endif %}>Female</option>
+                        </select>    
+                    </div>
+                </div>
+                <div class="edit_profile_tab_content_user_details_inner_form_group">
+                    <div class="user_profile_label_bg">
+                        <label for="user-city-state">city & state</label>
+                    </div>
+                    <div class="user_profile_input_type_text_bg">
+                        <input id="user-city-state" type="text" class="user_profile_input_type_text " name="city" value="St Louis, MO" placeholder="city & state" readonly>
+                    </div>
+                </div>
+                <div class="edit_profile_tab_content_user_details_inner_form_group">
+                    <div class="user_profile_label_bg">
+                        <label for="user-zip-code">Zip Code</label>
+                    </div>
+                    <div class="user_profile_input_type_text_bg">
+                        <input id="user-zip-code" type="text" class="user_profile_input_type_text " value="{{user_details_result.0.usr.zip}}" maxlength="5" name="zip" placeholder="Zip Code">
+                    </div>
+                </div>
+                <div class="edit_profile_tab_content_user_details_inner_form_group">
+                    <div class="user_profile_label_bg">
+                        <label for="user-country">country</label>
+                    </div>
+                    <div class="user_profile_input_type_text_bg">
+                        <input id="user-country" type="text" class="user_profile_input_type_text " value="USA" name="country" placeholder="country" readonly>
+                    </div>
+                </div>
+            </div>                                                     
+            <!--END  right details-->
+        </div>    
+        <!--END top details--> 
+        <!--bottom details--> 
+        <div class="edit_profile_tab_content_user_details_bottom_bg">
+            <div class="edit_profile_tab_content_user_details_inner_form_left_bg">
+                <div class="edit_profile_tab_content_user_details_inner_form_group">
+                    <div class="user_profile_label_bg">
+                        <label for="user-profile-pic">profile pic</label>
+                    </div>
+                    <div class="user_profile_input_type_text_bg">
+                        <input id="user-profile-pic" type="file" class="user_profile_input_type_text" >
+                    </div>
+                </div>
+            </div>
+            <div class="edit_profile_tab_content_user_details_inner_form_right_bg">
+                <div class="edit_profile_tab_content_user_details_inner_form_group">
+                    <div class="user_profile_label_bg">
+                        <label >preview Image</label>
+                    </div>
+
+                    <div class="user_profile_input_type_text_bg">
+                        <div class="preview_image_resposive_bg " id="preview-images">
+                            <div class="preview_image_responsive_warpper">
+                                <img src="{{user_details_result.0.usr.user_image}}" alt="user image" class="preview_image_resposive" id="user-image-previewing">
+                                <button type="button" class="preview_image_responsive_button" >remove Image</button>
+                            </div>    
+                        </div>    
+                        <div class="user_text_bg" id="preview-text">
+                            <div class="new_user_post_view_all_page_user_details_top_user_name_bg ">
+                                <div class="new_user_post_view_all_page_user_details_top_user_name_letters" id="user-text-previewing">
+                                    <span class="new_user_post_view_all_page_user_details_top_user_name_initial_letters" id="text-replacement">sr</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>   
+        <!--END bottom details-->  
+        <!--submit button -->  
+        <div class="edit_profile_tab_content_user_details_bottom_bg">
+            <div class="my_account_edit_profile_submit_button_bg">
+                <button type="button" id="update-profile" class="my_account_edit_profile_submit_button" onclick="return editProfile()">update my info</button>
+            </div>
+        </div>
+        <!--END submit button -->  
+    </div>
+</form>
+</div>
+</div>    
+</div>
+<!--END edit profile tab content-->
+<!--my post profile tab content-->
+<div id="my-posts" class="tabs_content">
+<div class="my_account_tab_content_inner_bg">
+<div class="my_account_tab_content_heading_bg">
+<h5 class="my_account_tab_content_heading">
+    My Posts
+</h5>
+<div class="new_user_post_view_all_page_user_details_top_my_search_box_bg">
+    
+    <form  id="user-posts-search-form"  class="user_post_page_form_bg" method="POST">
+    <input type="hidden" value="{{user_details_result.0.usr.id}}" id="user-id">
+    <input type="text" class="user_profile_input_type_text" placeholder="Search A Keyword" id="user-posts-search-value">
+    <button type="button" class="new_user_post_input_type_submit" id="btn-users-post-search"><i class="fas fa-search"></i></button>
+</form> 
+</div>
+</div>
+<div class="edit_profile_tab_content_user_details_bg">
+    {% if total_pages > 0 %}
+<div class="if_search_results_found_bg" >
+    <!--left-side-box-->
+        {% set pi = 0 %}
+{% for posts in user_posts %}
+{% set catname = 'allPosts' %}
+{% set subcategory_name = user_details_result.0.usr.username %}
+ {% set forurl = posts.url_name %}
+<div class="new_user_post_view_all_page_left_side_box" id="post_{{pi}}" >
+    <div class="new_user_post_view_all_page_left_side_box_image_bg">                               
+        <img src="{{ GLOBAL_DIR_PATH }}uploads/post_image/{{ posts.post_image.0 }}" alt="{{ posts.post_name }}" class="new_user_post_view_all_page_left_side_box_image">
+        <a href="{{ GLOBAL_DIR_PATH }}services.php/{{catname}}/{{subcategory_name|replace({' ':'-'})}}/{{ forurl }}" class="new_user_post_view_all_page_left_side_box_image_link_bg">
+            <div class="new_user_post_view_all_page_left_side_box_image_overlay_bg">                                        
+                view post                                              
+            </div>   
+        </a>                                 
+    </div>
+    <div class="new_user_post_view_all_page_left_side_box_post_details_bg">
+        <div class="new_user_post_view_all_page_left_side_box_post_details">
+            <div class="new_user_post_view_all_page_left_side_box_post_details_heading_bg_and_price_bg">
+                <div class="new_user_post_view_all_page_left_side_box_post_details_heading_bg">
+                    <h3 class="new_user_post_view_all_page_left_side_box_post_details_heading">
+                        <a href="#"   class="new_user_post_view_all_page_left_side_box_post_details_heading_link_bg">{{ posts.post_name|raw }}</a>
+                    </h3>                                    
+                </div>
+                <div class="new_user_post_view_all_page_left_side_box_post_details_price_bg">
+                    <div class="new_user_post_view_all_page_left_side_box_post_details_price">
+                        {% if posts.price !='' %}
+                        <i class="fas fa-dollar-sign"></i>{{posts.price}}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="new_user_post_view_all_page_left_side_box_post_details_category_bg_sub_category_bg">
+                <div class="new_user_post_view_all_page_left_side_box_post_details_category_bg">{{posts.category_name}}</div>
+                <div class="new_user_post_view_all_page_left_side_box_post_details_sub_category_bg">{{posts.subcategory_name}}</div>
+            </div>
+            <div class="new_user_post_view_all_page_left_side_box_post_details_description_bg">
+                <div class="new_user_post_view_all_page_left_side_box_post_details_description">
+                    {{posts.description|raw}}
+                </div>  
+                <div class="new_user_post_view_all_page_left_side_box_post_details_read_more_link_bg">
+                    <a href="{{ GLOBAL_DIR_PATH }}services.php/{{catname}}/{{subcategory_name|replace({' ':'-'})}}/{{ forurl }}" class="new_user_post_view_all_page_left_side_box_post_details_read_more_link">view details</a>
+                </div>  
+            </div>
+        </div>        
+        <div class="new_user_post_view_all_page_left_side_box_post_details_post_date_read_more_link_bg">
+            <div class="new_user_post_view_all_page_left_side_box_post_details_post_date_bg">
+                <i class="far fa-clock"></i>
+                {{posts.created_at}}
+            </div>
+            
+        </div>
+    </div>
+</div>
+{% set pi= pi + 1 %}
+{% endfor %}
+
+<!--END left-side-box-->
+    <div class="new_user_post_view_all_page_pagination_bg" >
+        <ul class="new_user_post_view_all_page_pagination" id="pagi">
+            
+            {% for i in 1.. total_pages %}
+            {% if total_pages > 1 %}
+            <li ><button type="button" value="{{i}}" onclick="myPostPagination(this);">{{i}}</button></li>
+            {% endif %}
+            {% endfor %}
+            
+        </ul>
+    </div>
+</div>    
+{% else %}
+<!--END if search results found -->   
+<div class="if_search_results_not_found_bg">
+    <div class="no_search_results_bg">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="no_search_results_left_bg">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="no_search_results_right_bg">
+                    <span>sorry</span>
+                    <span>no result </span>
+                    <span>found </span>
+                </div>
+            </div>   
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="search_page_go_home_link_bg">
+                    <a href="{{GLOBAL_DIR_PATH}}add-post.php/add-post-form" class="search_page_go_home_link"><i class="fas fa-plus"></i>post ad</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+<div id="noPost"></div>
+<!--END if search results not found-->
+</div>    
+</div>
+</div>
+<!--END my post profile tab content-->
+<!--pending post tab content-->
+<div id="pending-posts" class="tabs_content">
+<div class="my_account_tab_content_inner_bg">
+<div class="my_account_tab_content_heading_bg">
+<h5 class="my_account_tab_content_heading">
+    Pending posts
+</h5>
+<div class="new_user_post_view_all_page_user_details_top_my_search_box_bg">
+    <form  id="pending-posts-search-form"  class="user_post_page_form_bg" method="POST">
+    <input type="hidden" value="{{user_details_result.0.usr.id}}" id="user-id">
+    <input type="text" class="user_profile_input_type_text" placeholder="Search A Keyword" id="pending-posts-search-value">
+    <button type="button" class="new_user_post_input_type_submit" id="btn-pending-post-search"><i class="fas fa-search"></i></button>
+</form>
+</div>
+</div>
+<div class="edit_profile_tab_content_user_details_bg">
+    {% if total_pending_posts > 0 %}
+<div class="if_search_results_found_bg">
+    <!--left-side-box-->
+    {% set pending_pi = 0 %}
+    {% for posts in user_pending_posts %}
+    {% set catname = 'allPosts' %}
+    {% set forurl = posts.url_name %}
+    <div class="new_user_post_view_all_page_left_side_box" id="pending_post_{{pending_pi}}">
+                <div class="new_user_post_view_all_page_left_side_box_image_bg category_sub_category_post_page_image_bg">                               
+                    <a href="{{ GLOBAL_DIR_PATH }}services.php/{{catname}}/{{posts.subcategory_name}}/{{ forurl }}"  data-fancybox="disapprovedposts_{{pending_pi}}" data-caption="{{ posts.post_name }}">
+                        <img src="{{ GLOBAL_DIR_PATH }}uploads/post_image/{{ posts.post_image.0 }}" alt="{{ posts.post_name }}" class="new_user_post_view_all_page_left_side_box_image pending_post_main_image_resposive">                                                                                     
+                    </a>    
+                </div>
+                <div class="new_user_post_view_all_page_left_side_box_post_details_bg">
+                    <div class="new_user_post_view_all_page_left_side_box_post_details">
+                        <div class="new_user_post_view_all_page_left_side_box_post_details_heading_bg_and_price_bg">
+                            <div class="new_user_post_view_all_page_left_side_box_post_details_heading_bg">
+                                <h3 class="new_user_post_view_all_page_left_side_box_post_details_heading">
+                                    <span class="new_user_post_view_all_page_left_side_box_post_details_heading_link_bg">{{ posts.post_name|raw }}</span>
+                                </h3>                                    
+                            </div>
+                            <div class="new_user_post_view_all_page_left_side_box_post_details_price_bg">
+                                <div class="new_user_post_view_all_page_left_side_box_post_details_price">
+                                      {% if posts.price !='' %}
+                        <i class="fas fa-dollar-sign"></i>{{posts.price}}
+                        {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="new_user_post_view_all_page_left_side_box_post_details_description_bg">
+                            <div class="new_user_post_view_all_page_left_side_box_post_details_description">
+                                {{posts.description}}
+                            </div>  
+                            <div class="new_user_post_view_all_page_left_side_box_post_details_read_more_link_bg">
+                                {% if posts.post_image !='' %}
+                                <div class="pending_post_more_images_bg">
+                                    {% for images in posts.post_image %}
+                                    <div class="pending_post_more_images">
+                                        <a href="http://localhost/manast_curl_changes/uploads/post_image/{{images}}"  data-fancybox="disapprovedposts_{{pending_pi}}" data-caption="user post {{posts.post_name}}">
+                                            <img src="http://localhost/manast_curl_changes/uploads/post_image/{{images}}" alt="{{posts.post_name}}"  class="pending_post_image_resposive">
+                                        </a>
+                                    </div>
+                                    {% endfor %}
+                                </div> 
+                                {% endif %}    
+                                <a href="{{GLOBAL_DIR_PATH}}edit-post.php/{{user_details_result.0.usr.username|replace({' ':'-'})}}/{{posts.url_name}}" class="new_user_post_view_all_page_left_side_box_post_details_edit_link">edit details</a>
+                                <button type="button" value="{{posts.id}}" class="new_user_post_view_all_page_left_side_box_post_details_read_more_link pop_up_button" onclick="myFunction(this);">delete post</button>
+                            </div>  
+                        </div>
+                    </div>        
+                    <div class="new_user_post_view_all_page_left_side_box_post_details_post_date_read_more_link_bg">
+                        <div class="new_user_post_view_all_page_left_side_box_post_details_post_date_bg">
+                            <i class="far fa-clock"></i>
+                            {{ posts.created_at }}
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+    {% set pending_pi = pending_pi + 1 %}
+    {% endfor %}
+    <!--END left-side-box-->
+    
+    <div class="new_user_post_view_all_page_pagination_bg">
+        <ul class="new_user_post_view_all_page_pagination" id="pending_pagination">
+            {% for i in 1.. total_pending_posts %}
+            {% if total_pending_posts > 1 %}
+            <li ><button type="button" value="{{i}}" onclick="pendingPostPagination(this);">{{i}}</button></li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>    
+<!--END if search results found -->  
+{% else %} 
+<div class="if_search_results_not_found_bg">
+    <div class="no_search_results_bg">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="no_search_results_left_bg">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="no_search_results_right_bg">
+                    <span>sorry</span>
+                    <span>no result </span>
+                    <span>found </span>
+                </div>
+            </div>   
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="search_page_go_home_link_bg">
+                    <a href="{{GLOBAL_DIR_PATH}}add-post.php/add-post-form" class="search_page_go_home_link"><i class="fas fa-plus"></i>post ad</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+<div id="noPendingPost"></div>
+<!--END if search results not found-->
+</div>    
+</div>
+</div>
+<!--END pending post tab content-->
+<!-- dis approved post tab content-->
+<div id="dis-approved-posts" class="tabs_content">
+<div class="my_account_tab_content_inner_bg">
+<div class="my_account_tab_content_heading_bg">
+<h5 class="my_account_tab_content_heading">
+    disapproved posts
+</h5>
+<div class="new_user_post_view_all_page_user_details_top_my_search_box_bg">
+    <form  id="disaproval-posts-search-form"  class="user_post_page_form_bg" method="POST">
+    <input type="hidden" value="{{user_details_result.0.usr.id}}" id="user-id">
+    <input type="text" class="user_profile_input_type_text" placeholder="Search A Keyword" id="disaproval-posts-search-value">
+    <button type="button" class="new_user_post_input_type_submit" id="btn-disaproval-post-search"><i class="fas fa-search"></i></button>
+</form>
+</div>
+</div>
+<div class="edit_profile_tab_content_user_details_bg">
+    {% if total_disapproval_posts > 0 %}
+<div class="if_search_results_found_bg ">
+    <!--left-side-box-->
+    {% set disaproval_pi = 0 %}
+    {% for posts in user_disapproval_posts %}
+    {% set catname = 'allPosts' %}
+    {% set forurl = posts.url_name %}
+    <div class="new_user_post_view_all_page_left_side_box" id="disaproval_post_{{disaproval_pi}}" >
+                <div class="new_user_post_view_all_page_left_side_box_image_bg category_sub_category_post_page_image_bg">                               
+                    <a href="{{ GLOBAL_DIR_PATH }}services.php/{{catname}}/{{posts.subcategory_name}}/{{ forurl }}"  data-fancybox="disapprovedposts_{{disaproval_pi}}" data-caption="{{ posts.post_name }}">
+                        <img src="{{ GLOBAL_DIR_PATH }}uploads/post_image/{{ posts.post_image.0 }}" alt="{{ posts.post_name }}" class="new_user_post_view_all_page_left_side_box_image pending_post_main_image_resposive">                                                                                     
+                    </a>    
+                </div>
+                <div class="new_user_post_view_all_page_left_side_box_post_details_bg">
+                    <div class="new_user_post_view_all_page_left_side_box_post_details">
+                        <div class="new_user_post_view_all_page_left_side_box_post_details_heading_bg_and_price_bg">
+                            <div class="new_user_post_view_all_page_left_side_box_post_details_heading_bg">
+                                <h3 class="new_user_post_view_all_page_left_side_box_post_details_heading">
+                                    <span class="new_user_post_view_all_page_left_side_box_post_details_heading_link_bg">{{ posts.post_name|raw }}</span>
+                                </h3>                                    
+                            </div>
+                            <div class="new_user_post_view_all_page_left_side_box_post_details_price_bg">
+                                <div class="new_user_post_view_all_page_left_side_box_post_details_price">
+                                      {% if posts.price !='' %}
+                        <i class="fas fa-dollar-sign"></i>{{posts.price}}
+                        {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="new_user_post_view_all_page_left_side_box_post_details_description_bg">
+                            <div class="new_user_post_view_all_page_left_side_box_post_details_description">
+                                {{posts.description}}
+                            </div>  
+                            <div class="new_user_post_view_all_page_left_side_box_post_details_read_more_link_bg">
+                                {% if posts.post_image !='' %}
+                                <div class="pending_post_more_images_bg">
+                                    {% for images in posts.post_image %}
+                                    <div class="pending_post_more_images">
+                                        <a href="http://localhost/manast_curl_changes/uploads/post_image/{{images}}"  data-fancybox="disapprovedposts_{{disaproval_pi}}" data-caption="user post {{posts.post_name}}">
+                                            <img src="http://localhost/manast_curl_changes/uploads/post_image/{{images}}" alt="{{posts.post_name}}"  class="pending_post_image_resposive">
+                                        </a>
+                                    </div>
+                                    {% endfor %}
+                                </div> 
+                                {% endif %}    
+                                <a href="{{GLOBAL_DIR_PATH}}edit-post.php/{{user_details_result.0.usr.username|replace({' ':'-'})}}/{{posts.url_name}}" class="new_user_post_view_all_page_left_side_box_post_details_edit_link">edit details</a>
+                                <button type="button" value="{{posts.id}}" class="new_user_post_view_all_page_left_side_box_post_details_read_more_link pop_up_button" onclick="myFunction(this);">delete post</button>
+                            </div>  
+                        </div>
+                    </div>        
+                    <div class="new_user_post_view_all_page_left_side_box_post_details_post_date_read_more_link_bg">
+                        <div class="new_user_post_view_all_page_left_side_box_post_details_post_date_bg">
+                            <i class="far fa-clock"></i>
+                            {{ posts.created_at }}
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            {% set disaproval_pi = disaproval_pi + 1 %}
+    {% endfor %}
+        
+    <div class="new_user_post_view_all_page_pagination_bg">
+        <ul class="new_user_post_view_all_page_pagination" id="disaproval_pagination">
+            {% for i in 1.. total_disapproval_posts %}
+            {% if total_disapproval_posts > 1 %}
+            <li ><button type="button" value="{{i}}" onclick="disAprovalPostsPagination(this);">{{i}}</button></li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</div> 
+{% else %}   
+<!--END if search results found -->   
+<div class="if_search_results_not_found_bg">
+    <div class="no_search_results_bg">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="no_search_results_left_bg">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="no_search_results_right_bg">
+                    <span>sorry</span>
+                    <span>no result </span>
+                    <span>found </span>
+                </div>
+            </div>   
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="search_page_go_home_link_bg">
+                    <a href="{{GLOBAL_DIR_PATH}}add-post.php/add-post-form" class="search_page_go_home_link"><i class="fas fa-plus"></i>post ad</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+<div id="noDisaprovalPost"></div>
+<!--END if search results not found-->
+</div>    
+</div>
+</div>
+<!-- END dis approved post tab content-->
+</div>    
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!--delete Pop Up-->
+<section>
+<div class="success_pop_up_bg" id="pop_up_mana">
+<div class="registration_pop_up_content_bg">
+<div class="success_pop_up_header_bg">
+<span class="pop_up_close_button">&times;</span>
+</div>
+<div class="success_pop_up_body_bg">
+<div class="success_pop_up_body_icon_bg">
+<i class="fas fa-exclamation"></i>
+</div>
+<div class="success_pop_up_body_invalid_user_bg">
+are you sure
+</div>
+<div class="registration_pop_up_body_user_name_bg">
+Once deleted, you will not be able to recover this post!
+</div>
+<div class="pop_up_close_button_bg">
+<button type="button" class="pop_up_close_button">Close</button>
+<button type="button" class="pop_up_delete_button">Yes Delete</button>
+</div>
+</div>
+</div>
+</div>
+</section>  
+<!--END delete Pop Up-->
+<!--update info-->
+   <section>
+       <div class="registration_pop_up" id="update_info">
+           <div class="registration_pop_up_content_bg">
+               <div class="registration_pop_up_body_bg">
+                   <div class="registration_pop_up_body_icon_bg">
+                       <i class="far fa-check-circle"></i>
+                   </div>
+                   <div class="registration_pop_up_body_invalid_user_bg">
+                       updated successfully
+                   </div>
+                   <div class="pop_up_close_button_bg">
+                       <a href="{{ GLOBAL_DIR_PATH }}accountInfo.php/my-account" class="pop_up_close_button1">Close</a>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </section>
+   <!--END update info-->
+   
+
+   <script type="text/javascript">
+    $("#btn-users-post-search").click(function(){
+      var user_id = $("#user-id").val();
+      var search_value = $("#user-posts-search-value").val();
+       var errors = '';
+      if($("#user-posts-search-value").prop('value').trim() == ''){
+        $("#user-posts-search-value").addClass('error-placeholder').attr('placeholder','Please Enter Search value');
+        errors +='Please Enter Search Value';
+      }
+
+      if(errors !='' ){
+        return false;
+      }
+
+      $.ajax({
+      url: '{{GLOBAL_DIR_PATH}}accountinfo.php/my-posts/search',
+      type: "post",
+      data: {"user_id":user_id,"search_value":search_value},
+      success: function (response) {
+        $("div#post_0").fadeOut("slow");
+        $("div#post_1").fadeOut("slow");
+        $("div#post_2").fadeOut("slow");
+        $("div#post_3").fadeOut("slow");
+        $("div#post_4").fadeOut("slow");
+        $("ul#pagi").fadeOut("slow");
+        $("div#noPost").hide();
+        
+          response = JSON.parse(response);
+          if(response.s.cnts.counts != 0){
+            var pages = Math.ceil(response.s.cnts.counts/5);
+            var text ='';
+            var n;
+            var i = 0;
+            for(n=1; n<=pages; n++){
+              text += "<li ><button type='button' value='"+n+"' onclick='myPostsearchPagination(this);'>"+n+"</button></li>";
+            }
+            if(pages > 1){
+            $("ul#pagi").fadeIn("slow");
+            $("ul#pagi").html(text);             
+            }
+
+            
+          $.each(response, function(k,v) {
+            var imagesArray = v.upst.post_image.split(',');
+            var post_image = imagesArray[0];
+
+          var post_rec = "<div class='new_user_post_view_all_page_left_side_box_image_bg'><img src='{{ GLOBAL_DIR_PATH }}uploads/post_image/"+post_image+"' alt='"+v.upst.post_name+"' class='new_user_post_view_all_page_left_side_box_image'><a href='{{ GLOBAL_DIR_PATH }}services.php/allPosts/{{user_details_result.0.usr.username|replace({' ':'-'})}}/"+v.upst.url_name+"' class='new_user_post_view_all_page_left_side_box_image_link_bg'><div class='new_user_post_view_all_page_left_side_box_image_overlay_bg'>view post</div></a></div><div class='new_user_post_view_all_page_left_side_box_post_details_bg'><div class='new_user_post_view_all_page_left_side_box_post_details'><div class='new_user_post_view_all_page_left_side_box_post_details_heading_bg_and_price_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_heading_bg'><h3 class='new_user_post_view_all_page_left_side_box_post_details_heading'><a href='#' class='new_user_post_view_all_page_left_side_box_post_details_heading_link_bg'>"+v.upst.post_name+"</a></h3></div><div class='new_user_post_view_all_page_left_side_box_post_details_price_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_price' id='price_"+v.upst.id+"'><i class='fas fa-dollar-sign'></i>"+v.upstd.price+"</div></div></div><div class='new_user_post_view_all_page_left_side_box_post_details_category_bg_sub_category_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_category_bg'>"+v.mct.category_name+"</div><div class='new_user_post_view_all_page_left_side_box_post_details_sub_category_bg'>"+v.msct.subcategory_name+"</div></div><div class='new_user_post_view_all_page_left_side_box_post_details_description_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_description'>"+v.upst.description.substring(0,100)+"</div><div class='new_user_post_view_all_page_left_side_box_post_details_read_more_link_bg'><a href='{{ GLOBAL_DIR_PATH }}services.php/allPosts/{{user_details_result.0.usr.username|replace({' ':'-'})}}/"+v.upst.url_name+"' class='new_user_post_view_all_page_left_side_box_post_details_read_more_link'>view details</a></div></div></div><div class='new_user_post_view_all_page_left_side_box_post_details_post_date_read_more_link_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_post_date_bg'><i class='far fa-clock'></i>"+v.upst.created_at+"</div></div></div>";
+       $("div#post_"+k).fadeIn("slow");
+       $("div#post_"+k).html(post_rec);
+
+       if(v.upstd.price == null){
+        $('#price_'+v.upst.id).hide();
+       }
+
+       i++;
+
+          
+      });
+  }else{
+    
+    var nopPosterror = "<div class='if_search_results_not_found_bg'><div class='no_search_results_bg'><div class='row'><div class='col-md-6'><div class='no_search_results_left_bg'><i class='fas fa-search'></i></div></div><div class='col-md-6'><div class='no_search_results_right_bg'><span>sorry</span><span>no result </span><span>found </span></div></div></div><div class='row'><div class='col-md-12'><div class='search_page_go_home_link_bg'><a href='{{GLOBAL_DIR_PATH}}add-post.php/add-post-form' class='search_page_go_home_link'><i class='fas fa-plus'></i>post ad</a></div></div></div></div></div>"
+
+    $("div#noPost").show();
+       $("div#noPost").html(nopPosterror);
+  }
+          
+
+          
+      },
+      error: function () {
+          $("#validationError").addClass('has-error');
+          $("#validationError span").html('Invalid Login Credentials');
+      }
+  });
+  event.preventDefault();
+
+
+    });
+
+$("#user-posts-search-value").keypress(function (e) {
+if (e.which == 13) {
+       var user_id = $("#user-id").val();
+      var search_value = $("#user-posts-search-value").val();
+       var errors = '';
+      if($("#user-posts-search-value").prop('value').trim() == ''){
+        $("#user-posts-search-value").addClass('error-placeholder').attr('placeholder','Please Enter Search value');
+        errors +='Please Enter Search Value';
+      }
+
+      if(errors !='' ){
+        return false;
+      }
+
+      $.ajax({
+      url: '{{GLOBAL_DIR_PATH}}accountinfo.php/my-posts/search',
+      type: "post",
+      data: {"user_id":user_id,"search_value":search_value},
+      success: function (response) {
+        $("div#post_0").fadeOut("slow");
+        $("div#post_1").fadeOut("slow");
+        $("div#post_2").fadeOut("slow");
+        $("div#post_3").fadeOut("slow");
+        $("div#post_4").fadeOut("slow");
+        $("ul#pagi").fadeOut("slow");
+        
+          response = JSON.parse(response);
+            var pages = Math.ceil(response.s.cnts.counts/5);
+            var text ='';
+            var n;
+            var i = 0;
+            for(n=1; n<=pages; n++){
+              text += "<li ><button type='button' value='"+n+"' onclick='myPostsearchPagination(this);'>"+n+"</button></li>";
+            }
+            if(pages > 1){
+            $("ul#pagi").fadeIn("slow");
+            $("ul#pagi").html(text);             
+            }
+
+            
+          $.each(response, function(k,v) {
+            var imagesArray = v.upst.post_image.split(',');
+            var post_image = imagesArray[0];
+
+          var post_rec = "<div class='new_user_post_view_all_page_left_side_box_image_bg'><img src='{{ GLOBAL_DIR_PATH }}uploads/post_image/"+post_image+"' alt='"+v.upst.post_name+"' class='new_user_post_view_all_page_left_side_box_image'><a href='{{ GLOBAL_DIR_PATH }}services.php/allPosts/{{user_details_result.0.usr.username|replace({' ':'-'})}}/"+v.upst.url_name+"' class='new_user_post_view_all_page_left_side_box_image_link_bg'><div class='new_user_post_view_all_page_left_side_box_image_overlay_bg'>view post</div></a></div><div class='new_user_post_view_all_page_left_side_box_post_details_bg'><div class='new_user_post_view_all_page_left_side_box_post_details'><div class='new_user_post_view_all_page_left_side_box_post_details_heading_bg_and_price_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_heading_bg'><h3 class='new_user_post_view_all_page_left_side_box_post_details_heading'><a href='#' class='new_user_post_view_all_page_left_side_box_post_details_heading_link_bg'>"+v.upst.post_name+"</a></h3></div><div class='new_user_post_view_all_page_left_side_box_post_details_price_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_price' id='price_"+v.upst.id+"'><i class='fas fa-dollar-sign'></i>"+v.upstd.price+"</div></div></div><div class='new_user_post_view_all_page_left_side_box_post_details_category_bg_sub_category_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_category_bg'>"+v.mct.category_name+"</div><div class='new_user_post_view_all_page_left_side_box_post_details_sub_category_bg'>"+v.msct.subcategory_name+"</div></div><div class='new_user_post_view_all_page_left_side_box_post_details_description_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_description'>"+v.upst.description.substring(0,100)+"</div><div class='new_user_post_view_all_page_left_side_box_post_details_read_more_link_bg'><a href='{{ GLOBAL_DIR_PATH }}services.php/allPosts/{{user_details_result.0.usr.username|replace({' ':'-'})}}/"+v.upst.url_name+"' class='new_user_post_view_all_page_left_side_box_post_details_read_more_link'>view details</a></div></div></div><div class='new_user_post_view_all_page_left_side_box_post_details_post_date_read_more_link_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_post_date_bg'><i class='far fa-clock'></i>"+v.upst.created_at+"</div></div></div>";
+       $("div#post_"+k).fadeIn("slow");
+       $("div#post_"+k).html(post_rec);
+
+       if(v.upstd.price == null){
+        $('#price_'+v.upst.id).hide();
+       }
+
+       i++;
+
+          
+      });
+          
+
+          
+      },
+      error: function (response) {
+          console.log(response);
+      }
+  });
+  event.preventDefault();
+}
+});
+
+    $("#btn-pending-post-search").click(function(){
+      
+      var user_id = $("#user-id").val();
+      var search_value = $("#pending-posts-search-value").val();
+       var errors = '';
+      if($("#pending-posts-search-value").prop('value').trim() == ''){
+        $("#pending-posts-search-value").addClass('error-placeholder').attr('placeholder','Please Enter Search value');
+        errors +='Please Enter Search Value';
+      }
+
+      if(errors !='' ){
+        return false;
+      }
+
+      $.ajax({
+      url: '{{GLOBAL_DIR_PATH}}accountinfo.php/pending-posts/search',
+      type: "post",
+      data: {"user_id":user_id,"search_value":search_value},
+      success: function (response) {
+        $("div#pending_post_0").fadeOut("slow");
+        $("div#pending_post_1").fadeOut("slow");
+        $("div#pending_post_2").fadeOut("slow");
+        $("div#pending_post_3").fadeOut("slow");
+        $("div#pending_post_4").fadeOut("slow");
+        $("ul#pending_pagination").fadeOut("slow");
+        $("div#noPendingPost").hide();
+        
+          response = JSON.parse(response);
+          if(response.pendingPosts.cnts.counts != 0){
+            var pages = Math.ceil(response.pendingPosts.cnts.counts/5);
+            console.log(pages);
+            var text ='';
+            var n;
+            var i = 0;
+            for(n=1; n<=pages; n++){
+              text += "<li ><button type='button' value='"+n+"' onclick='pendingPostsearchPagination(this);'>"+n+"</button></li>";
+            }
+            if(pages > 1){
+            $("ul#pending_pagination").fadeIn("slow");
+            $("ul#pending_pagination").html(text);             
+            }
+
+            
+          $.each(response, function(k,v) {
+            var imagesArray = v.upst.post_image.split(',');
+            var post_image = imagesArray[0];
+
+                if(imagesArray[1] == undefined){
+            imagesArray[1] = 'no-image-available.png';
+           }
+
+           if(imagesArray[2] == undefined){
+            imagesArray[2] = 'no-image-available.png';
+           }
+
+          var pending_post_rec = "<div class='new_user_post_view_all_page_left_side_box_image_bg category_sub_category_post_page_image_bg'><a href='http://localhost/manast_curl_changes/uploads/post_image/"+post_image+"'  data-fancybox='images_"+i+"' data-caption='user post image'><img src='http://localhost/manast_curl_changes/uploads/post_image/"+post_image+"' alt='"+v.upst.post_name+"' class='new_user_post_view_all_page_left_side_box_image pending_post_main_image_resposive'></a></div><div class='new_user_post_view_all_page_left_side_box_post_details_bg'><div class='new_user_post_view_all_page_left_side_box_post_details'><div class='new_user_post_view_all_page_left_side_box_post_details_heading_bg_and_price_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_heading_bg'><h3 class='new_user_post_view_all_page_left_side_box_post_details_heading'><span class='new_user_post_view_all_page_left_side_box_post_details_heading_link_bg'>"+v.upst.post_name+"</span></h3></div><div class='new_user_post_view_all_page_left_side_box_post_details_price_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_price' id='price_"+v.upst.id+"'><i class='fas fa-dollar-sign'></i>"+v.upstd.price+"</div></div></div><div class='new_user_post_view_all_page_left_side_box_post_details_description_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_description'>"+v.upst.description.substring(0,100)+"</div><div class='new_user_post_view_all_page_left_side_box_post_details_read_more_link_bg'><div class='pending_post_more_images_bg'><div class='pending_post_more_images'><a href='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[0]+"'  data-fancybox='images_"+i+"' data-caption='user post image small 0' ><img src='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[0]+"' alt='user post image'  class='pending_post_image_resposive '></a></div><div class='pending_post_more_images'><a href='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[1]+"'  data-fancybox='images_"+i+"' data-caption='user post image small 1' ><img src='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[1]+"' alt='user post image'  class='pending_post_image_resposive '></a></div><div class='pending_post_more_images'><a href='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[2]+"'  data-fancybox='images_"+i+"' data-caption='user post image small 2' ><img src='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[2]+"' alt='user post image'  class='pending_post_image_resposive '></a></div></div><a href='{{GLOBAL_DIR_PATH}}edit-post.php/{{user_details_result.0.usr.username|replace({' ':'-'})}}/"+v.upst.url_name+"' class='new_user_post_view_all_page_left_side_box_post_details_edit_link '>edit details</a><button type='button' value='"+v.upst.id+"' class='new_user_post_view_all_page_left_side_box_post_details_read_more_link pop_up_button'>delete post</button></div></div></div><div class='new_user_post_view_all_page_left_side_box_post_details_post_date_read_more_link_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_post_date_bg'><i class='far fa-clock'></i>"+v.upst.created_at+"</div></div></div>";
+       $("div#pending_post_"+k).fadeIn("slow");
+       $("div#pending_post_"+k).html(pending_post_rec);
+
+       console.log(pending_post_rec);
+
+       if(v.upstd.price == null){
+        $('#price_'+v.upst.id).hide();
+       }
+
+        i++;
+        
+      });
+  }else{
+    
+    var noPosterror = "<div class='if_search_results_not_found_bg'><div class='no_search_results_bg'><div class='row'><div class='col-md-6'><div class='no_search_results_left_bg'><i class='fas fa-search'></i></div></div><div class='col-md-6'><div class='no_search_results_right_bg'><span>sorry</span><span>no result </span><span>found </span></div></div></div><div class='row'><div class='col-md-12'><div class='search_page_go_home_link_bg'><a href='{{GLOBAL_DIR_PATH}}add-post.php/add-post-form' class='search_page_go_home_link'><i class='fas fa-plus'></i>post ad</a></div></div></div></div></div>"
+
+    $("div#noPendingPost").show();
+       $("div#noPendingPost").html(noPosterror);
+  }
+          
+
+          
+      },
+      error: function (e) {
+          console.log(e.message);
+      }
+  });
+  event.preventDefault();
+
+
+    });
+
+$("#pending-posts-search-value").keypress(function (e) {
+if (e.which == 13) {
+      var user_id = $("#user-id").val();
+      var search_value = $("#pending-posts-search-value").val();
+       var errors = '';
+      if($("#pending-posts-search-value").prop('value').trim() == ''){
+        $("#pending-posts-search-value").addClass('error-placeholder').attr('placeholder','Please Enter Search value');
+        errors +='Please Enter Search Value';
+      }
+
+      if(errors !='' ){
+        return false;
+      }
+
+      $.ajax({
+      url: '{{GLOBAL_DIR_PATH}}accountinfo.php/pending-posts/search',
+      type: "post",
+      data: {"user_id":user_id,"search_value":search_value},
+      success: function (response) {
+        $("div#pending_post_0").fadeOut("slow");
+        $("div#pending_post_1").fadeOut("slow");
+        $("div#pending_post_2").fadeOut("slow");
+        $("div#pending_post_3").fadeOut("slow");
+        $("div#pending_post_4").fadeOut("slow");
+        $("ul#pending_pagination").fadeOut("slow");
+        $("div#noPendingPost").hide();
+        
+          response = JSON.parse(response);
+          if(response.pendingPosts.cnts.counts != 0){
+            var pages = Math.ceil(response.pendingPosts.cnts.counts/5);
+            console.log(pages);
+            var text ='';
+            var n;
+            var i = 0;
+            for(n=1; n<=pages; n++){
+              text += "<li ><button type='button' value='"+n+"' onclick='pendingPostsearchPagination(this);'>"+n+"</button></li>";
+            }
+            if(pages > 1){
+            $("ul#pending_pagination").fadeIn("slow");
+            $("ul#pending_pagination").html(text);             
+            }
+
+            
+          $.each(response, function(k,v) {
+            var imagesArray = v.upst.post_image.split(',');
+            var post_image = imagesArray[0];
+
+                if(imagesArray[1] == undefined){
+            imagesArray[1] = 'no-image-available.png';
+           }
+
+           if(imagesArray[2] == undefined){
+            imagesArray[2] = 'no-image-available.png';
+           }
+
+          var pending_post_rec = "<div class='new_user_post_view_all_page_left_side_box_image_bg category_sub_category_post_page_image_bg'><a href='http://localhost/manast_curl_changes/uploads/post_image/"+post_image+"'  data-fancybox='images_"+i+"' data-caption='user post image'><img src='http://localhost/manast_curl_changes/uploads/post_image/"+post_image+"' alt='"+v.upst.post_name+"' class='new_user_post_view_all_page_left_side_box_image pending_post_main_image_resposive'></a></div><div class='new_user_post_view_all_page_left_side_box_post_details_bg'><div class='new_user_post_view_all_page_left_side_box_post_details'><div class='new_user_post_view_all_page_left_side_box_post_details_heading_bg_and_price_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_heading_bg'><h3 class='new_user_post_view_all_page_left_side_box_post_details_heading'><span class='new_user_post_view_all_page_left_side_box_post_details_heading_link_bg'>"+v.upst.post_name+"</span></h3></div><div class='new_user_post_view_all_page_left_side_box_post_details_price_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_price' id='price_"+v.upst.id+"'><i class='fas fa-dollar-sign'></i>"+v.upstd.price+"</div></div></div><div class='new_user_post_view_all_page_left_side_box_post_details_description_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_description'>"+v.upst.description.substring(0,100)+"</div><div class='new_user_post_view_all_page_left_side_box_post_details_read_more_link_bg'><div class='pending_post_more_images_bg'><div class='pending_post_more_images'><a href='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[0]+"'  data-fancybox='images_"+i+"' data-caption='user post image small 0' ><img src='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[0]+"' alt='user post image'  class='pending_post_image_resposive '></a></div><div class='pending_post_more_images'><a href='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[1]+"'  data-fancybox='images_"+i+"' data-caption='user post image small 1' ><img src='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[1]+"' alt='user post image'  class='pending_post_image_resposive '></a></div><div class='pending_post_more_images'><a href='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[2]+"'  data-fancybox='images_"+i+"' data-caption='user post image small 2' ><img src='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[2]+"' alt='user post image'  class='pending_post_image_resposive '></a></div></div><a href='{{GLOBAL_DIR_PATH}}edit-post.php/{{user_details_result.0.usr.username|replace({' ':'-'})}}/"+v.upst.url_name+"' class='new_user_post_view_all_page_left_side_box_post_details_edit_link '>edit details</a><button type='button' value='"+v.upst.id+"' class='new_user_post_view_all_page_left_side_box_post_details_read_more_link pop_up_button'>delete post</button></div></div></div><div class='new_user_post_view_all_page_left_side_box_post_details_post_date_read_more_link_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_post_date_bg'><i class='far fa-clock'></i>"+v.upst.created_at+"</div></div></div>";
+       $("div#pending_post_"+k).fadeIn("slow");
+       $("div#pending_post_"+k).html(pending_post_rec);
+
+       console.log(pending_post_rec);
+
+       if(v.upstd.price == null){
+        $('#price_'+v.upst.id).hide();
+       }
+
+        i++;
+        
+      });
+  }else{
+    
+    var noPosterror = "<div class='if_search_results_not_found_bg'><div class='no_search_results_bg'><div class='row'><div class='col-md-6'><div class='no_search_results_left_bg'><i class='fas fa-search'></i></div></div><div class='col-md-6'><div class='no_search_results_right_bg'><span>sorry</span><span>no result </span><span>found </span></div></div></div><div class='row'><div class='col-md-12'><div class='search_page_go_home_link_bg'><a href='{{GLOBAL_DIR_PATH}}add-post.php/add-post-form' class='search_page_go_home_link'><i class='fas fa-plus'></i>post ad</a></div></div></div></div></div>"
+
+    $("div#noPendingPost").show();
+       $("div#noPendingPost").html(noPosterror);
+  }
+          
+
+          
+      },
+      error: function (e) {
+          console.log(e.message);
+      }
+  });
+  event.preventDefault();
+}
+});
+    $("#btn-disaproval-post-search").click(function(){
+      var user_id = $("#user-id").val();
+      var search_value = $("#disaproval-posts-search-value").val();
+       var errors = '';
+      if($("#disaproval-posts-search-value").prop('value').trim() == ''){
+        $("#disaproval-posts-search-value").addClass('error-placeholder').attr('placeholder','Please Enter Search value');
+        errors +='Please Enter Search Value';
+      }
+
+      if(errors !='' ){
+        return false;
+      }
+
+      $.ajax({
+      url: '{{GLOBAL_DIR_PATH}}accountinfo.php/disaproval-posts/search',
+      type: "post",
+      data: {"user_id":user_id,"search_value":search_value},
+      success: function (response) {
+        $("div#disaproval_post_0").fadeOut("slow");
+        $("div#disaproval_post_1").fadeOut("slow");
+        $("div#disaproval_post_2").fadeOut("slow");
+        $("div#disaproval_post_3").fadeOut("slow");
+        $("div#disaproval_post_4").fadeOut("slow");
+        $("ul#disaproval_pagination").fadeOut("slow");
+        $("div#noDisaprovalPost").hide();
+          
+            response = JSON.parse(response);
+          if(response.disaprovalPosts.cnts.counts != 0){
+            var pages = Math.ceil(response.disaprovalPosts.cnts.counts/5);
+            console.log(pages);
+            var text ='';
+            var n;
+            var i = 0;
+            for(n=1; n<=pages; n++){
+              text += "<li ><button type='button' value='"+n+"' onclick='disaprovalPostsearchPagination(this);'>"+n+"</button></li>";
+            }
+            if(pages > 1){
+            $("ul#disaproval_pagination").fadeIn("slow");
+            $("ul#disaproval_pagination").html(text);             
+            }
+
+            
+          $.each(response, function(k,v) {
+            var imagesArray = v.upst.post_image.split(',');
+            var post_image = imagesArray[0];
+
+                if(imagesArray[1] == undefined){
+            imagesArray[1] = 'no-image-available.png';
+           }
+
+           if(imagesArray[2] == undefined){
+            imagesArray[2] = 'no-image-available.png';
+           }
+
+          var disaproval_post_rec = "<div class='new_user_post_view_all_page_left_side_box_image_bg category_sub_category_post_page_image_bg'><a href='http://localhost/manast_curl_changes/uploads/post_image/"+post_image+"'  data-fancybox='images_"+i+"' data-caption='user post image'><img src='http://localhost/manast_curl_changes/uploads/post_image/"+post_image+"' alt='"+v.upst.post_name+"' class='new_user_post_view_all_page_left_side_box_image pending_post_main_image_resposive'></a></div><div class='new_user_post_view_all_page_left_side_box_post_details_bg'><div class='new_user_post_view_all_page_left_side_box_post_details'><div class='new_user_post_view_all_page_left_side_box_post_details_heading_bg_and_price_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_heading_bg'><h3 class='new_user_post_view_all_page_left_side_box_post_details_heading'><span class='new_user_post_view_all_page_left_side_box_post_details_heading_link_bg'>"+v.upst.post_name+"</span></h3></div><div class='new_user_post_view_all_page_left_side_box_post_details_price_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_price' id='price_"+v.upst.id+"'><i class='fas fa-dollar-sign'></i>"+v.upstd.price+"</div></div></div><div class='new_user_post_view_all_page_left_side_box_post_details_description_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_description'>"+v.upst.description.substring(0,100)+"</div><div class='new_user_post_view_all_page_left_side_box_post_details_read_more_link_bg'><div class='pending_post_more_images_bg'><div class='pending_post_more_images'><a href='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[0]+"'  data-fancybox='images_"+i+"' data-caption='user post image small 0' ><img src='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[0]+"' alt='user post image'  class='pending_post_image_resposive '></a></div><div class='pending_post_more_images'><a href='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[1]+"'  data-fancybox='images_"+i+"' data-caption='user post image small 1' ><img src='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[1]+"' alt='user post image'  class='pending_post_image_resposive '></a></div><div class='pending_post_more_images'><a href='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[2]+"'  data-fancybox='images_"+i+"' data-caption='user post image small 2' ><img src='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[2]+"' alt='user post image'  class='pending_post_image_resposive '></a></div></div><a href='{{GLOBAL_DIR_PATH}}edit-post.php/{{user_details_result.0.usr.username|replace({' ':'-'})}}/"+v.upst.url_name+"' class='new_user_post_view_all_page_left_side_box_post_details_edit_link '>edit details</a><button type='button' value='"+v.upst.id+"' class='new_user_post_view_all_page_left_side_box_post_details_read_more_link pop_up_button'>delete post</button></div></div></div><div class='new_user_post_view_all_page_left_side_box_post_details_post_date_read_more_link_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_post_date_bg'><i class='far fa-clock'></i>"+v.upst.created_at+"</div></div></div>";
+       $("div#disaproval_post_"+k).fadeIn("slow");
+       $("div#disaproval_post_"+k).html(disaproval_post_rec);
+
+       console.log(disaproval_post_rec);
+
+       if(v.upstd.price == null){
+        $('#price_'+v.upst.id).hide();
+       }
+
+        i++;
+        
+      });
+  }else{
+    alert();
+    var noPosterror = "<div class='if_search_results_not_found_bg'><div class='no_search_results_bg'><div class='row'><div class='col-md-6'><div class='no_search_results_left_bg'><i class='fas fa-search'></i></div></div><div class='col-md-6'><div class='no_search_results_right_bg'><span>sorry</span><span>no result </span><span>found </span></div></div></div><div class='row'><div class='col-md-12'><div class='search_page_go_home_link_bg'><a href='{{GLOBAL_DIR_PATH}}add-post.php/add-post-form' class='search_page_go_home_link'><i class='fas fa-plus'></i>post ad</a></div></div></div></div></div>"
+
+    $("div#noDisaprovalPost").show();
+       $("div#noDisaprovalPost").html(noPosterror);
+  }
+          
+
+          
+      },
+      error: function (e) {
+          console.log(e.message);
+      }
+  });
+  event.preventDefault();
+
+
+    });
+
+$("#disaproval-posts-search-value").keypress(function (e) {
+if (e.which == 13) {
+      var user_id = $("#user-id").val();
+      var search_value = $("#disaproval-posts-search-value").val();
+       var errors = '';
+      if($("#disaproval-posts-search-value").prop('value').trim() == ''){
+        $("#disaproval-posts-search-value").addClass('error-placeholder').attr('placeholder','Please Enter Search value');
+        errors +='Please Enter Search Value';
+      }
+
+      if(errors !='' ){
+        return false;
+      }
+
+      $.ajax({
+      url: '{{GLOBAL_DIR_PATH}}accountinfo.php/disaproval-posts/search',
+      type: "post",
+      data: {"user_id":user_id,"search_value":search_value},
+      success: function (response) {
+        $("div#disaproval_post_0").fadeOut("slow");
+        $("div#disaproval_post_1").fadeOut("slow");
+        $("div#disaproval_post_2").fadeOut("slow");
+        $("div#disaproval_post_3").fadeOut("slow");
+        $("div#disaproval_post_4").fadeOut("slow");
+        $("ul#disaproval_pagination").fadeOut("slow");
+        $("div#nodisaprovalPost").hide();
+        
+          response = JSON.parse(response);
+
+          if(response.disaprovalPosts.cnts.counts != 0){
+            var pages = Math.ceil(response.disaprovalPosts.cnts.counts/5);
+            console.log(pages);
+            var text ='';
+            var n;
+            var i = 0;
+            for(n=1; n<=pages; n++){
+              text += "<li ><button type='button' value='"+n+"' onclick='disaprovalPostsearchPagination(this);'>"+n+"</button></li>";
+            }
+            if(pages > 1){
+            $("ul#disaproval_pagination").fadeIn("slow");
+            $("ul#disaproval_pagination").html(text);             
+            }
+
+            
+          $.each(response, function(k,v) {
+            var imagesArray = v.upst.post_image.split(',');
+            var post_image = imagesArray[0];
+
+                if(imagesArray[1] == undefined){
+            imagesArray[1] = 'no-image-available.png';
+           }
+
+           if(imagesArray[2] == undefined){
+            imagesArray[2] = 'no-image-available.png';
+           }
+
+          var disaproval_post_rec = "<div class='new_user_post_view_all_page_left_side_box_image_bg category_sub_category_post_page_image_bg'><a href='http://localhost/manast_curl_changes/uploads/post_image/"+post_image+"'  data-fancybox='images_"+i+"' data-caption='user post image'><img src='http://localhost/manast_curl_changes/uploads/post_image/"+post_image+"' alt='"+v.upst.post_name+"' class='new_user_post_view_all_page_left_side_box_image pending_post_main_image_resposive'></a></div><div class='new_user_post_view_all_page_left_side_box_post_details_bg'><div class='new_user_post_view_all_page_left_side_box_post_details'><div class='new_user_post_view_all_page_left_side_box_post_details_heading_bg_and_price_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_heading_bg'><h3 class='new_user_post_view_all_page_left_side_box_post_details_heading'><span class='new_user_post_view_all_page_left_side_box_post_details_heading_link_bg'>"+v.upst.post_name+"</span></h3></div><div class='new_user_post_view_all_page_left_side_box_post_details_price_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_price' id='price_"+v.upst.id+"'><i class='fas fa-dollar-sign'></i>"+v.upstd.price+"</div></div></div><div class='new_user_post_view_all_page_left_side_box_post_details_description_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_description'>"+v.upst.description.substring(0,100)+"</div><div class='new_user_post_view_all_page_left_side_box_post_details_read_more_link_bg'><div class='pending_post_more_images_bg'><div class='pending_post_more_images'><a href='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[0]+"'  data-fancybox='images_"+i+"' data-caption='user post image small 0' ><img src='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[0]+"' alt='user post image'  class='pending_post_image_resposive '></a></div><div class='pending_post_more_images'><a href='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[1]+"'  data-fancybox='images_"+i+"' data-caption='user post image small 1' ><img src='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[1]+"' alt='user post image'  class='pending_post_image_resposive '></a></div><div class='pending_post_more_images'><a href='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[2]+"'  data-fancybox='images_"+i+"' data-caption='user post image small 2' ><img src='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[2]+"' alt='user post image'  class='pending_post_image_resposive '></a></div></div><a href='{{GLOBAL_DIR_PATH}}edit-post.php/{{user_details_result.0.usr.username|replace({' ':'-'})}}/"+v.upst.url_name+"' class='new_user_post_view_all_page_left_side_box_post_details_edit_link '>edit details</a><button type='button' value='"+v.upst.id+"' class='new_user_post_view_all_page_left_side_box_post_details_read_more_link pop_up_button'>delete post</button></div></div></div><div class='new_user_post_view_all_page_left_side_box_post_details_post_date_read_more_link_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_post_date_bg'><i class='far fa-clock'></i>"+v.upst.created_at+"</div></div></div>";
+       $("div#disaproval_post_"+k).fadeIn("slow");
+       $("div#disaproval_post_"+k).html(disaproval_post_rec);
+
+       
+       if(v.upstd.price == null){
+        $('#price_'+v.upst.id).hide();
+       }
+
+        i++;
+        
+      });
+  }else{
+    alert();
+    
+    var noPosterror = "<div class='if_search_results_not_found_bg'><div class='no_search_results_bg'><div class='row'><div class='col-md-6'><div class='no_search_results_left_bg'><i class='fas fa-search'></i></div></div><div class='col-md-6'><div class='no_search_results_right_bg'><span>sorry</span><span>no result </span><span>found </span></div></div></div><div class='row'><div class='col-md-12'><div class='search_page_go_home_link_bg'><a href='{{GLOBAL_DIR_PATH}}add-post.php/add-post-form' class='search_page_go_home_link'><i class='fas fa-plus'></i>post ad</a></div></div></div></div></div>"
+
+    $("div#nodisaprovalPost").show();
+       $("div#nodisaprovalPost").html(noPosterror);
+  }
+          
+
+          
+      },
+      error: function (e) {
+          console.log(e.message);
+      }
+  });
+  event.preventDefault();
+}
+});
+</script>
+   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.js"></script>     
+   <script type="text/javascript" src="{{ GLOBAL_DIR_PATH }}view_library/js/new-js.js"> </script>
+   <script src="{{ GLOBAL_DIR_PATH }}view_library/js/my-account-js.js" type="text/javascript"></script>
+   <script src="{{GLOBAL_DIR_PATH}}view_library/js/pop-up-js.js"></script>
+   <script src="{{GLOBAL_DIR_PATH}}view_library/js/modal-js.js"></script>
+   <script src="{{ GLOBAL_DIR_PATH }}view_library/js/phone-number-js.js" type="text/javascript"></script>
+   <script>
+       //common files only for my account
+       function myPostPagination(obj){
+      var pagination = obj.value;
+      $("div#post_0").fadeOut("slow");
+      $("div#post_1").fadeOut("slow");
+      $("div#post_2").fadeOut("slow");
+      $("div#post_3").fadeOut("slow");
+      $("div#post_4").fadeOut("slow");
+
+      $.ajax({
+            url: "{{ GLOBAL_DIR_PATH }}accountinfo.php/my-account/pagination",
+            type: "post",
+            data: {"pagination":pagination},
+            success: function (response) {
+              response = JSON.parse(response);
+              var i = 0;
+             $.each(response, function(k,v) {
+              console.log(v);
+             var imagesArray = v.upst.post_image.split(',');
+             var post_image = imagesArray[0];
+
+              
+             var post_rec = "<div class='new_user_post_view_all_page_left_side_box_image_bg'><img src='{{ GLOBAL_DIR_PATH }}uploads/post_image/"+post_image+"' alt='"+v.upst.post_name+"' class='new_user_post_view_all_page_left_side_box_image'><a href='{{ GLOBAL_DIR_PATH }}services.php/allPosts/{{user_details_result.0.usr.username|replace({' ':'-'})}}/"+v.upst.url_name+"' class='new_user_post_view_all_page_left_side_box_image_link_bg'><div class='new_user_post_view_all_page_left_side_box_image_overlay_bg'>view post</div></a></div><div class='new_user_post_view_all_page_left_side_box_post_details_bg'><div class='new_user_post_view_all_page_left_side_box_post_details'><div class='new_user_post_view_all_page_left_side_box_post_details_heading_bg_and_price_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_heading_bg'><h3 class='new_user_post_view_all_page_left_side_box_post_details_heading'><a href='#' class='new_user_post_view_all_page_left_side_box_post_details_heading_link_bg'>"+v.upst.post_name+"</a></h3></div><div class='new_user_post_view_all_page_left_side_box_post_details_price_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_price' id='price_"+v.upst.id+"'><i class='fas fa-dollar-sign'></i>"+v.upstd.price+"</div></div></div><div class='new_user_post_view_all_page_left_side_box_post_details_category_bg_sub_category_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_category_bg'>"+v.mct.category_name+"</div><div class='new_user_post_view_all_page_left_side_box_post_details_sub_category_bg'>"+v.msct.subcategory_name+"</div></div><div class='new_user_post_view_all_page_left_side_box_post_details_description_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_description'>"+v.upst.description.substring(0,100)+"</div><div class='new_user_post_view_all_page_left_side_box_post_details_read_more_link_bg'><a href='{{ GLOBAL_DIR_PATH }}services.php/allPosts/{{user_details_result.0.usr.username|replace({' ':'-'})}}/"+v.upst.url_name+"' class='new_user_post_view_all_page_left_side_box_post_details_read_more_link'>view details</a></div></div></div><div class='new_user_post_view_all_page_left_side_box_post_details_post_date_read_more_link_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_post_date_bg'><i class='far fa-clock'></i>"+v.upst.created_at+"</div></div></div>";
+             $("div#post_"+k).fadeIn("slow");
+             $("div#post_"+k).html(post_rec);
+
+             if(v.upstd.price == null){
+              $('#price_'+v.upst.id).hide();
+             }
+
+             i++;
+                
+            });
+            
+            
+            },
+           error: function (e) {
+               
+                console.log(e.message);
+            }
+        });
+        event.preventDefault();
+
+    }
+
+    //pending post 
+    function myPostsearchPagination(obj){
+      var pagination = obj.value;
+      var user_id = $("#user-id").val();
+      var search_value = $("#user-posts-search-value").val();
+      alert(pagination);
+      alert(search_value);
+      $("div#post_0").fadeOut("slow");
+      $("div#post_1").fadeOut("slow");
+      $("div#post_2").fadeOut("slow");
+      $("div#post_3").fadeOut("slow");
+      $("div#post_4").fadeOut("slow");
+
+      $.ajax({
+            url: '{{GLOBAL_DIR_PATH}}accountinfo.php/my-posts/search',
+            type: "post",
+            data: {"pagination":pagination,"user_id":user_id,"search_value":search_value},
+            success: function (response) {
+              response = JSON.parse(response);
+              var i = 0;
+             $.each(response, function(k,v) {
+                  var imagesArray = v.upst.post_image.split(',');
+                  var post_image = imagesArray[0];
+
+                var post_rec = "<div class='new_user_post_view_all_page_left_side_box_image_bg'><img src='{{ GLOBAL_DIR_PATH }}uploads/post_image/"+post_image+"' alt='"+v.upst.post_name+"' class='new_user_post_view_all_page_left_side_box_image'><a href='{{ GLOBAL_DIR_PATH }}services.php/allPosts/{{user_details_result.0.usr.username|replace({' ':'-'})}}/"+v.upst.url_name+"' class='new_user_post_view_all_page_left_side_box_image_link_bg'><div class='new_user_post_view_all_page_left_side_box_image_overlay_bg'>view post</div></a></div><div class='new_user_post_view_all_page_left_side_box_post_details_bg'><div class='new_user_post_view_all_page_left_side_box_post_details'><div class='new_user_post_view_all_page_left_side_box_post_details_heading_bg_and_price_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_heading_bg'><h3 class='new_user_post_view_all_page_left_side_box_post_details_heading'><a href='#' class='new_user_post_view_all_page_left_side_box_post_details_heading_link_bg'>"+v.upst.post_name+"</a></h3></div><div class='new_user_post_view_all_page_left_side_box_post_details_price_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_price' id='price_"+v.upst.id+"'><i class='fas fa-dollar-sign'></i>"+v.upstd.price+"</div></div></div><div class='new_user_post_view_all_page_left_side_box_post_details_category_bg_sub_category_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_category_bg'>"+v.mct.category_name+"</div><div class='new_user_post_view_all_page_left_side_box_post_details_sub_category_bg'>"+v.msct.subcategory_name+"</div></div><div class='new_user_post_view_all_page_left_side_box_post_details_description_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_description'>"+v.upst.description.substring(0,100)+"</div><div class='new_user_post_view_all_page_left_side_box_post_details_read_more_link_bg'><a href='{{ GLOBAL_DIR_PATH }}services.php/allPosts/{{user_details_result.0.usr.username|replace({' ':'-'})}}/"+v.upst.url_name+"' class='new_user_post_view_all_page_left_side_box_post_details_read_more_link'>view details</a></div></div></div><div class='new_user_post_view_all_page_left_side_box_post_details_post_date_read_more_link_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_post_date_bg'><i class='far fa-clock'></i>"+v.upst.created_at+"</div></div></div>";
+             $("div#post_"+k).fadeIn("slow");
+             $("div#post_"+k).html(post_rec);
+
+             if(v.upstd.price == null){
+              $('#price_'+v.upst.id).hide();
+             }
+
+             i++;
+
+                
+            });
+            
+            
+            },
+           error: function (e) {
+               
+                console.log(e.message);
+            }
+        });
+        event.preventDefault();
+
+    }
+    //END pending post 
+    //pending post pagination
+    function pendingPostPagination(obj){
+      var pagination = obj.value;
+
+      $("div#pending_post_0").fadeOut("slow");
+      $("div#pending_post_1").fadeOut("slow");
+      $("div#pending_post_2").fadeOut("slow");
+      $("div#pending_post_3").fadeOut("slow");
+      $("div#pending_post_4").fadeOut("slow");
+
+      $.ajax({
+            url: "{{ GLOBAL_DIR_PATH }}accountinfo.php/my-account/pending-posts/pagination",
+            type: "post",
+            data: {"pagination":pagination},
+            success: function (response) {
+              response = JSON.parse(response);
+             var i = 0;
+             $.each(response, function(k,v) {
+
+             var imagesArray = v.upst.post_image.split(',');
+             var post_image = imagesArray[0];
+
+             if(imagesArray[1] == undefined){
+              imagesArray[1] = 'no-image-available.png';
+             }
+
+             if(imagesArray[2] == undefined){
+              imagesArray[2] = 'no-image-available.png';
+             }
+             
+              
+            var pending_post_rec = "<div class='new_user_post_view_all_page_left_side_box_image_bg category_sub_category_post_page_image_bg'><a href='http://localhost/manast_curl_changes/uploads/post_image/"+post_image+"'  data-fancybox='images_"+i+"' data-caption='user post image'><img src='http://localhost/manast_curl_changes/uploads/post_image/"+post_image+"' alt='"+v.upst.post_name+"' class='new_user_post_view_all_page_left_side_box_image pending_post_main_image_resposive'></a></div><div class='new_user_post_view_all_page_left_side_box_post_details_bg'><div class='new_user_post_view_all_page_left_side_box_post_details'><div class='new_user_post_view_all_page_left_side_box_post_details_heading_bg_and_price_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_heading_bg'><h3 class='new_user_post_view_all_page_left_side_box_post_details_heading'><span class='new_user_post_view_all_page_left_side_box_post_details_heading_link_bg'>"+v.upst.post_name+"</span></h3></div><div class='new_user_post_view_all_page_left_side_box_post_details_price_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_price' id='price_"+v.upst.id+"'><i class='fas fa-dollar-sign'></i>"+v.upstd.price+"</div></div></div><div class='new_user_post_view_all_page_left_side_box_post_details_description_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_description'>"+v.upst.description.substring(0,100)+"</div><div class='new_user_post_view_all_page_left_side_box_post_details_read_more_link_bg'><div class='pending_post_more_images_bg'><div class='pending_post_more_images'><a href='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[0]+"'  data-fancybox='images_"+i+"' data-caption='user post image small 0' ><img src='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[0]+"' alt='user post image'  class='pending_post_image_resposive '></a></div><div class='pending_post_more_images'><a href='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[1]+"'  data-fancybox='images_"+i+"' data-caption='user post image small 1' ><img src='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[1]+"' alt='user post image'  class='pending_post_image_resposive '></a></div><div class='pending_post_more_images'><a href='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[2]+"'  data-fancybox='images_"+i+"' data-caption='user post image small 2' ><img src='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[2]+"' alt='user post image'  class='pending_post_image_resposive '></a></div></div><a href='{{GLOBAL_DIR_PATH}}edit-post.php/{{user_details_result.0.usr.username|replace({' ':'-'})}}/"+v.upst.url_name+"' class='new_user_post_view_all_page_left_side_box_post_details_edit_link '>edit details</a><button type='button' value='"+v.upst.id+"' class='new_user_post_view_all_page_left_side_box_post_details_read_more_link pop_up_button'>delete post</button></div></div></div><div class='new_user_post_view_all_page_left_side_box_post_details_post_date_read_more_link_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_post_date_bg'><i class='far fa-clock'></i>"+v.upst.created_at+"</div></div></div>";
+             $("div#pending_post_"+k).fadeIn("slow");
+             $("div#pending_post_"+k).html(pending_post_rec);
+
+             if(v.upstd.price == null){
+              $('#price_'+v.upst.id).hide();
+             }
+
+              i++;
+              
+            });
+
+            },
+           error: function (e) {
+               
+                console.log(e.message);
+            }
+        });
+        event.preventDefault();
+
+    }
+    //END pending post pagination
+    //pending post search  pagination
+    function pendingPostsearchPagination(obj){
+      
+      var pagination = obj.value;
+      var user_id = $("#user-id").val();
+      var search_value = $("#pending-posts-search-value").val();
+      alert(pagination);
+      alert(search_value);
+
+      $("div#pending_post_0").fadeOut("slow");
+      $("div#pending_post_1").fadeOut("slow");
+      $("div#pending_post_2").fadeOut("slow");
+      $("div#pending_post_3").fadeOut("slow");
+      $("div#pending_post_4").fadeOut("slow");
+
+      $.ajax({
+            url: '{{GLOBAL_DIR_PATH}}accountinfo.php/pending-posts/search',
+            type: "post",
+            data: {"pagination":pagination,"user_id":user_id,"search_value":search_value},
+            success: function (response) {
+              response = JSON.parse(response);
+             var i = 0;
+             $.each(response, function(k,v) {
+
+             var imagesArray = v.upst.post_image.split(',');
+             var post_image = imagesArray[0];
+
+             if(imagesArray[1] == undefined){
+                  imagesArray[1] = 'no-image-available.png';
+                 }
+
+                 if(imagesArray[2] == undefined){
+                  imagesArray[2] = 'no-image-available.png';
+                 }
+
+                var pending_post_rec = "<div class='new_user_post_view_all_page_left_side_box_image_bg category_sub_category_post_page_image_bg'><a href='http://localhost/manast_curl_changes/uploads/post_image/"+post_image+"'  data-fancybox='images_"+i+"' data-caption='user post image'><img src='http://localhost/manast_curl_changes/uploads/post_image/"+post_image+"' alt='"+v.upst.post_name+"' class='new_user_post_view_all_page_left_side_box_image pending_post_main_image_resposive'></a></div><div class='new_user_post_view_all_page_left_side_box_post_details_bg'><div class='new_user_post_view_all_page_left_side_box_post_details'><div class='new_user_post_view_all_page_left_side_box_post_details_heading_bg_and_price_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_heading_bg'><h3 class='new_user_post_view_all_page_left_side_box_post_details_heading'><span class='new_user_post_view_all_page_left_side_box_post_details_heading_link_bg'>"+v.upst.post_name+"</span></h3></div><div class='new_user_post_view_all_page_left_side_box_post_details_price_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_price' id='price_"+v.upst.id+"'><i class='fas fa-dollar-sign'></i>"+v.upstd.price+"</div></div></div><div class='new_user_post_view_all_page_left_side_box_post_details_description_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_description'>"+v.upst.description.substring(0,100)+"</div><div class='new_user_post_view_all_page_left_side_box_post_details_read_more_link_bg'><div class='pending_post_more_images_bg'><div class='pending_post_more_images'><a href='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[0]+"'  data-fancybox='images_"+i+"' data-caption='user post image small 0' ><img src='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[0]+"' alt='user post image'  class='pending_post_image_resposive '></a></div><div class='pending_post_more_images'><a href='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[1]+"'  data-fancybox='images_"+i+"' data-caption='user post image small 1' ><img src='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[1]+"' alt='user post image'  class='pending_post_image_resposive '></a></div><div class='pending_post_more_images'><a href='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[2]+"'  data-fancybox='images_"+i+"' data-caption='user post image small 2' ><img src='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[2]+"' alt='user post image'  class='pending_post_image_resposive '></a></div></div><a href='{{GLOBAL_DIR_PATH}}edit-post.php/{{user_details_result.0.usr.username|replace({' ':'-'})}}/"+v.upst.url_name+"' class='new_user_post_view_all_page_left_side_box_post_details_edit_link '>edit details</a><button type='button' value='"+v.upst.id+"' class='new_user_post_view_all_page_left_side_box_post_details_read_more_link pop_up_button'>delete post</button></div></div></div><div class='new_user_post_view_all_page_left_side_box_post_details_post_date_read_more_link_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_post_date_bg'><i class='far fa-clock'></i>"+v.upst.created_at+"</div></div></div>";
+             $("div#pending_post_"+k).fadeIn("slow");
+             $("div#pending_post_"+k).html(pending_post_rec);
+
+             console.log(pending_post_rec);
+
+             if(v.upstd.price == null){
+              $('#price_'+v.upst.id).hide();
+             }
+
+              i++;
+              
+            });
+
+            },
+           error: function (e) {
+               
+                console.log(e.message);
+            }
+        });
+        event.preventDefault();
+
+    }
+    //END pending post search pagination 
+    //disaprroved post
+    function disAprovalPostsPagination(obj){
+      var pagination = obj.value;
+
+      $("div#disaproval_post_0").fadeOut("slow");
+      $("div#disaproval_post_1").fadeOut("slow");
+      $("div#disaproval_post_2").fadeOut("slow");
+      $("div#disaproval_post_3").fadeOut("slow");
+      $("div#disaproval_post_4").fadeOut("slow");
+
+      $.ajax({
+            url: "{{ GLOBAL_DIR_PATH }}accountinfo.php/my-account/disaproval-posts/pagination",
+            type: "post",
+            data: {"pagination":pagination},
+            success: function (response) {
+              response = JSON.parse(response);
+              var i = 0;
+             $.each(response, function(k,v) {
+
+             var imagesArray = v.upst.post_image.split(',');
+             var post_image = imagesArray[0];
+
+             if(imagesArray[1] == undefined){
+              imagesArray[1] = 'no-image-available.png';
+             }
+
+             if(imagesArray[2] == undefined){
+              imagesArray[2] = 'no-image-available.png';
+             }
+             
+
+              
+            var pending_post_rec = "<div class='new_user_post_view_all_page_left_side_box_image_bg category_sub_category_post_page_image_bg'><a href='{{ GLOBAL_DIR_PATH }}services.php/{{catname}}/{{posts.subcategory_name}}/{{ forurl }}'  data-fancybox='disapprovedposts' data-caption='{{ posts.post_name }}'><img src='{{ GLOBAL_DIR_PATH }}uploads/post_image/"+post_image+"' alt='"+v.upst.post_name+"' class='new_user_post_view_all_page_left_side_box_image pending_post_main_image_resposive'></a></div><div class='new_user_post_view_all_page_left_side_box_post_details_bg'><div class='new_user_post_view_all_page_left_side_box_post_details'><div class='new_user_post_view_all_page_left_side_box_post_details_heading_bg_and_price_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_heading_bg'><h3 class='new_user_post_view_all_page_left_side_box_post_details_heading'><span class='new_user_post_view_all_page_left_side_box_post_details_heading_link_bg'>"+v.upst.post_name+"</span></h3></div><div class='new_user_post_view_all_page_left_side_box_post_details_price_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_price' id='price_"+v.upst.id+"'><i class='fas fa-dollar-sign'></i>"+v.upstd.price+"</div></div></div><div class='new_user_post_view_all_page_left_side_box_post_details_description_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_description'>"+v.upst.description.substring(0,100)+"</div><div class='new_user_post_view_all_page_left_side_box_post_details_read_more_link_bg'><div class='pending_post_more_images_bg'><div class='pending_post_more_images'><a href='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[0]+"'  data-fancybox='images_"+i+"' data-caption='user post image small 0' ><img src='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[0]+"' alt='user post image'  class='pending_post_image_resposive '></a></div><div class='pending_post_more_images'><a href='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[1]+"'  data-fancybox='images_"+i+"' data-caption='user post image small 1' ><img src='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[1]+"' alt='user post image'  class='pending_post_image_resposive '></a></div><div class='pending_post_more_images'><a href='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[2]+"'  data-fancybox='images_"+i+"' data-caption='user post image small 2' ><img src='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[2]+"' alt='user post image'  class='pending_post_image_resposive '></a></div></div><a href='{{GLOBAL_DIR_PATH}}edit-post.php/{{user_details_result.0.usr.username|replace({' ':'-'})}}/"+v.upst.url_name+"' class='new_user_post_view_all_page_left_side_box_post_details_edit_link'>edit details</a><button type='button' value='"+v.upst.id+"' class='new_user_post_view_all_page_left_side_box_post_details_read_more_link pop_up_button' onclick='myFunction(this);'>delete post</button></div></div></div><div class='new_user_post_view_all_page_left_side_box_post_details_post_date_read_more_link_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_post_date_bg'><i class='far fa-clock'></i>"+v.upst.created_at+"</div></div></div>";
+             $("div#disaproval_post_"+k).fadeIn("slow");
+             $("div#disaproval_post_"+k).html(pending_post_rec);
+
+             if(v.upstd.price == null){
+              $('#price_'+v.upst.id).hide();
+             }
+   
+             i++;
+            });
+
+            },
+           error: function (e) {
+               
+                console.log(e.message);
+            }
+        });
+        event.preventDefault();
+
+    }
+    //END disaprroved post
+    //dis approved search pagination
+    function disaprovalPostsearchPagination(obj){
+      
+      var pagination = obj.value;
+      var user_id = $("#user-id").val();
+      var search_value = $("#disaproval-posts-search-value").val();
+      alert(pagination);
+      alert(search_value);
+
+      $("div#disaproval_post_0").fadeOut("slow");
+      $("div#disaproval_post_1").fadeOut("slow");
+      $("div#disaproval_post_2").fadeOut("slow");
+      $("div#disaproval_post_3").fadeOut("slow");
+      $("div#disaproval_post_4").fadeOut("slow");
+
+      $.ajax({
+            url: '{{GLOBAL_DIR_PATH}}accountinfo.php/disaproval-posts/search',
+            type: "post",
+            data: {"pagination":pagination,"user_id":user_id,"search_value":search_value},
+            success: function (response) {
+              response = JSON.parse(response);
+             var i = 0;
+             $.each(response, function(k,v) {
+
+             var imagesArray = v.upst.post_image.split(',');
+             var post_image = imagesArray[0];
+
+             if(imagesArray[1] == undefined){
+                  imagesArray[1] = 'no-image-available.png';
+                 }
+
+                 if(imagesArray[2] == undefined){
+                  imagesArray[2] = 'no-image-available.png';
+                 }
+
+                var disaproval_post_rec = "<div class='new_user_post_view_all_page_left_side_box_image_bg category_sub_category_post_page_image_bg'><a href='http://localhost/manast_curl_changes/uploads/post_image/"+post_image+"'  data-fancybox='images_"+i+"' data-caption='user post image'><img src='http://localhost/manast_curl_changes/uploads/post_image/"+post_image+"' alt='"+v.upst.post_name+"' class='new_user_post_view_all_page_left_side_box_image pending_post_main_image_resposive'></a></div><div class='new_user_post_view_all_page_left_side_box_post_details_bg'><div class='new_user_post_view_all_page_left_side_box_post_details'><div class='new_user_post_view_all_page_left_side_box_post_details_heading_bg_and_price_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_heading_bg'><h3 class='new_user_post_view_all_page_left_side_box_post_details_heading'><span class='new_user_post_view_all_page_left_side_box_post_details_heading_link_bg'>"+v.upst.post_name+"</span></h3></div><div class='new_user_post_view_all_page_left_side_box_post_details_price_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_price' id='price_"+v.upst.id+"'><i class='fas fa-dollar-sign'></i>"+v.upstd.price+"</div></div></div><div class='new_user_post_view_all_page_left_side_box_post_details_description_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_description'>"+v.upst.description.substring(0,100)+"</div><div class='new_user_post_view_all_page_left_side_box_post_details_read_more_link_bg'><div class='pending_post_more_images_bg'><div class='pending_post_more_images'><a href='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[0]+"'  data-fancybox='images_"+i+"' data-caption='user post image small 0' ><img src='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[0]+"' alt='user post image'  class='pending_post_image_resposive '></a></div><div class='pending_post_more_images'><a href='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[1]+"'  data-fancybox='images_"+i+"' data-caption='user post image small 1' ><img src='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[1]+"' alt='user post image'  class='pending_post_image_resposive '></a></div><div class='pending_post_more_images'><a href='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[2]+"'  data-fancybox='images_"+i+"' data-caption='user post image small 2' ><img src='http://localhost/manast_curl_changes/uploads/post_image/"+imagesArray[2]+"' alt='user post image'  class='pending_post_image_resposive '></a></div></div><a href='{{GLOBAL_DIR_PATH}}edit-post.php/{{user_details_result.0.usr.username|replace({' ':'-'})}}/"+v.upst.url_name+"' class='new_user_post_view_all_page_left_side_box_post_details_edit_link '>edit details</a><button type='button' value='"+v.upst.id+"' class='new_user_post_view_all_page_left_side_box_post_details_read_more_link pop_up_button'>delete post</button></div></div></div><div class='new_user_post_view_all_page_left_side_box_post_details_post_date_read_more_link_bg'><div class='new_user_post_view_all_page_left_side_box_post_details_post_date_bg'><i class='far fa-clock'></i>"+v.upst.created_at+"</div></div></div>";
+             $("div#disaproval_post_"+k).fadeIn("slow");
+             $("div#disaproval_post_"+k).html(disaproval_post_rec);
+
+
+             if(v.upstd.price == null){
+              $('#price_'+v.upst.id).hide();
+             }
+
+              i++;
+              
+            });
+
+            },
+           error: function (e) {
+               
+                console.log(e.message);
+            }
+        });
+        event.preventDefault();
+
+    }
+    //END dis approved search pagination
+    //user update profile
+    $('#update-profile').click(function() {
+        
+        var user_id = $("#user_id").val();
+        var firstName = $("#user-first-name").val();
+        var lastName = $("#user-last-name").val();
+        var dob = $("#user-dob").val();
+        var mobile = $("#user-mobile-number").val();
+        var gender = $("#user-gender").val();
+        var cityState = $("#user-city-state").val();
+        var zip = $("#user-zip-code").val();
+        var country = $("#user-country").val();
+        var image = $("#user-image-previewing").attr('src');
+        alert(image);
+
+
+        $form_validation = editProfile();
+    if($form_validation == false){
+      return false;
+    }
+
+        
+        $.ajax({ 
+            url: 'http://localhost/manast_curl_changes/accountInfo.php/update-profile',
+            type: "post",
+            data: {"user_id":user_id,"firstName":firstName,"lastName":lastName,"dob":dob,"mobile":mobile,"gender":gender,"cityState":cityState,"zip":zip,"country":country,"image":image},
+            success: function (response) {
+                if(response == 1){
+                        modals('update_info');
+                        setTimeout(function() {
+                       window.location.href = '{{ GLOBAL_DIR_PATH }}accountInfo.php/my-account';
+                    }, 4000);
+                }else{
+alert('sorry something went wrong');
+                }
+            }
+        });
+        return false; 
+    });
+    //end user update profile
+       //END common files only for my account
+   </script> 

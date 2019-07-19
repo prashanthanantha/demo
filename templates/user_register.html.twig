@@ -1,0 +1,211 @@
+<section >
+        <div class="new_index_page_listing_posts_bg" >
+            <div class="new_login_page_outter_bg">
+                <div class="container">
+                    <div class="new_login_page_inner_bg">
+                        <div class="edit_form_page_heading_bg">
+                            <h1 class="edit_form_page_heading">registration </h1>
+                        </div>  
+                        <div class="text-danger text center" id="error-msg"></div>
+                        <div class="new_login_form_bg">
+                            <form action="#" method="POST" class="new_login_form_page" id="user-register-form">
+                                <div class="new_login_form_form_group_bg">
+                                    <div class="new_login_form_label_bg">
+                                        <label for="fname" class="new_login_form_label" >first name</label>
+                                    </div>
+                                    <div class="new_login_form_input_type_bg">
+                                        <input type="text" id="fname" class="input_type_text" name="firstname" placeholder="Eg: John">
+                                    </div>
+                                </div>
+                                <div class="new_login_form_form_group_bg">
+                                    <div class="new_login_form_label_bg">
+                                        <label for="lname" class="new_login_form_label" >last name</label>
+                                    </div>
+                                    <div class="new_login_form_input_type_bg">
+                                        <input type="text" id="lname" class="input_type_text" name="lastname" placeholder="Eg: Smith">
+                                    </div>
+                                </div>
+                                <div class="new_login_form_form_group_bg">
+                                    <div class="new_login_form_label_bg">
+                                        <label for="umail" class="new_login_form_label" >Email</label>
+                                    </div>
+                                    <div class="new_login_form_input_type_bg">
+                                        <input type="text" id="umail" class="input_type_text"  name="email" placeholder="example123@gmail.com">
+                                    </div>
+                                </div>
+                                <div class="new_login_form_form_group_bg">
+                                    <div class="new_login_form_label_bg">
+                                        <label for="password" class="new_login_form_label" >password</label>
+                                    </div>
+                                    <div class="new_login_form_input_type_bg">
+                                        <input type="password" id="password" name="password"  class="input_type_text" placeholder="Password" >
+                                    </div>
+                                </div>
+                                <div class="new_login_form_form_group_bg">
+                                    <div class="new_login_form_label_bg">
+                                        <label for="re-password" class="new_login_form_label" >Confirm password</label>
+                                    </div>
+                                    <div class="new_login_form_input_type_bg">
+                                        <input type="password" id="re-password" name="password2"  class="input_type_text" placeholder="Confirm Password" >
+                                    </div>
+                                </div>                                
+                                <div class="new_login_form_submit_button_bg">
+                                    <button type="submit" id="id_signup" class="new_button new_button_blue">register</button>
+                                    <button type="button" id="signinlink" class="new_button new_button_red" onclick="window.history.go(-1); return false;" >cancel</button>
+                                </div>
+                            </form>
+                            <div class="new_login_form_account_links_bg">
+                                <div class="new_login_form_account_right_link_bg">
+                                    <a href="{{GLOBAL_DIR_PATH}}login.php/login-form" class="new_login_form_account_right_link">already have an account</a>
+                                </div>
+                            </div>
+                        </div>        
+                    </div>
+                </div>
+            </div>            
+        </div>
+
+    </section> 
+        <!--registration  Pop Up-->
+   <section>
+       <div class="registration_pop_up" id="pop_up_registration">
+           <div class="registration_pop_up_content_bg">
+               <div class="registration_pop_up_body_bg">
+                   <div class="registration_pop_up_body_icon_bg">
+                       <i class="far fa-check-circle"></i>
+                   </div>
+                   <div class="registration_pop_up_body_invalid_user_bg">
+                       verify Your Email
+                   </div>
+                   <div class="registration_pop_up_body_user_name_bg">
+                       we've sent a link to your email <br> please verify your address<br>please check your spam folder just in case
+                   </div>
+                   <div class="pop_up_close_button_bg">
+                       <a href="http://localhost/manast_curl_changes/login.php/login-form" class="pop_up_close_button">Close</a>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </section>
+   <!--END registration Pop Up-->
+   <script>
+       
+    
+
+    $("#id_signup").click(function(event){
+         var fname = $("#fname").val();
+        var lname = $("#lname").val();
+        var umail = $("#umail").val();
+        var password = $("#password").val();
+        var re_password = $("#re-password").val();
+        var errors = '';
+        if($('#fname').prop('value').trim() == '') {
+            $('#fname').addClass('error-placeholder').attr('placeholder', 'Please enter your first name');
+                errors += " Please enter your first name. <br/>";
+            }
+            if($('#fname').prop('value') != '') {
+            var filter = /^\s*[a-zA-Z0-9]*$/;
+            if (!filter.test($('#fname').prop('value'))) {
+                $('#fname').addClass('error-placeholder').val('').attr('placeholder', 'Firstname not allowed special characters');
+                errors += " First name not accept special characters <br/>";
+            }
+        }
+
+        if($('#lname').prop('value').trim() == '') {
+            $('#lname').addClass('error-placeholder').attr('placeholder', 'Please enter your last name');
+                errors += " Please enter your last name. <br/>";
+            }
+            if($('#lname').prop('value') != '') {
+            var filter = /^\s*[a-zA-Z0-9]*$/;
+            if (!filter.test($('#lname').prop('value'))) {
+                $('#lname').addClass('error-placeholder').val('').attr('placeholder', 'Lastname not allowed special characters');
+                errors += " Lastname not accept special characters <br/>";
+            }
+        }
+
+        if($('#fname').prop('value').trim() && $('#lname').prop('value').trim()){
+            if($('#fname').prop('value').trim() == $('#lname').prop('value').trim()) {
+                $("#lname").addClass('error-placeholder').val('').attr('placeholder', "firstname and lastname don't be same");
+                return false;
+                
+                }
+        }
+
+        if($('#umail').prop('value').trim() == '') {
+            $('#umail').addClass('error-placeholder').attr('placeholder', 'Please enter your email');
+                errors += " Please enter your email. <br/>";
+            }
+
+        /*if($('#umail').prop('value') != '') {
+            var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if (!filter.test($('#umail').prop('value'))) {
+                $('#umail').addClass('error-placeholder').val('').attr('placeholder', 'Please enter a valid email');
+                errors += " Please enter a valid email. <br/>";
+            }
+            var em = $('#login-username').prop('value');
+        }*/
+        if($('#password').prop('value').trim() == '') {
+            $('#password').addClass('error-placeholder').attr('placeholder', 'Please enter your password');
+                errors += " Please enter your password. <br/>";
+            }
+        if($('#password').prop('value') != '') {
+            var filter = /^[ A-Za-z0-9_@.#&+-]{6,}$/;
+            if (!filter.test($('#password').prop('value'))) {
+                $('#password').addClass('error-placeholder').val('').attr('placeholder', 'password should be above 6 characters');
+                errors += "passwor should be above 6 characters <br/>";
+            }
+        }
+
+        if($('#re-password').prop('value').trim() == '') {
+            $('#re-password').addClass('error-placeholder').attr('placeholder', 'Please enter your re-password');
+                errors += " Please enter your re-password. <br/>";
+            }
+        if($('#password').prop('value').trim() && $('#re-password').prop('value').trim()){
+            if($('#password').prop('value').trim() !== $('#re-password').prop('value').trim()) {
+                alert('Password and Re-Password did not match');
+                $("#re-password").addClass('error-placeholder').val('').attr('placeholder', 'your re-password not match');
+                return false;
+                
+                }
+        }
+        
+
+        if (errors != '') {
+            return false;
+        }
+
+         $.ajax({
+            url: "{{ GLOBAL_DIR_PATH }}register.php/register",
+            type: "post",
+            data: {"first_name":fname,"last_name":lname,"email":umail,"password":password},
+            success: function (response) {
+              
+                response = JSON.parse(response);
+                if(response.error_message != '' && response.error_message != null){
+                  $("#error-msg").html(response.error_message);
+                }else{
+
+                if(response.success_message != '' && response.success_message != null){
+                  
+                  $('#user-register-form')[0].reset();
+                  modals('pop_up_registration');
+                                    
+                }else{
+                    $('#error-msg').html(response.success_message_exist);
+                    setTimeout(function() {
+                        $("#error-msg").html('');
+                    }, 2000);
+                }
+              }
+            },
+            error: function () {
+                $("#validationError").addClass('has-error');
+                $("#validationError span").html('Invalid Login Credentials');
+            }
+        });
+        event.preventDefault();
+    });
+   </script>
+   <script src="{{GLOBAL_DIR_PATH}}view_library/js/new-js.js"></script>
+   <script src="{{GLOBAL_DIR_PATH}}view_library/js/registration-pop-up-js.js"></script>
+   

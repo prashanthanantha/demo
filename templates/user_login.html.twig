@@ -1,0 +1,247 @@
+<section >
+        <div class="new_index_page_listing_posts_bg" >
+            <div class="new_login_page_outter_bg">
+                <div class="container">
+                    <div class="new_login_page_inner_bg">
+                        <div class="edit_form_page_heading_bg">
+                            <h1 class="edit_form_page_heading">Login </h1>
+                        </div>  
+                        <div class="new_login_form_bg">
+                            <form action="#" method="POST" class="new_login_form_page">
+                                <div class="new_login_form_form_group_bg">
+                                    <div class="new_login_form_label_bg">
+                                        <label for="login-username" class="new_login_form_label" >Email</label>
+                                    </div>
+                                    <div class="new_login_form_input_type_bg">
+                                        <input type="text" id="login-username" name="email" class="input_type_text" placeholder="example123@gmail.com">
+                                    </div>
+                                </div>
+                                <div class="new_login_form_form_group_bg">
+                                    <div class="new_login_form_label_bg">
+                                        <label for="login-password" class="new_login_form_label" >password</label>
+                                    </div>
+                                    <div class="new_login_form_input_type_bg">
+                                        <input type="password" id="login-password" name="password" class="input_type_text" placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="new_login_form_form_group_bg">
+                                    <div class="new_login_form_label_bg">
+                                        <label for="login-remember" class="new_login_form_label" >remember me</label>
+                                    </div>
+                                    <div class="new_login_form_input_type_bg">
+                                        <input type="checkbox" id="login-remember"  name="remember" value="1">
+                                    </div>
+                                </div>
+                                <div class="new_login_form_submit_button_bg">
+                                    <button type="button" class="new_button new_button_blue" id="loginform">Login</button>
+                                    <button type="button" class="new_button new_button_red" onclick="GoBackWithRefresh();return false;" >cancel</button>
+                                </div>
+                            </form>
+                            <div class="new_login_form_account_links_bg">
+                                <div class="new_login_form_account_left_link_bg">
+                                    <a href="{{GLOBAL_DIR_PATH}}register.php/register-form" class="new_login_form_account_left_link">Don't Have An Account</a>
+                                </div>
+                                <div class="new_login_form_account_right_link_bg">
+                                    <a href="{{GLOBAL_DIR_PATH}}forgot.php/forgot-form" class="new_login_form_account_right_link">Forgot Password</a>
+                                </div>
+                            </div>
+                        </div>        
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </section> 
+    <!--login Pop Up-->
+
+   <section>
+       <div class="success_pop_up_bg" id="login-users">
+           <div class="success_pop_up_content_bg">
+               <div class="success_pop_up_header_bg">
+                   <span class="pop_up_close_button1">&times;</span>
+               </div>
+               <div class="success_pop_up_body_bg">
+                   <div class="success_pop_up_body_icon_bg">
+                       <i class="fas fa-exclamation"></i>
+                   </div>
+                   <div class="success_pop_up_body_invalid_user_bg">
+                       invalid credentials
+                   </div>
+                   <div class="success_pop_up_body_user_name_bg">
+                       Please try again
+                   </div>
+               </div>
+           </div>
+       </div>
+   </section>
+   <!--END login Pop Up-->
+   <script>
+   $("#loginform").click(function(event){
+        var email = $("#login-username").val();
+        var password = $("#login-password").val();
+        $response_usr = loginValidation();
+    if($response_usr == false){
+      return false;
+    }
+
+        $.ajax({
+            url: "{{ GLOBAL_DIR_PATH }}login.php/login",
+            type: "post",
+            data: {"email":email,"password":password},
+            success: function (response) {
+                response = JSON.parse(response);
+                
+                if(response.success != '' && response.success != null){
+                    var current_url = response.url;
+                    if(current_url == 'index.php'){
+                        window.location.href = '{{ GLOBAL_DIR_PATH }}';
+                    } else {
+                        window.location.href = '{{ GLOBAL_DIR_PATH }}';
+                    }
+                }else{
+                  modals("login-users");
+                }
+            },
+            error: function () {
+                $("#validationError").addClass('has-error');
+                $("#validationError span").html('Invalid Login Credentials');
+            }
+        });
+        event.preventDefault();
+    });
+
+    $('#login-username').keypress(function (e) {
+  if (e.which == 13) {
+    var email = $("#login-username").val();
+        var password = $("#login-password").val();
+    $response_usr = loginValidation();
+    if($response_usr == false){
+      return false;
+    }
+    $.ajax({
+            url: "{{ GLOBAL_DIR_PATH }}login.php/login",
+            type: "post",
+            data: {"email":email,"password":password},
+            success: function (response) {
+                response = JSON.parse(response);
+                if(response.success != '' && response.success != null){
+                    var current_url = response.url;
+                    if(current_url == 'index.php'){
+                        window.location.href = '{{ GLOBAL_DIR_PATH }}';
+                    } else {
+                        window.location.href = '{{ GLOBAL_DIR_PATH }}';
+                    }
+                }else{
+                    $("#error_message_login").html(response.error);
+                    setTimeout(function() {
+                      $("#error_message_login").html('');
+                    }, 5000);
+                }
+            },
+            error: function () {
+                $("#validationError").addClass('has-error');
+                $("#validationError span").html('Invalid Login Credentials');
+            }
+        });
+        event.preventDefault();
+  }
+});
+
+
+
+    $('#login-password').keypress(function (e) {
+  if (e.which == 13) {
+    var email = $("#login-username").val();
+        var password = $("#login-password").val();
+    $response_usr = loginValidation();
+    if($response_usr == false){
+      return false;
+    }
+    $.ajax({
+            url: "{{ GLOBAL_DIR_PATH }}login.php/login",
+            type: "post",
+            data: {"email":email,"password":password},
+            success: function (response) {
+                response = JSON.parse(response);
+                if(response.success != '' && response.success != null){
+                    var current_url = response.url;
+                    if(current_url == 'index.php'){
+                        window.location.href = '{{ GLOBAL_DIR_PATH }}';
+                    } else {
+                        window.location.href = '{{ GLOBAL_DIR_PATH }}';
+                    }
+                }else{
+                    $("#error_message_login").html(response.error);
+                    setTimeout(function() {
+                      $("#error_message_login").html('');
+                    }, 5000);
+                }
+            },
+            error: function () {
+                $("#validationError").addClass('has-error');
+                $("#validationError span").html('Invalid Login Credentials');
+            }
+        });
+        event.preventDefault();
+  }
+});
+
+
+    $(function() {
+
+    if (localStorage.chkbx && localStorage.chkbx != '') {
+        $('#login-remember').attr('checked', 'checked');
+        $('#login-username').val(localStorage.usrname);
+        $('#login-password').val(localStorage.pass);
+    } else {
+        $('#login-remember').removeAttr('checked');
+        $('#login-username').val('');
+        $('#login-password').val('');
+    }
+
+    $('#login-remember').click(function() {
+
+        if ($('#login-remember').is(':checked')) {
+            
+            localStorage.usrname = $('#login-username').val();
+            localStorage.pass = $('#login-password').val();
+            localStorage.chkbx = $('#login-remember').val();
+        } else {
+            localStorage.usrname = '';
+            localStorage.pass = '';
+            localStorage.chkbx = '';
+        }
+    });
+});
+
+   
+
+    function loginValidation(){
+ 
+   var errors = '';
+        if($('#login-username').prop('value').trim() == '') {
+            $('#login-username').addClass('error-placeholder').attr('placeholder', 'Please enter your email');
+                errors += " Please enter your Email. <br/>";
+            }
+        if($('#login-password').prop('value').trim() == '') {
+            $('#login-password').addClass('error-placeholder').attr('placeholder', 'Please enter your password');
+                errors += " Please enter your password. <br/>";
+            }
+
+        if($('#login-username').prop('value') != '') {
+            var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if (!filter.test($('#login-username').prop('value'))) {
+                $('#login-username').addClass('error-placeholder').val('').attr('placeholder', 'Please enter a valid email');
+                errors += " Please enter a valid email. <br/>";
+            }
+            var em = $('#login-username').prop('value');
+        }
+
+        if (errors != '') {
+            return false;
+        }
+}
+
+   </script>
+   <script type="text/javascript" src="{{ GLOBAL_DIR_PATH }}view_library/js/new-js.js"> </script>
+   
+    <script src="{{GLOBAL_DIR_PATH}}view_library/js/modal-js.js"></script>

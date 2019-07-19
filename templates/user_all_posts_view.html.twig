@@ -1,0 +1,186 @@
+<div class="user_post_wrapper_bg">
+        <section>
+            <div class="new_user_post_view_all_page_section_bg">
+                <div class="container">
+                    <div class="new_user_post_view_all_page_bg">
+                        <div class="new_user_post_view_all_page_user_details_top_bg">
+                            <div class="new_user_post_view_all_page_user_details_top_image_bg_user_details_bg">
+                                <div class="new_user_post_view_all_page_user_details_top_image_bg">
+                                    {% if user_all_posts.0.mnst_user_posts.user_image !=''%}
+                                    <img src="{{user_all_posts.0.mnst_user_posts.user_image}}" alt="{{user_all_posts.0.mnst_user_posts.create_by}}" class="new_user_post_view_all_page_user_details_top_image">
+                                    {% else %}
+                                    <div class="new_user_post_view_all_page_user_details_top_user_name_bg ">
+                                        <div class="new_user_post_view_all_page_user_details_top_user_name_letters ">
+                                            <span class="new_user_post_view_all_page_user_details_top_user_name_initial_letters ">{{user_all_posts.0.mnst_user_posts.firstname|slice(0, 1)}}{{user_all_posts.0.mnst_user_posts.lastname|slice(0, 1)}}</span>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                <ul class="new_user_post_view_all_page_user_details_top_details_bg">
+                                    <li >
+                                        <i class="fas fa-user"></i>
+                                    <span >{{user_all_posts.0.mnst_user_posts.create_by}}</span>
+                                    <span >({{user_all_posts.0.mnst_user_posts.counts}} posts)</span>
+                                    </li>
+                                    <li >Member Since {{user_all_posts.0.mnst_user_posts.created_at}}</li>
+                                    {% if user_all_posts.0.mnst_user_posts.user_email !=''%}
+                                    <li ><i class="far fa-envelope"></i><a href="mailto:{{user_all_posts.0.mnst_user_posts.user_email}}" >{{user_all_posts.0.mnst_user_posts.user_email}}</a></li>
+                                    {% endif %}
+                                    {% if user_all_posts.0.mnst_user_posts.user_phone !=''%}
+                                    <li ><i class="fas fa-mobile-alt"></i>{{user_all_posts.0.mnst_user_posts.user_phone}}</li>
+                                    {% endif %}
+                                </ul>
+                            </div>    
+                            <div class="new_user_post_view_all_page_user_details_top_my_search_box_bg">
+                                <form id="search-posts" class="user_post_page_form_bg" method="POST">
+                                    <input type="hidden" value="{{user_all_posts.0.mnst_user_posts.create_by|replace({' ':'-'})}}" name="user_name" id="user-name">
+                                    <input type="text" class="new_user_post_input_type_text" placeholder="Search A Keyword" name="serach_value" id="search-value">
+                                    <button type="button" id="search-user-posts" class="new_user_post_input_type_submit"><i class="fas fa-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                                <div class="search_results_for_bg">
+                                    <div class="search_results_for">
+                                        {% if search_contain !='' %}
+                                        <span class="search_results_for_inner_left">Search Results For:</span>
+                                        <span class="search_results_for_inner_right">{{search_contain}}</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% if total_pages != 0 %}
+                                <div class="if_search_results_found_bg">
+                                    <!--left-side-box-->
+
+                                     {% for user_posts in user_all_posts %}
+                                
+    {% set category_name = user_posts.mnst_user_posts.category_name|replace({" ": "-"})%}
+    {% set subcategory_name = user_posts.mnst_user_posts.subcategory_name|replace({" ": "-"})%}
+                                <div class="new_user_post_view_all_page_left_side_box">
+                                    <div class="new_user_post_view_all_page_left_side_box_image_bg">                               
+                                        <img src="http://localhost/manast_curl_changes/uploads/post_image/{{user_posts.mnst_user_posts.post_images.0}}" alt="{{user_posts.mnst_user_posts.post_name}}" class="new_user_post_view_all_page_left_side_box_image">
+                                        <a href="#" class="new_user_post_view_all_page_left_side_box_image_link_bg">
+                                            <div class="new_user_post_view_all_page_left_side_box_image_overlay_bg">                                        
+                                                    view post                                              
+                                            </div>   
+                                        </a>                                 
+                                    </div>
+                                    <div class="new_user_post_view_all_page_left_side_box_post_details_bg">
+                                        <div class="new_user_post_view_all_page_left_side_box_post_details">
+                                            <div class="new_user_post_view_all_page_left_side_box_post_details_heading_bg_and_price_bg">
+                                                <div class="new_user_post_view_all_page_left_side_box_post_details_heading_bg">
+                                                    <h3 class="new_user_post_view_all_page_left_side_box_post_details_heading">
+                                                        <a href="#" class="new_user_post_view_all_page_left_side_box_post_details_heading_link_bg">{{user_posts.mnst_user_posts.post_name}}</a>
+                                                    </h3>                                    
+                                                </div>
+                                                <div class="new_user_post_view_all_page_left_side_box_post_details_price_bg">
+                                                    <div class="new_user_post_view_all_page_left_side_box_post_details_price">
+                                                        {% if user_posts.mnst_user_posts.price !='' %}
+                                                        <i class="fas fa-dollar-sign"></i> {{user_posts.mnst_user_posts.price}}
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="new_user_post_view_all_page_left_side_box_post_details_category_bg_sub_category_bg">
+                                                <div class="new_user_post_view_all_page_left_side_box_post_details_category_bg">{{user_posts.mnst_user_posts.category_name}}</div>
+                                                <div class="new_user_post_view_all_page_left_side_box_post_details_sub_category_bg">{{user_posts.mnst_user_posts.subcategory_name}}</div>
+                                            </div>
+                                            <div class="new_user_post_view_all_page_left_side_box_post_details_description_bg">
+                                                <div class="new_user_post_view_all_page_left_side_box_post_details_description">
+                                                    {{user_posts.mnst_user_posts.description}}
+                                                </div>  
+                                                <div class="new_user_post_view_all_page_left_side_box_post_details_read_more_link_bg">
+                                                    <a href="{{ GLOBAL_DIR_PATH }}services.php/{{category_name}}/{{subcategory_name}}/{{user_posts.mnst_user_posts.url_name}}" class="new_user_post_view_all_page_left_side_box_post_details_read_more_link">view details</a>
+                                                </div>  
+                                            </div>
+                                        </div>        
+                                        <div class="new_user_post_view_all_page_left_side_box_post_details_post_date_read_more_link_bg">
+                                            <div class="new_user_post_view_all_page_left_side_box_post_details_post_date_bg">
+                                                <i class="far fa-clock"></i>
+                                                {{user_posts.mnst_user_posts.posted_at}}
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                    <!--END left-side-box-->
+                                   <!--  <div class="new_user_post_view_all_page_pagination_bg">
+                                        <ul class="new_user_post_view_all_page_pagination">
+                                            <li class="active"><a href="#">1</a></li>
+                                            <li><a href="#">2</a></li>
+                                            <li><a href="#">3</a></li>
+                                            <li><a href="#">4</a></li>
+                                            <li><a href="#">5</a></li>
+                                        </ul>
+                                    </div> -->
+                                        <div class="pagination-cus">
+          {% set page_pagination = pagination %}
+
+            {% if total_pages is defined and total_pages > 0 %}
+            {% if(pagination == 1) or (pagination < 1)%}
+                {% set left_arrow_style = "disableArrow" %}
+                {% set left_arrow_anchor_style = "disabledAnch" %}
+                {% set page_pagination = 1 %}
+            {% endif %}
+            {% if(pagination >= total_pages) %} 
+                {% set right_arrow_style = "disableArrow" %}
+                {% set right_arrow_anchor_style = "disabledAnch" %}
+                {% set page_pagination = total_pages %}
+            {% endif %}     
+        
+        <ul class="pager">
+            {% if search_contain =='' %}
+          <li class="page-item"><a class="page-link {{ left_arrow_anchor_style }}" href="{{ GLOBAL_DIR_PATH }}/posts.php/user/all-posts/{{user_all_posts.0.mnst_user_posts.create_by|replace({' ':'-'})}}/{{page_pagination-1}}" >Previous</a></li>
+          <input id="" name="page_pagination" type="text" class="off-page" value=" {{ page_pagination }} of {{ total_pages }} " readonly/>
+          <li class="page-item"><a class="page-link {{ right_arrow_anchor_style }}" href="{{ GLOBAL_DIR_PATH }}/posts.php/user/all-posts/{{user_all_posts.0.mnst_user_posts.create_by|replace({' ':'-'})}}/{{page_pagination+1}}" >Next</a></li>
+          {% else %}
+          <li class="page-item"><a class="page-link {{ left_arrow_anchor_style }}" href="{{ GLOBAL_DIR_PATH }}/posts.php/user/all-posts/{{user_all_posts.0.mnst_user_posts.create_by|replace({' ':'-'})}}/{{search_contain}}/{{page_pagination-1}}" >Previous</a></li>
+          <input id="" name="page_pagination" type="text" class="off-page" value=" {{ page_pagination }} of {{ total_pages }} " readonly/>
+          <li class="page-item"><a class="page-link {{ right_arrow_anchor_style }}" href="{{ GLOBAL_DIR_PATH }}/posts.php/user/all-posts/{{user_all_posts.0.mnst_user_posts.create_by|replace({' ':'-'})}}/{{search_contain}}/{{page_pagination+1}}" >Next</a></li>
+          {% endif %}
+        </ul>
+      {% endif %} 
+            </div>
+                                </div>    
+                                 <!--END if search results found -->   
+                                 {% else %}
+                                 <div class="if_search_results_not_found_bg">
+                                    <div class="no_search_results_bg">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="no_search_results_left_bg">
+                                                    <i class="fas fa-search"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="no_search_results_right_bg">
+                                                    <span>sorry</span>
+                                                    <span>no result </span>
+                                                    <span>found </span>
+                                                </div>
+                                            </div>   
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="search_page_go_home_link_bg">
+                                                    <a href="#" class="search_page_go_home_link"><i class="fas fa-plus"></i>post ad</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                    <!--END if search results not found-->
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="{{GLOBAL_DIR_PATH}}view_library/js/new-js.js"></script>  

@@ -1,0 +1,569 @@
+ <!DOCTYPE html >
+ <!-- Microdata markup added by Google Structured Data Markup Helper. -->
+<html lang="en">
+<head>
+<meta name="google-site-verification" content="OJn0cmeYw25MOIdemydwTALc5e5XEB6sAawOBeXDX-M" />
+<meta name="msvalidate.01" content="46478A14146AB81A32E26C930E72D5F5" />
+<meta name="viewport" content="width=device-width">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/png" href="{{ GLOBAL_DIR_PATH }}view_library/images/logo1.png">
+{% if( metas_result is defined and metas_result is not empty) %} 
+{% for metas in metas_result  %}
+<title>{{ metas.mnst_metas.title}}{{ metas.mnst_new_event.event_name}}</title>
+<meta name="description" content="{{ metas.mnst_metas.description }}{{ metas.mnst_new_event.event_description|slice(0, 150)}}" />
+<meta name="keywords" content="{{ metas.mnst_metas.keywords }}"/>
+<meta property="og:title" content="{{ metas.mnst_metas.title}}{{ metas.mnst_new_event.event_name}}" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="{{url}} "/>
+<meta property="og:image" content="{{ GLOBAL_DIR_PATH }}view_library/images/{{ metas.mnst_new_event.event_images.0}}" />
+<meta property="og:description" content="{{ metas.mnst_new_event.event_description|slice(0, 150)}}"/>
+<meta property="og:site_name" content="manastlouis.com" />
+
+<meta name='twitter:card' content='summary_large_image' />
+<meta name='twitter:title' content='{{ metas.mnst_metas.title}}{{ metas.mnst_new_event.event_name}}'/>
+<meta name='twitter:url' content='{{url}}' />
+<meta name='twitter:description' content='{{ metas.mnst_new_event.event_description|slice(0, 150)}}' />
+<meta name='twitter:image' content='{{ GLOBAL_DIR_PATH }}view_library/images/{{ metas.mnst_new_event.event_images.0}}' />
+
+<meta itemprop='name' content='{{ metas.mnst_metas.title}}{{ metas.mnst_new_event.event_name}}'>
+<meta itemprop='description' content='{{ metas.mnst_new_event.event_description|slice(0, 150)}}'>
+<meta itemprop='image' content='{{ GLOBAL_DIR_PATH }}view_library/images/{{ metas.mnst_new_event.event_images.0}}'>
+
+
+<link rel="image_src" href="{{ GLOBAL_DIR_PATH }}view_library/images/{{ metas.mnst_new_event.event_images.0}}"/>
+
+
+
+
+{% endfor %}
+{% elseif url == 'www.manastlouis.com/index.php/contact-us' %}
+<title>Contact Us- Mana St.Louis</title>
+<meta name="description" content="For More Details Please Contact Manastlouis" />
+<meta name="keywords" content="St Louis, St. Louis city, Missouri, united states, saint Louis, services, Contact Us, phone number,email id, information, mana St.Louis info, office address, office contact number, mo, manast.louis details"/>
+{% elseif url == 'www.manastlouis.com/index.php/disclaimer' %}
+<title>Disclaimer-Mana St.Louis</title>
+<meta name="description" content="manastlouis.com gives complete details of St.Louis city and the information is solely provided by our website users" />
+<meta name="keywords" content="St Louis, St. Louis city, Missouri, united states, saint Louis, services, office contact number, mo, Tourist places, Apartments, Universities, Restaurants, Worshipping places, Grocery shops, Health centers, Disclaimer, manast.louis details"/>
+{% elseif url == 'www.manastlouis.com/index.php/about-us' %}
+<title>About Us-Mana St.Louis</title>
+<meta name="description" content="St.Louis is one of the largest metropolitan cities in the United States. Get the Information related to St.Louis Services" />
+<meta name="keywords" content="St. Louis, Missouri, St. Louis city, services, saint Louis, grocery stores, restaurants, healthcare centers , movies , classifieds, place of workship, events, price comparison, jobs, mo, usa, About Us,united states"/>
+{% else %}
+<title>St Louis Restaurants And Accommodation|Saint Louis Events And Movies</title>
+<meta name="description" content="Saint Louis Is a Best Visiting Places In U.S. for Best Restaurants, Temples, Hospitals, Services, and Upcoming Movies And Events In St Louis, MO" />
+<meta name="keywords" content="st louis, our services, st louis updates, st louis visiting places, best restaurants in st louis, st louis movie updates , st louis city guidance, rentals in st louis, st louis health care, theatres in st louis, st louis update news, st louis live updates, saint louis visiting places, visiting places near st louis, st. louis area grocery stores, discount grocery stores st louis, st louis ayyappa temple, st louis hindu temple address, st louis health care clinics"/>
+<meta property="og:title" content="St Louis Restaurants And Accommodation|Saint Louis Events And Movies" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="{{ GLOBAL_DIR_PATH }} "/>
+<meta property="og:image" content="{{ GLOBAL_DIR_PATH }}view_library/images/logo1.png" />
+<meta property="og:description" content="Saint Louis Is a Best Visiting Places In U.S. for Best Restaurants, Temples, Hospitals, Services, and Upcoming Movies And Events In St Louis, MO"/>
+<meta property="og:site_name" content="manastlouis.com" />
+<noscript><img src="{{ GLOBAL_DIR_PATH }}view_library/images/logo1.png" alt="logo"></noscript>
+
+<meta name='twitter:card' content='summary_large_image' />
+<meta name='twitter:title' content='St Louis Restaurants And Accommodation|Saint Louis Events And Movies'/>
+<meta name='twitter:url' content='{{ GLOBAL_DIR_PATH }}' />
+<meta name='twitter:description' content='Saint Louis Is a Best Visiting Places In U.S. for Best Restaurants, Temples, Hospitals, Services, and Upcoming Movies And Events In St Louis, MO' />
+<meta name='twitter:image' content='{{ GLOBAL_DIR_PATH }}view_library/images/logo1.png' />
+<link rel="canonical" href="{{ GLOBAL_DIR_PATH }}" />
+{% endif %}
+
+	
+	
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" > 
+    <!--vendor cdn's-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <!--vendor cdn's-->
+	<link href="{{ GLOBAL_DIR_PATH }}view_library/css/style.css" rel="stylesheet" type="text/css"/>
+  <link href="{{ GLOBAL_DIR_PATH }}view_library/css/new-style.css" rel="stylesheet" type="text/css"/>
+	<!-- <link href="{{ GLOBAL_DIR_PATH }}view_library/css/media.css" rel="stylesheet" type="text/css"/> -->
+  <link href="{{ GLOBAL_DIR_PATH }}view_library/css/new-media.css" rel="stylesheet" type="text/css"/>	
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.css">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-123727411-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+          var ga = document.createElement('script');
+          ga.type = 'text/javascript';
+          ga.async = true;
+          ga.src=(document.location.protocol == 'https:' ?
+                    'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(ga, s);
+        })();
+      </script> -->
+<style type="text/css">
+        .error-placeholder::-moz-placeholder {
+          color: #a94442;
+          opacity: 1;
+         }
+       .error-placeholder:-ms-input-placeholder {
+          color: #a94442;
+       }
+       .error-placeholder::-webkit-input-placeholder {
+         color: #a94442;
+        }
+    .disabledAnch {
+       pointer-events: none;
+       cursor: default;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+        <div class="new_header_top_bg">
+            <div class="container">
+                <div class="new_header_top">
+                    <div class="new_header_logo_bg">
+                      <a href="{{ GLOBAL_DIR_PATH }}">
+                          <img src="https://www.manastlouis.com/view_library/images/logo1.png" alt="manastlouis-logo" class="new_manastlouis_logo_responsive">
+                      </a>
+                    </div>
+                    <div class="new_header_search_box_bg ">
+                        <div class="new_header_search_box_mobile_bg hidden-lg">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="new_header_search_box_desktop_bg hidden-xs" >
+                            <form action="#" id="search-form" method="POST">
+                                <label for="searchValue" class="new_header_search_box_label_bg">
+                                    <input type="search" name="googlesearch" class="new_header_search_box_input_type_text_bg" id="searchValue" placeholder="Search Here">
+                                    <button type="button" class="new_header_search_box_input_type_submit_bg"><i class="fas fa-search" id="searchBtn"></i></button>
+                                </label>
+                            </form>
+                        </div>    
+                    </div>
+                    <div class="new_header_login_sign_up_post_bg ">
+                          {% if(first_name == 'login') %}
+                        <div class="new_header_login_button_bg hidden-xs">
+                            <a href="{{GLOBAL_DIR_PATH}}login.php/login-form" class="new_header_login_button">login</a>
+                        </div>
+                            {% else %}
+                        <div class="new_header_login_button_bg">
+                            <div class="new_nav_bar_user_profile_image_bg">
+                                <div class="new_nav_bar_user_profile_image_name_letters_bg new_nav_common_class">
+                                  {% if( user_image is defined and user_image is not empty) %} 
+                                    <div class="new_nav_bar_user_profile_image new_nav_common_class">    
+                                        <img src="{{ user_image }}" class="nav_bar_user_profile_image_bg new_nav_common_class">
+                                    </div>
+                                    {% else %}
+                                    <div class="new_nav_bar_user_profile_name_letters_bg new_nav_common_class">
+                                        <div class="new_nav_bar_user_profile_name_letters new_nav_common_class">
+                                            <span class="new_nav_bar_profile_initial_letters new_nav_common_class">{{firstname|slice(0,1)}}</span>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                </div>    
+                                <!--drop down user menu-->
+                                <div class="new_nav_bar_profile_dropdown"  >
+                                    <ul class="new_nav_bar_profile_user_email_id">
+                                        <li>Welcome !</li>
+                                        <li>{{email}}</li>
+                                    </ul>
+                                    <ul class="new_nav_bar_profile_user_details">
+                                        <li><i class="fas fa-address-card"></i><a href="{{ GLOBAL_DIR_PATH }}accountInfo.php/my-account">my account</a></li>
+                                        <!-- <li><i class="fas fa-ad"></i><a href="{{ GLOBAL_DIR_PATH }}userPostList.php/userPostList/{{ user_id }}/1/allPosts">my posts</a></li> -->
+                                        <li><i class="fas fa-unlock"></i><a href="{{ GLOBAL_DIR_PATH }}change-password.php/change-password/{{ user_id }}">change password</a></li>
+                                        <li><i class="fas fa-handshake"></i><a href="#">support</a></li>
+                                        <li><i class="fas fa-sign-out-alt"></i><a href="{{ GLOBAL_DIR_PATH }}index.php/logout">log-out</a></li>
+                                    </ul>
+                                </div>                               
+                                <!--drop down user menu-->
+                            </div>    
+                        </div>
+                        {% endif %}
+                        <div class="new_header_login_button_bg hidden-xs">
+                          {% if(first_name == 'login') %}
+                            <a href="{{GLOBAL_DIR_PATH}}login.php/login-form" class="new_header_add_post_button"><i class="fas fa-plus"></i>Post Ad</a>
+                            {% else %}
+                            <a href="{{GLOBAL_DIR_PATH}}add-post.php/add-post-form" class="new_header_add_post_button"><i class="fas fa-plus"></i>Post Ad</a>
+                            {% endif %}
+                        </div>
+                    </div>    
+                </div>    
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="nav_bar_total_bg">
+            <div class="nav_bar_button_bg">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <div class="nav_bar_list_bg">
+                <div class="nav_bar_list_inner_bg">
+                    <div class="accordion_close_button">&times;</div>
+                    <button class="accordion_button">{{ nav_result[0].mnst_category.category_name }}</button>
+                    <div class="accordion_content">
+                        <ul class="nav_bar_dropdown_list">
+                       {% for sub_nav in sub_ct_result %}
+                      {% set catname = sub_nav.category_name|replace({' ': '-'}) %}
+                      {% set catname = sub_nav.category_name|replace({' ': '-'}) %}
+                       {% if(sub_nav.category_id == nav_result[0].mnst_category.id) %}
+                            <li><a href="{{ GLOBAL_DIR_PATH }}posts.php/{{state}}/{{city}}/{{catname}}/{{sub_nav.subcategory_name}}/1">{{sub_nav.subcategory_name}}</a></li>
+                             {% endif %}
+                       {% endfor %}
+                        </ul>
+                    </div>    
+                        
+                    <button class="accordion_button " >{{ nav_result[1].mnst_category.category_name }}<i class="fas fa-gopuram"></i></button>
+                    <div class="accordion_content">
+                        <ul class="nav_bar_dropdown_list">
+                          {% for sub_nav in sub_ct_result %} 
+               {% set catname = sub_nav.category_name|replace({' ': '-'}) %}
+                  {% if(sub_nav.category_id == nav_result[1].mnst_category.id) %}
+                            <li><a href="{{ GLOBAL_DIR_PATH }}posts.php/{{state}}/{{city}}/{{catname}}/{{sub_nav.subcategory_name}}/1">{{sub_nav.subcategory_name}}</a></li>
+                            {% endif %}
+                {% endfor %}
+                        </ul>
+                    </div>
+                
+                    <button class="accordion_button " >{{ nav_result[2].mnst_category.category_name }}<i class="fas fa-store"></i></button>
+                    <div class="accordion_content">
+                        <ul class="nav_bar_dropdown_list">
+                          {% for sub_nav in sub_ct_result %} 
+                {% set catname = sub_nav.category_name|replace({' ': '-'}) %}
+                  {% if(sub_nav.category_id == nav_result[2].mnst_category.id) %}
+                            <li><a href="{{ GLOBAL_DIR_PATH }}posts.php/{{state}}/{{city}}/{{catname}}/{{sub_nav.subcategory_name}}/1">{{sub_nav.subcategory_name}}</a></li>
+                            {% endif %}
+                {% endfor %}
+                            
+                        </ul>
+                    </div>    
+                
+                    <button class="accordion_button " >{{ nav_result[3].mnst_category.category_name }}<i class="fas fa-utensils"></i></button>
+                    <div class="accordion_content">
+                        <ul class="nav_bar_dropdown_list">
+                          {% for sub_nav in sub_ct_result %} 
+                {% set catname = sub_nav.category_name|replace({' ': '-'}) %}
+                  {% if(sub_nav.category_id == nav_result[3].mnst_category.id) %}
+                            <li><a href="{{ GLOBAL_DIR_PATH }}posts.php/{{state}}/{{city}}/{{catname}}/{{sub_nav.subcategory_name}}/1">{{sub_nav.subcategory_name}}</a></li>
+                             {% endif %}
+                {% endfor %}
+                        </ul>
+                    </div>    
+                
+                    <button class="accordion_button "  >{{ nav_result[4].mnst_category.category_name }}<i class="fas fa-briefcase-medical"></i></button>
+                    <div class="accordion_content">
+                        <ul class="nav_bar_dropdown_list">
+                          {% for sub_nav in sub_ct_result %} 
+                {% set catname = sub_nav.category_name|replace({' ': '-'}) %}
+                  {% if(sub_nav.category_id == nav_result[4].mnst_category.id) %}
+                            <li><a href="{{ GLOBAL_DIR_PATH }}posts.php/{{state}}/{{city}}/{{catname}}/{{sub_nav.subcategory_name}}/1">{{sub_nav.subcategory_name}}</a></li>
+                            {% endif %}
+                {% endfor %}
+                        </ul>
+                    </div>
+                
+                    <button class="accordion_button " >{{ nav_result[5].mnst_category.category_name }} <i class="fas fa-film"></i></button>
+                    <div class="accordion_content">
+                        <ul class="nav_bar_dropdown_list">
+                          {% for sub_nav in sub_ct_result %} 
+                {% set catname = sub_nav.category_name|replace({' ': '-'}) %}
+                  {% if(sub_nav.category_id == nav_result[5].mnst_category.id) %}
+                            <li><a href="{{ GLOBAL_DIR_PATH }}posts.php/{{state}}/{{city}}/{{catname}}/{{sub_nav.subcategory_name}}/1">{{sub_nav.subcategory_name}}</a></li>
+                            {% endif %}
+                {% endfor %}
+                        </ul>
+                    </div>    
+                
+                    <button class="accordion_button "  >{{nav_result[10].mnst_category.category_name }} <i class="fas fa-glass-cheers"></i></button>
+                    <div class="accordion_content">
+                        <ul class="nav_bar_dropdown_list">
+                          {% for sub_nav in sub_ct_result %} 
+               {% set catname = sub_nav.category_name|replace({' ': '-'}) %}
+                  {% if(sub_nav.category_id == nav_result[10].mnst_category.id) %}
+                            <li><a href="{{ GLOBAL_DIR_PATH }}posts.php/{{state}}/{{city}}/{{catname}}/{{sub_nav.subcategory_name}}/1">{{sub_nav.subcategory_name}}</a></li>
+                             {% endif %}
+                {% endfor %}
+                        </ul>
+                    </div>
+                
+                    <button href="#" class="accordion_single_button " >{{ nav_result[6].mnst_category.category_name }}<i class="fas fa-dollar-sign"></i></button>
+                    
+                    <button class="accordion_button " >{{ nav_result[7].mnst_category.category_name }}</button>
+                    <div class="accordion_content">
+                        <ul class="nav_bar_dropdown_list">
+                          {% for sub_nav in sub_ct_result %} 
+                {% set catname = sub_nav.category_name|replace({' ': '-'}) %}
+                  {% if(sub_nav.category_id == nav_result[7].mnst_category.id) %}
+                            <li><a href="{{ GLOBAL_DIR_PATH }}posts.php/{{state}}/{{city}}/{{catname}}/{{sub_nav.subcategory_name}}/1">{{sub_nav.subcategory_name}}</a></li>
+                            {% endif %}
+                {% endfor %}
+                        </ul>
+                    </div>
+                
+                    <button class="accordion_button "  >{{ nav_result[8].mnst_category.category_name }}<i class="far fa-newspaper"></i></button>
+                    <div class="accordion_content">
+                        <ul class="nav_bar_dropdown_list">
+                          {% for sub_nav in sub_ct_result %} 
+                {% set catname = sub_nav.category_name|replace({' ': '-'}) %}
+                  {% if(sub_nav.category_id == nav_result[8].mnst_category.id) %}
+                            <li><a href="{{ GLOBAL_DIR_PATH }}posts.php/{{state}}/{{city}}/{{catname}}/{{sub_nav.subcategory_name}}/1">{{sub_nav.subcategory_name}}</a></li>
+                            {% endif %}
+                {% endfor %}
+                        </ul>
+                    </div>
+                
+                    <button class="accordion_button "  >{{ nav_result[9].mnst_category.category_name }}  <i class="fas fa-cogs"></i></button>
+                    <div class="accordion_content">
+                        <ul class="nav_bar_dropdown_list">
+                          {% for sub_nav in sub_ct_result %} 
+                {% set catname = sub_nav.category_name|replace({' ': '-'}) %}
+                  {% if(sub_nav.category_id == nav_result[9].mnst_category.id) %}
+                            <li><a href="{{ GLOBAL_DIR_PATH }}posts.php/{{state}}/{{city}}/{{catname}}/{{sub_nav.subcategory_name}}/1">{{sub_nav.subcategory_name}}</a></li>
+                            {% endif %}
+                {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--delete Pop Up-->
+   <section>
+       <div class="success_pop_up_bg" id="pop_up_mana">
+           <div class="registration_pop_up_content_bg">
+               <div class="success_pop_up_header_bg">
+                   <span class="pop_up_close_button">&times;</span>
+               </div>
+               <div class="success_pop_up_body_bg">
+                   <div class="success_pop_up_body_icon_bg">
+                       <i class="fas fa-exclamation"></i>
+                   </div>
+                   <div class="success_pop_up_body_invalid_user_bg">
+                       are you sure
+                   </div>
+                   <div class="registration_pop_up_body_user_name_bg">
+                       Once deleted, you will not be able to recover this post!
+                   </div>
+                   <div class="pop_up_close_button_bg">
+                       <button type="button" class="pop_up_close_button">Close</button>
+                    <form id="delete-form" method="POST"> 
+            <input type="hidden" name="post_id" id="delete-post-id" value="">
+            <input type="hidden" name="user_id" value="{{user_id}}">
+                       <button type="submit" id ="delete-post" class="pop_up_delete_button">Yes Delete</button>
+                    </form>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </section>
+   <!--END delete Pop Up-->
+
+{% if(page == 'index') %}
+{% include 'index.html.twig' %}
+{% elseif(page == 'home') %}
+{% include 'home.html.twig' %}
+{% elseif(page == 'commonPost') %}
+{% include 'posts.html.twig' %}
+
+{% elseif(page == 'accountInfo') %}
+{% include 'my_account.html.twig' %}
+{% elseif(page == 'userPostList') %}
+{% include 'userPostList.html.twig' %}
+
+{% elseif(page == 'changePassword') %}
+{% include 'change_password.html.twig' %}
+{% elseif(page == 'forgotPassword') %}
+{% include 'forgot_password.html.twig' %}
+{% elseif(page == 'resetPassword') %}
+{% include 'reset_password.html.twig' %}
+{% elseif(page == 'search') %}
+{% include 'search.html.twig' %}
+{% elseif(page == 'forgotPasswordUser') %}
+{% include 'forgot.html.twig' %}
+
+{% elseif(page == 'register_form') %}
+{% include 'user_register.html.twig' %}
+
+{% elseif(page == 'login_form') %}
+{% include 'user_login.html.twig' %}
+
+{% elseif(page == 'forgot_form') %}
+{% include 'user_forgot.html.twig' %}
+
+{% elseif(page == 'addpost_form') %}
+{% include 'add_post.html.twig' %}
+
+{% elseif(page == 'flash_news') %}
+{% include 'flashnews.html.twig' %}
+
+{% elseif(page == 'disclaimer') %}
+{% include 'disclaimer.html.twig' %}
+{% elseif(page == 'contactus') %}
+{% include 'contact_us.html.twig' %}
+{% elseif(page == 'aboutus') %}
+{% include 'about_us.html.twig' %}
+
+{% elseif(page == 'about_us') %}
+{% include 'about_us.html.twig' %}
+{% elseif(page == 'terms_and_conditions') %}
+{% include 'terms_and_conditions.html.twig' %}
+{% elseif(page == 'vision') %}
+{% include 'vision.html.twig' %}
+{% elseif(page == 'mission') %}
+{% include 'mission.html.twig' %}
+{% elseif(page == 'contact_us') %}
+{% include 'contact_us.html.twig' %}
+{% elseif(page == 'rear_more') %}
+{% include 'mnst_read_more.html.twig' %}
+
+{% elseif(page == 'rear_more_1') %}
+{% include 'mnst_read_more_1.html.twig' %}
+
+{% elseif(page == 'rear_more_2') %}
+{% include 'mnst_read_more_2.html.twig' %}
+
+{% elseif(page == 'rear_more_3') %}
+{% include 'mnst_read_more_3.html.twig' %}
+
+{% elseif(page == 'rear_more_4') %}
+{% include 'mnst_read_more_4.html.twig' %}
+
+{% elseif(page == 'rear_more_5') %}
+{% include 'mnst_read_more_5.html.twig' %}
+
+{% elseif(page == 'rear_more_6') %}
+{% include 'mnst_read_more_6.html.twig' %}
+
+{% elseif(page == 'rear_more_7') %}
+{% include 'mnst_read_more_7.html.twig' %}
+
+{% elseif(page == 'rear_more_8') %}
+{% include 'mnst_read_more_8.html.twig' %}
+
+{% elseif(page == 'rear_more_9') %}
+{% include 'mnst_read_more_9.html.twig' %}
+
+{% elseif(page == 'rear_more_10') %}
+{% include 'mnst_read_more_10.html.twig' %}
+
+{% elseif(page == 'userAllPosts') %}
+{% include 'user_all_posts_view.html.twig' %}
+
+{% elseif(page == 'postSucces') %}
+{% include 'post_success.html.twig' %}
+
+{% elseif(page == 'postUpdated') %}
+{% include 'post_updated_success.html.twig' %}
+
+{% elseif(page == 'registerSucces') %}
+{% include 'registration_success.html.twig' %}
+
+{% elseif(page == 'error_pswd') %}
+{% include 'change_password.html.twig' %}
+
+{% elseif(page == 'searchNotFound') %}
+{% include 'noSearch.html.twig' %}
+
+{% elseif(page == 'noPostError') %}
+{% include 'noUserPosts.html.twig' %}
+
+{% elseif(page == 'noPostFound') %}
+{% include 'noPosts.html.twig' %}
+{% elseif(page == 'pageNotFound') %}
+{% include 'includes/pageNotFound.html.twig' %}
+
+{% elseif(page == 'edit_post_1') %}
+{% include 'edit_post_page_1.html.twig' %}
+{% elseif(page == 'edit_post_2') %}
+{% include 'edit_post_page_2.html.twig' %}
+{% elseif(page == 'edit_post_3') %}
+{% include 'edit_post_page_3.html.twig' %}
+{% elseif(page == 'edit_post_4') %}
+{% include 'edit_post_page_4.html.twig' %}
+{% elseif(page == 'edit_post_5') %}
+{% include 'edit_post_page_5.html.twig' %}
+{% elseif(page == 'edit_post_6') %}
+{% include 'edit_post_page_6.html.twig' %}
+{% elseif(page == 'edit_post_7') %}
+{% include 'edit_post_page_7.html.twig' %}
+{% elseif(page == 'edit_post_8') %}
+{% include 'edit_post_page_8.html.twig' %}
+{% elseif(page == 'edit_post_9') %}
+{% include 'edit_post_page_9.html.twig' %}
+{% elseif(page == 'edit_post_10') %}
+{% include 'edit_post_page_10.html.twig' %}
+
+{% endif %}
+{% include 'includes/footer.html.twig' %}
+<script>
+  
+ $("#delete-post").click(function(e) {
+  $id = $("#delete-post-id").val();
+alert($id);
+  $('#delete-form').attr('action', "http://localhost/manast_curl_changes/delete_post.php/postDelete").submit();
+
+ });
+
+$("#searchBtn").click(function() {
+   
+    var searchValue = $('#searchValue').prop('value').trim();
+    $searchValue = searchValue.replace("/", " ");
+    $response_usr = searchValidation();
+    if($response_usr == false){
+      return false;
+    }
+    $('#search-form').attr('action', "{{ GLOBAL_DIR_PATH }}search.php/search_result/"+$searchValue+"/1").submit();  
+});
+$('#searchValue').keypress(function (e) {
+  if (e.which == 13) {
+    var searchValue = $('#searchValue').prop('value').trim();
+    $searchValue = searchValue.replace("/", " ");
+    $response_usr = searchValidation();
+    if($response_usr == false){
+      return false;
+    }
+    $('#search-form').attr('action', "{{ GLOBAL_DIR_PATH }}search.php/search_result/"+$searchValue+"/1").submit();
+  }
+});
+function searchValidation(){
+   var errors = '';
+        if($('#searchValue').prop('value').trim() == '') {
+            $('#searchValue').addClass('error-placeholder').attr('placeholder', 'Please enter your search post name');
+                errors += " Please enter your search post name. <br/>";
+        } 
+     if (errors != '') {
+        return false;
+    } 
+}
+</script>
+ 
+<script>
+  function myFunction(obj){
+   
+    $("#delete-post-id").val(obj.value);
+  }
+</script>
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+    
+    $("#resend_email").click(function(){
+        $("#email_message").show();
+    });
+});
+</script>
+
+
+
+
+      

@@ -1,0 +1,708 @@
+<div class="user_post_wrapper_bg">
+        <!--carousel section-->
+        <section>
+            <div class="index_page_banner_ads_outter_bg">
+                <div class="index_page_banner_ads_inner_bg">
+                    <div class="index_page_banner_ads_inner_left_bg">
+                        <div class="index_page_banner_ads_inner_left_top_bg">
+                            <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">	
+                                <ol class="carousel-indicators">
+                                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                    <li data-target="#myCarousel" data-slide-to="1" ></li>
+                                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                                </ol>			
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <a href="#">
+                                            <img src="https://webmeup.com/upload/blog/mc_banner.jpg" alt="slider one">
+                                        </a>                                            
+                                    </div>
+                                    <div class="item ">
+                                        <a href="#">
+                                            <img src="https://webmeup.com/upload/blog/mc_banner.jpg" alt="slider two">
+                                        </a>    
+                                    </div>
+                                    <div class="item">
+                                        <a href="#">
+                                            <img src="https://webmeup.com/upload/blog/mc_banner.jpg" alt="slider three">
+                                        </a>    
+                                    </div>
+                                </div>		 
+                            </div>
+                            <!-- <a href="#">
+                                <img src="https://webmeup.com/upload/blog/mc_banner.jpg">
+                            </a> -->
+                        </div>
+                        <div class="index_page_banner_ads_inner_left_bottom_bg">
+                                <div id="myCarousel2" class="carousel slide" data-ride="carousel" data-interval="4000">	
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
+                                        <li data-target="#myCarousel2" data-slide-to="1" ></li>
+                                        <li data-target="#myCarousel2" data-slide-to="2"></li>
+                                    </ol>			
+                                    <div class="carousel-inner">
+                                        <div class="item active">
+                                            <a href="#">
+                                                <img src="https://webmeup.com/upload/blog/mc_banner.jpg" alt="slider one">
+                                            </a>                                            
+                                        </div>
+                                        <div class="item ">
+                                            <a href="#">
+                                                <img src="https://webmeup.com/upload/blog/mc_banner.jpg" alt="slider two">
+                                            </a>    
+                                        </div>
+                                        <div class="item">
+                                            <a href="#">
+                                                <img src="https://webmeup.com/upload/blog/mc_banner.jpg" alt="slider three">
+                                            </a>    
+                                        </div>
+                                    </div>		 
+                                </div>
+                            <!-- <a href="#">
+                                <img src="https://cdn-images-1.medium.com/max/1600/1*lEyU2zS2TBaOl_fbXqPChA.png">
+                            </a> -->
+                        </div>
+                    </div>
+                    <div class="index_page_banner_ads_inner_right_bg">
+                        <div class="index_page_banner_ads_inner_right_top_bg">
+                            <a href="#">
+                                <img src="https://webmeup.com/upload/blog/mc_banner.jpg">
+                            </a>                            
+                        </div>
+                    </div>
+                </div>   
+            </div>	            
+        </section> 
+        <!--carousel section-->     
+        <!--listing section-->
+        <section>
+            <div class="new_index_page_listing_posts_bg">
+                <div  class="container">
+                     <!--row start-->
+                    <div class="row">
+                        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                            <!--left columns-->
+                            <div class="new_index_page_listing_posts_inner_bg">
+                                <div class="new_index_page_listing_posts_inner_heading_bg">
+                                    <h1 class="new_index_page_listing_posts_inner_heading">
+                                        <span class="new_index_page_explore_categories_heading_inner_first">listing </span>
+                                        <span class="new_index_page_explore_categories_heading_inner_second">features</span>
+                                    </h1>
+                                </div>
+                                <div class="new_index_page_listing_posts_inner_box_wise_post_bg">
+                                    <!--1 listing features-->
+                                    {% for key, newsres in news_result.mnst_just_new %}
+                                {% set catname = newsres.category_name|lower|replace({' ': '-'}) %}
+                                {% set city_name = newsres.city_name|lower|replace({' ': '-'}) %}
+                                {% set states_name = newsres.states_name|lower|replace({' ': '-'}) %}
+                                {% set subcat_name = newsres.subcategory_name %}
+                                {% set forurl = newsres.url_name %}
+                                    <div class="new_index_page_listing_posts_inner_box_wise_post">
+                                        <div class="new_index_page_listing_posts_inner_box_wise_post_image_bg">
+                                            <a>
+                                                <img src="{{ GLOBAL_DIR_PATH }}uploads/post_image/{{ newsres.post_image.0 }}" alt="{{ newsres.post_name }}" class="new_index_page_listing_posts_inner_box_wise_post_image">
+                                            </a> 
+                                            <div class="new_index_page_listing_posts_inner_box_wise_post_image_user_image_bg">
+                                                <a href="{{ GLOBAL_DIR_PATH }}posts.php/user/all-posts/{{newsres.user_username|replace({' ':'-'})}}/1">
+                                                    {% if newsres.user_image != '' %}
+                                                    <img src="{{newsres.user_image}}" alt="{{newsres.user_firstname}}" class="new_index_page_listing_posts_inner_box_wise_post_image_user_image">
+                                                    {% else %}
+                                                    <div class="new_index_page_listing_posts_inner_box_wise_post_image_user_name_letters_bg ">
+                                                        <div class="new_index_page_listing_posts_inner_box_wise_post_image_user_name_letters ">
+                                                            <span class="new_index_page_listing_posts_inner_box_wise_post_image_user_name_initial_letters ">{{ newsres.user_firstname|slice(0,1) }}{{ newsres.user_lastname|slice(0,1) }}</span>
+                                                        </div>
+                                                    </div>
+                                                    {% endif %}
+                                                </a>    
+                                            </div>   
+                                            <div class="new_index_page_listing_posts_inner_box_wise_post_image_category_bg">
+                                                <a href="{{ GLOBAL_DIR_PATH }}services.php//{{catname}}/{{subcat_name}}/{{forurl}}">{{ newsres.subcategory_name }}</a>
+                                            </div>
+                                        </div>
+                                        <div class="new_index_page_listing_posts_inner_box_wise_post_description_bg">
+                                            <div class="new_index_page_listing_posts_inner_box_wise_post_description">
+                                                <div class="new_index_page_listing_posts_inner_box_wise_post_description_inner_bg">
+                                                    <div class="new_index_page_listing_posts_inner_box_wise_post_description_inner_top">
+                                                        <div class="new_index_page_listing_posts_inner_box_wise_post_description_inner_top_link_bg">
+                                                            <a href="{{ GLOBAL_DIR_PATH }}services.php/{{states_name}}/{{city_name}}/{{catname}}/{{subcat_name}}/{{forurl}}" class="new_index_page_listing_posts_inner_box_wise_post_description_inner_top_link">{{ newsres.post_name }}</a>
+                                                        </div>
+                                                        <div class="new_index_page_listing_posts_inner_box_wise_post_description_inner_top_location">
+                                                            <i class="fas fa-map-marker-alt"></i>
+                                                            {{ newsres.street }},{{ newsres.city }},{{ newsres.country }}
+                                                        </div>    
+                                                        <div class="new_index_page_listing_posts_inner_box_wise_post_description_inner_top_price">
+                                                            {% if newsres.price !=''%}
+                                                            <i class="fas fa-dollar-sign"></i>
+                                                            {{ newsres.price }}
+                                                            {% endif %}
+                                                        </div>    
+                                                    </div>
+                                                    <div class="new_index_page_listing_posts_inner_box_wise_post_description_inner_bottom">
+                                                        <i class="far fa-clock"></i>
+                                                        {{ newsres.created_at }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--END 1 listing features-->
+                                    {% endfor %}  
+                                    <!--END 12 listing features-->                              
+                                </div>
+                            </div>
+                            <!--left column-->
+                        </div>
+                        <!--right column-->    
+                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                            <div class="listing_right_side_ads_margin_top_bg">
+                                <!--right side ads-->
+                                <div class="right_side_new_read_more_page_sponser_ads_bg" >
+                                    <div class="right_side_new_read_more_page_sponser_ads_heading_bg">
+                                        <h5 class="right_side_new_read_more_page_sponser_ads_heading"><i class="fas fa-ad"></i>sponsored ads</h5>
+                                    </div>
+                                    <div class="right_side_new_read_more_page_sponser_ads">
+                                        <a href="#">
+                                            <img src="https://images-na.ssl-images-amazon.com/images/I/5169XnIsYsL.jpg" class="img-responsive" alt ="sponsored ads">
+                                        </a>    
+                                    </div>
+                                    <div class="right_side_new_read_more_page_sponser_ads">
+                                        <a href="#">
+                                            <img src="https://images-na.ssl-images-amazon.com/images/I/5169XnIsYsL.jpg" class="img-responsive" alt ="sponsored ads">
+                                        </a>    
+                                    </div>
+                                    <div class="right_side_new_read_more_page_sponser_ads">
+                                        <a href="#">
+                                            <img src="https://images-na.ssl-images-amazon.com/images/I/5169XnIsYsL.jpg" class="img-responsive" alt ="sponsored ads">
+                                        </a>    
+                                    </div>
+                                    <div class="right_side_new_read_more_page_sponser_ads">
+                                        <a href="#">
+                                            <img src="https://images-na.ssl-images-amazon.com/images/I/5169XnIsYsL.jpg" class="img-responsive" alt ="sponsored ads">
+                                        </a>    
+                                    </div>                                    
+                                </div>
+                                <!--END right side ads-->
+                            </div>    
+                        </div>   
+                        <!--END right column--> 
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--END listing section-->
+        <!--main section-->
+        <section>
+            <div class="new_index_page_wrapper">
+                <div class="container">
+                    <!--row-->
+                    <div class="row">
+                        <!--left column-->
+                        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                            <div class="new_index_page_explore_categories_bg">
+                                <div class="new_index_page_explore_categories_heading_bg">
+                                    <h1 class="new_index_page_explore_categories_heading">
+                                        <span class="new_index_page_explore_categories_heading_inner_first">Explore </span>
+                                        <span class="new_index_page_explore_categories_heading_inner_second">Your Categories</span>
+                                    </h1>
+                                </div>
+                                <div class="new_index_page_explore_categories_paragraph_bg">
+                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime laudantium esse blanditiis. Quibusdam vero quod animi. Deleniti eum
+                                </div>
+                                <div class="new_index_page_explore_categories_wise_bg">
+                                    <!--first box-->
+                                    <div class="new_index_page_explore_categories_wise_box_bg">
+                                        <div class="new_index_page_explore_categories_wise_box_heading_bg">
+                                            <h3 class="new_index_page_explore_categories_wise_box_heading">st louis</h3>
+                                            <div class="new_index_page_explore_categories_wise_box_number_of_posts_bg">
+                                                <span class="new_index_page_explore_categories_wise_box_number_of_posts_number">{{post_category_wise.0.0.0.stlouisPosts}}</span>
+                                                posts posted
+                                            </div>
+                                            <div class="new_index_explore_categories_icon_bg">
+                                                <img src="{{ GLOBAL_DIR_PATH }}view_library/images/gateway-arch-eeuu.svg" alt="st louis icon" class="new_index_page_explore_categories_svg_color" >
+                                            </div>
+                                        </div>
+                                        <div class="new_index_page_explore_categories_wise_box_list_bg">
+                                            <ul class="new_index_page_explore_categories_wise_box_list">
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[0].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[0].subcategory_name}}/1">
+                                                        <span>tourist places</span>
+                                                        <span>({{post_category_wise.0.0.0.touristplacesPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[0].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[1].subcategory_name}}/1">
+                                                        <span>useful places</span>
+                                                        <span>({{post_category_wise.0.0.0.usefulplacesPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[0].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[2].subcategory_name}}/1">
+                                                        <span>apartments</span>
+                                                        <span>({{post_category_wise.0.0.0.apartmentsPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[0].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[3].subcategory_name}}/1">
+                                                        <span>universities</span>
+                                                        <span>({{post_category_wise.0.0.0.universitiesPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!--END first box-->
+                                    <!--second box-->
+                                    <div class="new_index_page_explore_categories_wise_box_bg">
+                                        <div class="new_index_page_explore_categories_wise_box_heading_bg">
+                                            <h3 class="new_index_page_explore_categories_wise_box_heading">place of worship</h3>
+                                            <div class="new_index_page_explore_categories_wise_box_number_of_posts_bg">
+                                                <span class="new_index_page_explore_categories_wise_box_number_of_posts_number">{{post_category_wise.0.0.0.placesofworshipPosts}}</span>
+                                                posts posted
+                                            </div>
+                                            <div class="new_index_explore_categories_icon_bg">
+                                                <img src="{{ GLOBAL_DIR_PATH }}view_library/images/hindu-temple.svg" alt="place of worship icon" class="new_index_page_explore_categories_svg_color" >
+                                            </div>
+                                        </div>
+                                        <div class="new_index_page_explore_categories_wise_box_list_bg">
+                                            <ul class="new_index_page_explore_categories_wise_box_list">
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[1].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[4].subcategory_name}}/1">
+                                                        <span>temples</span>
+                                                        <span>({{post_category_wise.0.0.0.templesPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[1].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[5].subcategory_name}}/1">
+                                                        <span>churches</span>
+                                                        <span>({{post_category_wise.0.0.0.churchesPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[1].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[6].subcategory_name}}/1">
+                                                        <span>mosques</span>
+                                                        <span>({{post_category_wise.0.0.0.mosquesPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[1].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[7].subcategory_name}}/1">
+                                                        <span>others</span>
+                                                        <span>({{post_category_wise.0.0.0.othersPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!--END second box-->
+                                    <!--third box-->
+                                    <div class="new_index_page_explore_categories_wise_box_bg">
+                                        <div class="new_index_page_explore_categories_wise_box_heading_bg">
+                                            <h3 class="new_index_page_explore_categories_wise_box_heading">grocery stores</h3>
+                                            <div class="new_index_page_explore_categories_wise_box_number_of_posts_bg">
+                                                <span class="new_index_page_explore_categories_wise_box_number_of_posts_number">{{post_category_wise.0.0.0.grocerystoresPosts}}</span>
+                                                posts posted
+                                            </div>
+                                            <div class="new_index_explore_categories_icon_bg">
+                                                <img src="{{ GLOBAL_DIR_PATH }}view_library/images/shop.svg" alt="grocery store icon" class="new_index_page_explore_categories_svg_color" >
+                                            </div>
+                                        </div>
+                                        <div class="new_index_page_explore_categories_wise_box_list_bg">
+                                            <ul class="new_index_page_explore_categories_wise_box_list">
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[2].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[8].subcategory_name}}/1">
+                                                        <span>desi stores</span>
+                                                        <span>({{post_category_wise.0.0.0.desistoresPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[2].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[9].subcategory_name}}/1">
+                                                        <span>others stores</span>
+                                                        <span>({{post_category_wise.0.0.0.otherstoresPosts}})</span>
+                                                    </a>    
+                                                </li>                                    
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!--END third box-->
+                                    <!--fourth box-->
+                                    <div class="new_index_page_explore_categories_wise_box_bg">
+                                        <div class="new_index_page_explore_categories_wise_box_heading_bg">
+                                            <h3 class="new_index_page_explore_categories_wise_box_heading">restaurants</h3>
+                                            <div class="new_index_page_explore_categories_wise_box_number_of_posts_bg">
+                                                <span class="new_index_page_explore_categories_wise_box_number_of_posts_number">{{post_category_wise.0.0.0.restaurantsPosts}}</span>
+                                                posts posted
+                                            </div>
+                                            <div class="new_index_explore_categories_icon_bg">
+                                                <img src="{{ GLOBAL_DIR_PATH }}view_library/images/restaurant.svg" alt="restaurant icon" class="new_index_page_explore_categories_svg_color" >
+                                            </div>
+                                        </div>
+                                        <div class="new_index_page_explore_categories_wise_box_list_bg">
+                                            <ul class="new_index_page_explore_categories_wise_box_list">
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[3].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[10].subcategory_name}}/1">
+                                                        <span>indian</span>
+                                                        <span>({{post_category_wise.0.0.0.indianPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[3].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[11].subcategory_name}}/1">
+                                                        <span>Thai</span>
+                                                        <span>({{post_category_wise.0.0.0.thaiPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[3].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[12].subcategory_name}}/1">
+                                                        <span>american</span>
+                                                        <span>({{post_category_wise.0.0.0.americanPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[3].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[13].subcategory_name}}/1">
+                                                        <span>italian</span>
+                                                        <span>({{post_category_wise.0.0.0.italianPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[3].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[14].subcategory_name}}/1">
+                                                        <span>mexican</span>
+                                                        <span>({{post_category_wise.0.0.0.mexicanPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!--END fourth box-->
+                                    <!--fifth box-->
+                                    <div class="new_index_page_explore_categories_wise_box_bg">
+                                        <div class="new_index_page_explore_categories_wise_box_heading_bg">
+                                            <h3 class="new_index_page_explore_categories_wise_box_heading">health cares</h3>
+                                            <div class="new_index_page_explore_categories_wise_box_number_of_posts_bg">
+                                                <span class="new_index_page_explore_categories_wise_box_number_of_posts_number">{{post_category_wise.0.0.0.healthcarePosts}}</span>
+                                                posts posted
+                                            </div>
+                                            <div class="new_index_explore_categories_icon_bg">
+                                                <img src="{{ GLOBAL_DIR_PATH }}view_library/images/heartbeat.svg" alt="health care icon" class="new_index_page_explore_categories_svg_color" >
+                                            </div>
+                                        </div>
+                                        <div class="new_index_page_explore_categories_wise_box_list_bg">
+                                            <ul class="new_index_page_explore_categories_wise_box_list">
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[4].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[15].subcategory_name}}/1">
+                                                        <span>doctor clinics</span>
+                                                        <span>({{post_category_wise.0.0.0.doctorclinicsPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[4].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[16].subcategory_name}}/1">
+                                                        <span>hospitals</span>
+                                                        <span>({{post_category_wise.0.0.0.hospitalsPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[4].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[17].subcategory_name}}/1">
+                                                        <span>diagnostic labs</span>
+                                                        <span>({{post_category_wise.0.0.0.diagnosticlabsPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[4].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[18].subcategory_name}}/1">
+                                                        <span>physiotherapy</span>
+                                                        <span>({{post_category_wise.0.0.0.physiotherapyPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[4].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[19].subcategory_name}}/1">
+                                                        <span>urgent cares</span>
+                                                        <span>({{post_category_wise.0.0.0.urgentcaresPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!--END fifth box-->
+                                    <!--sixth box-->
+                                    <div class="new_index_page_explore_categories_wise_box_bg">
+                                        <div class="new_index_page_explore_categories_wise_box_heading_bg">
+                                            <h3 class="new_index_page_explore_categories_wise_box_heading">movies</h3>
+                                            <div class="new_index_page_explore_categories_wise_box_number_of_posts_bg">
+                                                <span class="new_index_page_explore_categories_wise_box_number_of_posts_number">{{post_category_wise.0.0.0.moviesPosts}}</span>
+                                                posts posted
+                                            </div>
+                                            <div class="new_index_explore_categories_icon_bg">
+                                                <img src="{{ GLOBAL_DIR_PATH }}view_library/images/video-camera.svg" alt="movies icon" class="new_index_page_explore_categories_svg_color" >
+                                            </div>
+                                        </div>
+                                        <div class="new_index_page_explore_categories_wise_box_list_bg">
+                                            <ul class="new_index_page_explore_categories_wise_box_list">
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[5].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[20].subcategory_name}}/1">
+                                                        <span>hindi</span>
+                                                        <span>({{post_category_wise.0.0.0.hindiPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[5].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[21].subcategory_name}}/1">
+                                                        <span>telugu</span>
+                                                        <span>({{post_category_wise.0.0.0.teluguPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[5].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[22].subcategory_name}}/1">
+                                                        <span>english</span>
+                                                        <span>({{post_category_wise.0.0.0.englishPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li>
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[5].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[23].subcategory_name}}/1">
+                                                        <span>tamil</span>
+                                                        <span>({{post_category_wise.0.0.0.tamilPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[5].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[24].subcategory_name}}/1">
+                                                        <span>malayalam</span>
+                                                        <span>({{post_category_wise.0.0.0.malayalamPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!--END sixth box-->
+                                    <!--seventh box-->
+                                    <div class="new_index_page_explore_categories_wise_box_bg">
+                                        <div class="new_index_page_explore_categories_wise_box_heading_bg">
+                                            <h3 class="new_index_page_explore_categories_wise_box_heading">Events</h3>
+                                            <div class="new_index_page_explore_categories_wise_box_number_of_posts_bg">
+                                                <span class="new_index_page_explore_categories_wise_box_number_of_posts_number">{{post_category_wise.0.0.0.eventsPosts}}</span>
+                                                posts posted
+                                            </div>
+                                            <div class="new_index_explore_categories_icon_bg">
+                                                <img src="{{ GLOBAL_DIR_PATH }}view_library/images/champagne-glass.svg" alt="events icon" class="new_index_page_explore_categories_svg_color" >
+                                            </div>
+                                        </div>
+                                        <div class="new_index_page_explore_categories_wise_box_list_bg">
+                                            <ul class="new_index_page_explore_categories_wise_box_list">
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[10].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[37].subcategory_name}}/1">
+                                                        <span>temple events</span>
+                                                        <span>({{post_category_wise.0.0.0.templeeventsPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[10].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[38].subcategory_name}}/1">
+                                                        <span>Mosque events</span>
+                                                        <span>({{post_category_wise.0.0.0.mosqueeventsPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[10].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[39].subcategory_name}}/1">
+                                                        <span>church events</span>
+                                                        <span>({{post_category_wise.0.0.0.churcheventsPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[10].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[40].subcategory_name}}/1">
+                                                        <span>movie events</span>
+                                                        <span>({{post_category_wise.0.0.0.movieeventsPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[10].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[41].subcategory_name}}/1">
+                                                        <span>arts and entertainment events</span>
+                                                        <span>({{post_category_wise.0.0.0.artsandentertainmenteventsPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[10].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[42].subcategory_name}}/1">
+                                                        <span>music events</span>
+                                                        <span>({{post_category_wise.0.0.0.musiceventsPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[10].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[43].subcategory_name}}/1">
+                                                        <span>sports events</span>
+                                                        <span>({{post_category_wise.0.0.0.sportseventsPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[10].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[44].subcategory_name}}/1">
+                                                        <span>dance events</span>
+                                                        <span>({{post_category_wise.0.0.0.danceeventsPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[10].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[45].subcategory_name}}/1">
+                                                        <span>universities events</span>
+                                                        <span>({{post_category_wise.0.0.0.universitieseventsPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[10].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[46].subcategory_name}}/1">
+                                                        <span>others events</span>
+                                                        <span>({{post_category_wise.0.0.0.otherseventsPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!--END seventh box-->
+                                    <!--eight box-->
+                                    <div class="new_index_page_explore_categories_wise_box_bg">
+                                        <div class="new_index_page_explore_categories_wise_box_heading_bg">
+                                            <h3 class="new_index_page_explore_categories_wise_box_heading">jobs</h3>
+                                            <div class="new_index_page_explore_categories_wise_box_number_of_posts_bg">
+                                                <span class="new_index_page_explore_categories_wise_box_number_of_posts_number">{{post_category_wise.0.0.0.jobsPosts}}</span>
+                                                posts posted
+                                            </div>
+                                            <div class="new_index_explore_categories_icon_bg">
+                                                <img src="{{ GLOBAL_DIR_PATH }}view_library/images/working-with-laptop.svg" alt="jobs icon" class="new_index_page_explore_categories_svg_color" >
+                                            </div>
+                                        </div>
+                                        <div class="new_index_page_explore_categories_wise_box_list_bg">
+                                            <ul class="new_index_page_explore_categories_wise_box_list">
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[7].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[27].subcategory_name}}/1">
+                                                        <span>part time</span>
+                                                        <span>({{post_category_wise.0.0.0.parttimePosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[7].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[28].subcategory_name}}/1">
+                                                        <span>full time</span>
+                                                        <span>({{post_category_wise.0.0.0.fulltimePosts}})</span>
+                                                    </a>    
+                                                </li>                                    
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!--END eight box-->
+                                    <!--ninth box-->
+                                    <div class="new_index_page_explore_categories_wise_box_bg">
+                                        <div class="new_index_page_explore_categories_wise_box_heading_bg">
+                                            <h3 class="new_index_page_explore_categories_wise_box_heading">classifieds</h3>
+                                            <div class="new_index_page_explore_categories_wise_box_number_of_posts_bg">
+                                                <span class="new_index_page_explore_categories_wise_box_number_of_posts_number">{{post_category_wise.0.0.0.classifiedsPosts}}</span>
+                                                posts posted
+                                            </div>
+                                            <div class="new_index_explore_categories_icon_bg">
+                                                <img src="{{ GLOBAL_DIR_PATH }}view_library/images/newspaper.svg" alt="classifieds icon" class="new_index_page_explore_categories_svg_color" >
+                                            </div>
+                                        </div>
+                                        <div class="new_index_page_explore_categories_wise_box_list_bg">
+                                            <ul class="new_index_page_explore_categories_wise_box_list">
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[8].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[29].subcategory_name}}/1">
+                                                        <span>accomodation </span>
+                                                        <span>({{post_category_wise.0.0.0.accomodationPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[8].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[30].subcategory_name}}/1">
+                                                        <span>child care</span>
+                                                        <span>({{post_category_wise.0.0.0.childcarePosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[8].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[31].subcategory_name}}/1">
+                                                        <span>catering</span>
+                                                        <span>({{post_category_wise.0.0.0.cateringPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[8].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[32].subcategory_name}}/1">
+                                                        <span>for sell</span>
+                                                        <span>({{post_category_wise.0.0.0.forsalePosts}})</span>
+                                                    </a>    
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!--END ninth box-->
+                                    <!--tenth box-->
+                                    <div class="new_index_page_explore_categories_wise_box_bg">
+                                        <div class="new_index_page_explore_categories_wise_box_heading_bg">
+                                            <h3 class="new_index_page_explore_categories_wise_box_heading">services</h3>
+                                            <div class="new_index_page_explore_categories_wise_box_number_of_posts_bg">
+                                                <span class="new_index_page_explore_categories_wise_box_number_of_posts_number">{{post_category_wise.0.0.0.servicesPosts}}</span>
+                                                posts posted
+                                            </div>
+                                            <div class="new_index_explore_categories_icon_bg">
+                                                <img src="{{ GLOBAL_DIR_PATH }}view_library/images/customer-support.svg" alt="services icon" class="new_index_page_explore_categories_svg_color" >
+                                            </div>
+                                        </div>
+                                        <div class="new_index_page_explore_categories_wise_box_list_bg">
+                                            <ul class="new_index_page_explore_categories_wise_box_list">
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[8].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[33].subcategory_name}}/1">
+                                                        <span>lawyers</span>
+                                                        <span>({{post_category_wise.0.0.0.lawyersPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[8].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[34].subcategory_name}}/1">
+                                                        <span>insurance agents</span>
+                                                        <span>({{post_category_wise.0.0.0.insuranceagentsPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[8].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[35].subcategory_name}}/1">
+                                                        <span>travel agents</span>
+                                                        <span>({{post_category_wise.0.0.0.travelagentsPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                                <li >
+                                                    <a href="{{ GLOBAL_DIR_PATH }}posts.php/{{ nav_result[8].mnst_category.category_name|replace({' ': '-'}) }}/{{sub_ct_result[36].subcategory_name}}/1">
+                                                        <span>accountants</span>
+                                                        <span>({{post_category_wise.0.0.0.accountantsPosts}})</span>
+                                                    </a>    
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!--END tenth box-->
+                                </div>
+                            </div>
+                        </div>
+                        <!--END left column-->    
+                        <!--right column-->
+                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                            <!--explore category right side-->
+                            <div class="explore_right_side_ads_margin_top_bg">
+                                <!--right side ads-->
+                                <div class="right_side_new_read_more_page_sponser_ads_bg" >
+                                    <div class="right_side_new_read_more_page_share_post_heading_bg">
+                                        <h5 class="right_side_new_read_more_page_post_heading"><i class="fas fa-ad"></i>sponsored ads</h5>
+                                    </div>
+                                    <div class="right_side_new_read_more_page_sponser_ads">
+                                        <a href="#">
+                                            <img src="https://images-na.ssl-images-amazon.com/images/I/5169XnIsYsL.jpg" class="img-responsive" alt ="sponsored ads">
+                                        </a>    
+                                    </div>
+                                    <div class="right_side_new_read_more_page_sponser_ads">
+                                        <a href="#">
+                                            <img src="https://images-na.ssl-images-amazon.com/images/I/5169XnIsYsL.jpg" class="img-responsive" alt ="sponsored ads">
+                                        </a>    
+                                    </div>
+                                    <div class="right_side_new_read_more_page_sponser_ads">
+                                        <a href="#">
+                                            <img src="https://images-na.ssl-images-amazon.com/images/I/5169XnIsYsL.jpg" class="img-responsive" alt ="sponsored ads">
+                                        </a>    
+                                    </div>
+                                    <div class="right_side_new_read_more_page_sponser_ads">
+                                        <a href="#">
+                                            <img src="https://images-na.ssl-images-amazon.com/images/I/5169XnIsYsL.jpg" class="img-responsive" alt ="sponsored ads">
+                                        </a>    
+                                    </div>
+                                </div>
+                                <!--END right side ads-->
+                            </div>    
+                                <!--explore category right side-->    
+                        </div>     
+                        <!--END right column-->
+                    </div>  
+                    <!--END row-->        
+                </div>
+            </div>
+        </section>  
+        <!--main section-->
+    </div>   
+    <script type="text/javascript" src="{{ GLOBAL_DIR_PATH }}view_library/js/new-js.js"> </script> 

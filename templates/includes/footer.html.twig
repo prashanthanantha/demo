@@ -1,0 +1,93 @@
+
+ <footer> 
+        <div class="new_footer_background">
+            <div class="container">
+                <div class="new_footer_bg">
+                    <div class="new_footer_box_bg">
+                    <div class="new_footer_box_logo_bg">
+                        <a href="#">
+                            <img src="https://www.manastlouis.com/view_library/images/logo1.png" alt="manastlouis-logo" class="new_manastlouis_logo_responsive">
+                        </a>
+                    </div>
+                    <div class="new_footer_box_description">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque harum totam, ipsum laudantium odio voluptates nostrum, fugiat odit qui consectetur omnis? Repudiandae quia, eaque similique ipsam suscipit velit aliquid perspiciatis.
+                    </div>
+                    </div>
+                    <div class="new_footer_box_bg">
+                        <h5 class="new_footer_box_heading_bg">our services</h5>
+                        <ul class="new_footer_box_links_list_bg">
+                            <li><a href="#">st louis</a></li>
+                            <li><a href="#">place of worship</a></li>
+                            <li><a href="#">Grocery stores</a></li>
+                            <li><a href="#">restaurants</a></li>
+                            <li><a href="#">health care</a></li>
+                            <li><a href="#">movies</a></li>
+                            <li><a href="#">events</a></li>
+                            <li><a href="#">jobs</a></li>
+                            <li><a href="#">classifieds</a></li>
+                            <li><a href="#">services</a></li>
+                        </ul>
+                    </div>
+                    <div class="new_footer_box_bg">
+                        <h5 class="new_footer_box_heading_bg">social links</h5>
+                        <ul class="new_footer_box_links_list_bg">
+                            <li><a href="https://www.facebook.com/CityofMO/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i>Facebook</a></li>
+                            <li><a href="https://twitter.com/LouisManast" target="_blank" title="Twitter"><i class="fab fa-twitter"></i>Twitter</a></li>
+                            <li><a href="https://www.instagram.com/manast.louis/" target="_blank" title="instagram"><i class="fab fa-instagram"></i>Instagram</a></li>
+                            <li><a href="https://in.pinterest.com/manastlouisclassifiedsite/" target="_blank" title="Pinterest"><i class="fab fa-pinterest-p"></i>Pinterest</a></li>
+                            
+                        </ul>
+                    </div>
+                    <div class="new_footer_box_bg">
+                    <h5 class="new_footer_box_heading_bg">helpful links</h5>
+                    <ul class="new_footer_box_links_list_bg">
+                        <li><a href="{{ GLOBAL_DIR_PATH }}index.php/contact-us">contact us</a></li>
+                        <li><a href="{{ GLOBAL_DIR_PATH }}index.php/about-us">about us</a></li>
+                        <li><a href="{{ GLOBAL_DIR_PATH }}index.php/disclaimer">disclaimer</a></li>                       
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="new_footer_bottom_background">
+            <div class="container">
+                <div class="new_footer_bottom_inner_background_bg">
+                    <div class="new_footer_bottom_inner_bg">&copy; Copyright@2018, ManaStLouis.com</div>
+                    <div class="new_footer_bottom_inner_bg">Designed And Developed By<a href="" target="_blank">Sreealunno Tech Solutions</a></div>
+                </div>    
+            </div>    
+        </div>    
+    </footer>
+
+    <script type="text/javascript">
+      function GoBackWithRefresh(event) {
+        if ('referrer' in document) {
+            window.location = document.referrer;
+            /* OR */
+            //location.replace(document.referrer);
+        } else {
+            window.history.back();
+        }
+    }
+    </script> 
+
+    <script>
+function myCity(obj) {
+    city = obj;
+    alert(city);
+// Check browser support
+if (typeof(Storage) !== "undefined") {
+  // Store
+  localStorage.setItem("city", city);
+  // Retrieve
+  return myLocation = localStorage.getItem("city");
+} else {
+  document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+}
+}
+</script>
+
+  
+
+</body>
+</html>

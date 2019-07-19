@@ -1,0 +1,181 @@
+<section >
+        <div class="new_index_page_listing_posts_bg" >
+            <div class="edit_post_page_outter_bg">
+                <div class="container">
+                   <div class="edit_post_page_inner_bg">
+                        <div class="edit_form_page_heading_bg">
+                            <p>accomodation child care for sell</p>
+                            <h1 class="edit_form_page_heading">Edit Form</h1>
+                        </div>    
+                        <div class="edit_post_page_form_bg">
+                            <form action="{{GLOBAL_DIR_PATH}}edit-post.php/edit-post-second-group" method="POST" class="edit_post_page_form" enctype="multipart/form-data" >
+                                <input type="hidden" value="{{post_results.0.id}}" name="edit_post_id">
+                                <input type="hidden" value="{{post_results.0.create_by}}" name="user_id">
+                                <div class="edist_post_page_form_label_input_bg">
+                                    <div class="edit_post_page_form_label_bg">
+                                        <label class="edit_post_page_form_label" for="edit-category">category</label>
+                                    </div>
+                                    <div class="edit_post_page_form_input_type_bg new_read_only_class_bg">
+                                        <input type="text" class="edit_post_page_form_input_type" id="edit-category" value="{{post_results.0.category_name}}" readonly>
+                                        <div class="question_mark_non_editable_bg">
+                                            <p class="question_mark_non_editable">You Dont Have permissions To Edit This Field</p>
+                                        </div>
+                                    </div>
+                                </div>   
+                                <div class="edist_post_page_form_label_input_bg"> 
+                                    <div class="edit_post_page_form_label_bg">
+                                        <label class="edit_post_page_form_label" for="edit-sub-category">Sub category</label>
+                                    </div>
+                                    <div class="edit_post_page_form_input_type_bg new_read_only_class_bg">
+                                        <input type="text" class="edit_post_page_form_input_type" id="edit-sub-category" value="{{post_results.0.subcategory_name}}" readonly>
+                                        <div class="question_mark_non_editable_bg">
+                                            <p class="question_mark_non_editable">You Dont Have permissions To Edit This Field</p>
+                                        </div>
+                                    </div>
+                                </div>    
+                                <div class="edist_post_page_form_label_input_bg">
+                                    <div class="edit_post_page_form_label_bg">
+                                        <label class="edit_post_page_form_label" for="edit-title">Title <sup>*</sup></label>
+                                    </div>
+                                    <div class="edit_post_page_form_input_type_bg">
+                                        <input type="text" class="edit_post_page_form_input_type" id="edit-title" value="{{post_results.0.post_name}}" placeholder="Title" name="edit_post_name">
+                                    </div>
+                                </div>   
+                                <div class="edist_post_page_form_label_input_bg"> 
+                                    <div class="edit_post_page_form_label_bg">
+                                        <label class="edit_post_page_form_label" for="edit-image">Images</label>
+                                    </div>
+                                    <div class="edit_post_page_form_input_type_bg">
+                                        <input type="file" class="edit_post_page_form_input_type" id="edit-image" name="edit_post_images[]" multiple >                                        
+                                    </div>
+                                </div>
+                                <div class="edit_image_preview_bg" id="edit_image_preview_bg">
+                                    <div class="edit_image_preview_left_bg">
+                                       
+                                    </div>
+                                    <div class="edit_image_preview_right_bg" id="edit-image-preview">
+                                        {% for images in post_results.0.post_image %}
+                                        <div class="upload_image_wrapper">
+
+                                            <img src="{{GLOBAL_DIR_PATH}}uploads/post_image/{{images}}" class="new_image">
+                                            <button class="delete_upload_image" type="button">&times;</button>
+                                        </div>    
+                                            {% endfor %}
+                                        
+                                    </div>
+                                </div>    
+                                <div class="edist_post_page_form_label_input_bg"> 
+                                    <div class="edit_post_page_form_label_bg">
+                                        <label class="edit_post_page_form_label" for="edit-email">Email</label>
+                                    </div>
+                                    <div class="edit_post_page_form_input_type_bg">
+                                        <input type="text" class="edit_post_page_form_input_type  combine_email_and_mobile" id="edit-email" value="{{post_results.0.post_email}}" placeholder="example@gmail.com" name="edit_post_email" >
+                                    </div>
+                                </div>    
+                                <div class="edist_post_page_form_label_input_bg"> 
+                                    <div class="edit_post_page_form_label_bg">
+                                        <label class="edit_post_page_form_label" for="edit-mobile">mobile</label>
+                                    </div>
+                                    <div class="edit_post_page_form_input_type_bg">
+                                        <input type="text" class="edit_post_page_form_input_type phone-number combine_email_and_mobile" id="edit-mobile" value="{{post_results.0.mobile_num}}" maxlength="12" placeholder="555-555-1234" name="edit_post_mobile_num" >
+                                    </div>
+                                </div>    
+                                <div class="edist_post_page_form_label_input_bg"> 
+                                    <div class="edit_post_page_form_label_bg">
+                                        <label class="edit_post_page_form_label" for="edit-application-fee">price</label>
+                                    </div>
+                                    <div class="edit_post_page_form_input_type_bg">
+                                        <input type="text" class="edit_post_page_form_input_type application_fee_input_bg " id="edit-application-fee" value="{{post_results.0.price}}"  placeholder="200.00" name="edit_post_price" >
+                                        <div class="manast_price_image"><i class="fas fa-dollar-sign"></i></div>
+                                    </div>
+                                </div>    
+                                <div class="edist_post_page_form_label_input_bg"> 
+                                    <div class="edit_post_page_form_label_bg">
+                                        <label class="edit_post_page_form_label" for="edit-owner-name">owner name</label>
+                                    </div>
+                                    <div class="edit_post_page_form_input_type_bg">
+                                        <input type="text" class="edit_post_page_form_input_type " id="edit-owner-name" value="{{post_results.0.owner_name}}"  placeholder="Ex: John" name="edit_post_owner_name" >
+                                        
+                                    </div>
+                                </div>   
+                                <div class="edist_post_page_form_label_input_bg"> 
+                                    <div class="edit_post_page_form_label_bg">
+                                        <label class="edit_post_page_form_label" for="edit-location">location</label>
+                                    </div>
+                                    <div class="edit_post_page_form_input_type_bg">
+                                        <input type="text" class="edit_post_page_form_input_type" id="edit-location" value="{{post_results.0.address}}" placeholder="Beside Gateway Arch" name="edit_post_address" >
+                                    </div>
+                                </div>    
+                                <div class="edist_post_page_form_label_input_bg"> 
+                                    <div class="edit_post_page_form_label_bg">
+                                        <label class="edit_post_page_form_label" for="edit-street">street</label>
+                                    </div>
+                                    <div class="edit_post_page_form_input_type_bg">
+                                        <input type="text" class="edit_post_page_form_input_type" id="edit-street" value="{{post_results.0.street}}"  placeholder="155 15th street" name="edit_post_street">
+                                    </div>
+                                </div>    
+                                <div class="edist_post_page_form_label_input_bg"> 
+                                    <div class="edit_post_page_form_label_bg">
+                                        <label class="edit_post_page_form_label" for="edit-city-state">city and state</label>
+                                    </div>
+                                    <div class="edit_post_page_form_input_type_bg new_read_only_class_bg">
+                                        <input type="text" class="edit_post_page_form_input_type" id="edit-city-state" value="St Louis, MO" readonly>
+                                        <div class="question_mark_non_editable_bg">
+                                            <p class="question_mark_non_editable">You Dont Have permissions To Edit This Field</p>
+                                        </div>
+                                    </div>
+                                </div>    
+                                <div class="edist_post_page_form_label_input_bg"> 
+                                    <div class="edit_post_page_form_label_bg">
+                                        <label class="edit_post_page_form_label" for="edit-country">country</label>
+                                    </div>
+                                    <div class="edit_post_page_form_input_type_bg new_read_only_class_bg">
+                                        <input type="text" class="edit_post_page_form_input_type" id="edit-country" value="USA" readonly>
+                                        <div class="question_mark_non_editable_bg">
+                                            <p class="question_mark_non_editable">You Dont Have permissions To Edit This Field</p>
+                                        </div>
+                                    </div>
+                                </div>    
+                                <div class="edist_post_page_form_label_input_bg"> 
+                                    <div class="edit_post_page_form_label_bg">
+                                        <label class="edit_post_page_form_label" for="edit-zip">zip code</label>
+                                    </div>
+                                    <div class="edit_post_page_form_input_type_bg">
+                                        <input type="text" class="edit_post_page_form_input_type" id="edit-zip" value="{{post_results.0.zip}}" name="edit_post_zip" >
+                                    </div>
+                                </div> 
+                                <div class="edist_post_page_form_label_input_bg"> 
+                                    <div class="edit_post_page_form_label_bg">
+                                        <label class="edit_post_page_form_label" for="edit-description">description</label>
+                                    </div>
+                                    <div class="edit_post_page_form_input_type_bg">
+                                        <textarea class="edit_post_page_form_text_area" maxlength="500" id="edit-description" placeholder="Describe About Place"  name="edit_post_description">
+                                            {{post_results.0.description}}
+                                        </textarea>
+                                    </div>
+                                </div>  
+                                <div class="check_box_error_message_bg">
+                                    <div class="check_box_error_message_left_bg">
+                                        
+                                    </div>
+                                    <div class="text_area_errorMessage_right_bg" >
+                                        <span>Remaining characters : </span>
+                                        <span id="text_area_Counter_bg"></span>
+                                    </div>
+                                </div> 
+                                <div class="edit_post_post_form_submit_buttons_bg">
+                                    <button type="submit" id="edit-post-save-button" class="new_button new_button_blue" onclick="return editPostValidation()">Save</button>
+                                    <button type="button" class="new_button new_button_red" onclick="GoBackWithRefresh();return false;">cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </section> 
+    <script src="{{ GLOBAL_DIR_PATH }}view_library/js/edit-page-3-30-31-and-37-js.js" type="text/javascript"></script>
+    <script type="text/javascript" src="{{ GLOBAL_DIR_PATH }}view_library/js/new-js.js"> </script>
+    <script src="{{ GLOBAL_DIR_PATH }}view_library/js/description.js" type="text/javascript"></script>
+    <script src="{{ GLOBAL_DIR_PATH }}view_library/js/upload-image.js" type="text/javascript"></script> 
+    <script src="{{ GLOBAL_DIR_PATH }}view_library/js/phone-number-js.js" type="text/javascript"></script>

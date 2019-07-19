@@ -1,0 +1,344 @@
+        <section>
+            <div class="container">
+                <div class="bread_crumb_new_read_more_page_bg">
+                    <ul class="bread_crumb_new_read_more_page">
+                        <li><a href="https://www.manastlouis.com/"><i class="fas fa-home"></i></a></li>
+                        <li><a href="{{GLOBAL_DIR_PATH}}posts.php/{{rm_type_name}}/{{posts_result.0.mnst_new_event.subcategory_name}}/1">{{rm_type_name}} &#187; {{posts_result.0.mnst_new_event.subcategory_name}}</a></li>
+                        <li>{{posts_result.0.mnst_new_event.event_name}}</li>
+                    </ul>
+                </div>    
+            </div>
+        </section>
+        <section>
+            <div class="new_read_more_page_backround">
+                <div class="container">
+                    <div class="new_manast_wrapper_bg">
+                        <div class="left_side_new_read_more_page_heading_bg">
+                            <h1 class="left_side_new_read_more_page_heading">
+                                {{posts_result.0.mnst_new_event.event_name}}
+                            </h1>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="left_side_new_read_more_page_bg">
+                                    <div class="left_side_new_read_more_page_posted_time_bg">
+                                        <span><i class="fas fa-clock"></i></span>
+                                        <span class="left_side_new_read_more_page_posted_time_on">Posted On : </span>
+                                        {{posts_result.0.mnst_new_event.created_date}}
+                                    </div>
+                                    <div class="left_side_new_read_more_page_image_bg">
+                                        <div class="left_side_new_read_more_page_inner_image_bg">
+                                            <a href="" id="read-more-main-image-anchor-link" data-fancybox="images" data-caption="">
+                                                <img src="" id="read-more-main-image"  alt="" class="img-responsive">
+                                            </a>   
+                                        </div>
+                                        <div class="left_side_new_read_more_page_inner_more_images_bg">
+                                            <ul class="left_side_new_read_more_page_inner_more_images">
+                                                {% for eventImages in posts_result.0.mnst_new_event.event_images %}
+                                                {% if(eventImages != "../../uploads/post_image/") %}
+                                                <li>
+                                                    <img onclick="changeIt(this)" src="{{ GLOBAL_DIR_PATH }}view_library/images/{{ eventImages }}"     alt="{{ posts_result.0.mnst_new_event.event_name }}" class="img-responsive image current-image">
+                                                </li>
+                                                {% else %}
+                                                <!-- <div>No images found for this post</div>  -->
+                                                {% endif %}
+                                                    
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                        <!--display none-->
+                                        <div class="left_side_new_read_more_page_inner_more_images_bg left_side_new_read_more_page_inner_more_images_bg_display_none" >                                   
+                                            {% for eventImages in posts_result.0.mnst_new_event.event_images %}
+                                                {% if(eventImages != "../../uploads/post_image/") %}                                   
+                                            <a href="{{ GLOBAL_DIR_PATH }}view_library/images/{{ eventImages }}" data-fancybox="images" data-caption="{{ posts_result.0.mnst_new_event.event_name }}"
+                                                data-thumb="{{ GLOBAL_DIR_PATH }}view_library/images/{{ eventImages }}">
+                                            </a> 
+                                            {% else %}
+                                                <!-- <div>No images found for this post</div>  -->
+                                                {% endif %}
+                                                    
+                                                {% endfor %}                                 
+                                        </div>    
+                                        <!--END display none-->
+                                    </div>    
+                                    <div class="left_side_new_read_more_page_post_details_bg">
+                                        <div class="left_side_new_read_more_page_post_details_heading_bg">
+                                            <h3 class="left_side_new_read_more_page_post_details_heading"><i class="fas fa-file-alt"></i>Post Details</h3>
+                                        </div>
+                                        <ul class="left_side_new_read_more_page_post_details">
+                                            <li>
+                                                <p>
+                                                    <span class="left_side_new_read_more_page_inner_post_details_left">director</span>
+                                                    <span class="left_side_new_read_more_page_inner_post_details_right">{{posts_result.0.mnst_new_event.director}}</span>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    <span class="left_side_new_read_more_page_inner_post_details_left">producer</span>
+                                                    <span class="left_side_new_read_more_page_inner_post_details_right">{{posts_result.0.mnst_new_event.producer}}</span>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    <span class="left_side_new_read_more_page_inner_post_details_left">music by</span>
+                                                    <span class="left_side_new_read_more_page_inner_post_details_right">{{posts_result.0.mnst_new_event.music}}</span>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    <span class="left_side_new_read_more_page_inner_post_details_left">theaters in</span>
+                                                    <span class="left_side_new_read_more_page_inner_post_details_right">{{posts_result.0.mnst_new_event.theaters}} </span>
+                                                </p>
+                                            </li> 
+                                            <li>
+                                                <p>
+                                                    <span class="left_side_new_read_more_page_inner_post_details_left">cast and crew</span>
+                                                    <span class="left_side_new_read_more_page_inner_post_details_right">{{posts_result.0.mnst_new_event.cast_crew}} </span>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    <span class="left_side_new_read_more_page_inner_post_details_left">release date</span>
+                                                    <span class="left_side_new_read_more_page_inner_post_details_right">{{posts_result.0.mnst_new_event.release_date}}</span>
+                                                </p>
+                                            </li>                                    
+                                            <li>
+                                                <p>
+                                                    <span class="left_side_new_read_more_page_inner_post_details_left">Location </span>
+                                                    <span class="left_side_new_read_more_page_inner_post_details_right">{{posts_result.0.mnst_new_event.address}}</span>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    <span class="left_side_new_read_more_page_inner_post_details_left">street </span>
+                                                    <span class="left_side_new_read_more_page_inner_post_details_right">{{posts_result.0.mnst_new_event.street}}</span>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    <span class="left_side_new_read_more_page_inner_post_details_left">City and State </span>
+                                                    <span class="left_side_new_read_more_page_inner_post_details_right">{{posts_result.0.mnst_new_event.city}}</span>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    <span class="left_side_new_read_more_page_inner_post_details_left">Country  </span>
+                                                    <span class="left_side_new_read_more_page_inner_post_details_right">{{posts_result.0.mnst_new_event.country}}</span>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    <span class="left_side_new_read_more_page_inner_post_details_left">Zip code  </span>
+                                                    <span class="left_side_new_read_more_page_inner_post_details_right">{{posts_result.0.mnst_new_event.zip}}</span>
+                                                </p>
+                                            </li>                                       
+                                        </ul>  
+                                    </div>
+                                    <div class="left_side_new_read_more_page_description_bg">
+                                        <div class="left_side_new_read_more_page_description_heading_bg">
+                                            <h4 class="left_side_new_read_more_page_description_heading"><i class="fas fa-pencil-alt"></i>description</h4>
+                                        </div>
+                                        <div class="left_side_new_read_more_page_decription">
+                                            {{posts_result.0.mnst_new_event.event_description}}
+                                        </div>
+                                    </div>
+                                    <!--google maps-->
+                                    <div class="right_side_new_read_more_page_google_maps_bg">
+                                        <div class="right_side_new_read_more_page_google_maps_get_direction_heading_bg">
+                                            <h5 class="right_side_new_read_more_page_user_contact_details_heading"><i class="fas fa-map-marker-alt"></i>get directions</h5>
+                                        </div>  
+                                        <div class="right_side_new_read_more_page_google_maps">
+                                            <div id="map_canvas" style="width: 100%; height: 300px;"></div>
+                                        </div>  
+                                        <div class="right_side_new_read_more_page_google_maps_get_direction_bg">
+                                            <div class="right_side_new_read_more_page_google_maps_get_direction_marker_bg"><i class="fas fa-map-marker-alt"></i></div>
+                                            <div class="right_side_new_read_more_page_google_maps_get_direction_inner_bg" >
+                                                <a href="http://maps.google.com/?q={{posts_result.0.mnst_new_event.address}}" class="right_side_new_read_more_page_google_maps_get_direction" target="_blank">Get Directions on Google Maps to: <span id="myLocation">{{posts_result.0.mnst_new_event.address}} {{posts_result.0.mnst_new_event.street}}  {{posts_result.0.mnst_new_event.city}} 
+                                                {{posts_result.0.mnst_new_event.country}} {{posts_result.0.mnst_new_event.zip}}</span></a>    
+                                            </div>   
+                                        </div>    
+                                    </div>
+                                    <!--END google maps-->
+                                {% set catname = rm_type_name|replace({' ': '-'}) %}
+                            {% set subcat_name = posts_result.0.mnst_new_event.subcategory_name %}
+            {% set forurl_prev_event = posts_result.0.mnst_new_event.prv_event_name|replace({' ': '-'}) %}
+            {% set forurl_prev_post = posts_result.0.mnst_user_posts.prv_post_name|replace({' ': '-'}) %}
+            {% set forurl_next_event = posts_result.0.mnst_new_event.nxt_event_name|replace({' ': '-'}) %}
+            {% set forurl_next_post = posts_result.0.mnst_user_posts.nxt_post_name|replace({' ': '-'}) %}
+                        {% if catname == 'allPosts' %}
+        {% set subcat_name = posts_result.0.mnst_new_event.creted_by|replace({' ': '-'}) %}
+                                {% endif %}
+                                    <div class="left_side_new_read_more_page_pagination_bg">
+                                        <div class="left_side_new_read_more_page_pagination_previous_bg">
+                                            {% if posts_result.0.mnst_user_posts.nxtid !='' or posts_result.0.mnst_new_event.nxtid !=''  %}
+                                        <a href="{{ GLOBAL_DIR_PATH }}services.php/{{catname}}/{{subcat_name}}/{{forurl_next_event}}{{forurl_next_post}}" {% if posts_result.0.mnst_new_event.record == 'ppp' or posts_result.0.mnst_user_posts.record == 'ppp' %} class="anchor_disabled" {% endif %} >Previous</a>
+                                            {% else %}  
+                                            <a href="" class="anchor_disabled">Previous</a>
+                                        {% endif %}
+                                        </div>
+                                        <div class="left_side_new_read_more_page_pagination_next_bg">
+                                            <a href="{{ GLOBAL_DIR_PATH }}services.php/{{catname}}/{{subcat_name}}/{{forurl_prev_event}}{{forurl_prev_post}}" {% if posts_result.0.mnst_new_event.record == 'nnn' or posts_result.0.mnst_user_posts.record == 'nnn' %} class="anchor_disabled" {% endif %} >next</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="right_side_new_read_more_page_bg">
+                                    {% if(rm_type == 'allPosts') %}
+                                    <div class="right_side_new_user_read_more_page_edit_option">
+                                        <div class="right_side_new_user_read_more_page_edit_option_inner_bg">
+                                            <div class="right_side_new_read_more_page_posted_by_heading_bg">
+                                                <h4 class="right_side_new_read_more_page_posted_by_heading">
+                                                    <i class="fas fa-user"></i>edit Post
+                                                </h4>
+                                            </div>
+                                            <div class="right_side_new_user_read_more_page_edit_option_and_delete_option_bg">
+                                                <ul class="right_side_new_user_read_more_page_edit_option_and_delete_option">
+                                                    <li>
+                                                        <a href="{{GLOBAL_DIR_PATH}}edit-post.php/{{posts_result.0.mnst_new_event.creted_by|replace({' ':'-'})}}/{{posts_result.0.mnst_new_event.url_name}}" class="right_side_edit_button_bg">edit</a>
+                                                    </li>
+                                                    <li>
+                                                        <button type="button" value="{{ posts_result.0.mnst_new_event.id }}" class="right_side_delete_button_bg pop_up_button" onclick="myFunction(this);">delete</button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    {% else %}                            
+                                    <div class="right_side_new_read_more_page_posted_by_bg">
+                                        <div class="right_side_new_read_more_page_posted_by_heading_bg">
+                                            <h4 class="right_side_new_read_more_page_posted_by_heading">
+                                                <i class="fas fa-user"></i>posted by
+                                            </h4>
+                                        </div>
+                                        <div class="right_side_new_read_more_page_posted_by_image_and_user_details_bg">
+                                            <div class="right_side_new_read_more_page_posted_by_image_bg">
+                                                {% if posts_result.0.mnst_new_event.user_image!='' %}
+                                                        <img src="{{posts_result.0.mnst_new_event.user_image}}" class="right_side_new_read_more_page_posted_by_image">
+                                                        {% else %}
+                                                        <div class="right_side_new_read_more_page_posted_by_user_profile_name_letters_bg ">
+                                                        <div class="right_side_new_read_more_page_posted_by_user_profile_name_letters ">
+                                                            <span class="right_side_new_read_more_page_posted_by_user_profile_initial_letters ">{{ posts_result.0.mnst_new_event.firstname|slice(0,1) }}{{ posts_result.0.mnst_new_event.lastname|slice(0,1) }}</span>
+                                                        </div>
+                                                    </div>
+                                                    {% endif %}
+                                            </div>
+                                            <div class="right_side_new_read_more_page_posted_by_user_name_and_date_bg">
+                                                <div class="right_side_new_read_more_page_posted_by_user_name_bg">
+                                                    <h5 class="right_side_new_read_more_page_posted_by_user_name">{{posts_result.0.mnst_new_event.creted_by}}</h5>                                            
+                                                </div>    
+                                                <div class="right_side_new_read_more_page_posted_by_user_date_bg">
+                                                    Member Since <span>{{posts_result.0.mnst_new_event.register_date}}</span>
+                                                </div>
+                                                <div class="right_side_new_read_more_page_posted_by_user_all_post_bg">
+                                                    <a href="http://localhost/manast_curl_changes/posts.php/user/all-posts/{{posts_result.0.mnst_new_event.creted_by|replace({' ':'-'})}}/1" class="right_side_new_read_more_page_posted_by_user_all_post">view all posts</a>
+                                                </div>
+                                            </div>                                   
+                                        </div> 
+                                        <div class="right_side_new_read_more_page_user_contact_details_bg">
+                                            <div class="right_side_new_read_more_page_user_contact_details_heading_bg">
+                                                <h5 class="right_side_new_read_more_page_user_contact_details_heading">contact details</h5>
+                                            </div>
+                                            <ul class="right_side_new_read_more_page_user_contact_details">
+                                                {% if posts_result.0.mnst_new_event.user_phone !='' %}
+                                                <li><i class="fas fa-phone-square"></i>{{posts_result.0.mnst_new_event.user_phone}}</li>
+                                                {% endif %}
+                                                <!-- <li><i class="fas fa-globe"></i><a href="https://www.google.com/" target="_blank">{{posts_result.0.mnst_new_event.user_email}}</a></li> -->
+                                                <li><i class="fas fa-envelope"></i><a href="mailto:{{posts_result.0.mnst_new_event.user_email}}" >{{posts_result.0.mnst_new_event.user_email}}</a></li>
+                                            </ul>
+                                        </div>   
+                                    </div>
+                                    {% endif %}
+                                    <div class="right_side_new_read_more_page_share_post_bg">
+                                        <div class="right_side_new_read_more_page_share_post_heading_bg">
+                                            <h5 class="right_side_new_read_more_page_post_heading"><i class="fas fa-share-alt"></i>share post</h5>
+                                        </div>
+                                        <div class="right_side_new_read_more_page_share_post">
+                                            <ul class="right_side_new_read_more_page_share_post_list_bg">
+                                                <li>
+                                                    <a class="w-inline-block social-share-btn fb" href="https://www.facebook.com/sharer/sharer.php?u=&amp;t=" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&amp;t=' + encodeURIComponent(document.URL)); return false;"><i class="fab fa-facebook-f"></i></a>
+                                                </li>
+                                                <li>
+                                                    <a class="w-inline-block social-share-btn tw " href="https://twitter.com/intent/tweet?" target="_blank" title="Tweet" onclick="window.open('https://twitter.com/intent/tweet?text=%20Check%20up%20this%20awesome%20content' + encodeURIComponent(document.title) + ':%20 ' + encodeURIComponent(document.URL)); return false;"><i class="fab fa-twitter"></i></a>
+                                                </li>
+                                                <li>
+                                                    <a class="w-inline-block social-share-btn pin" href="https://www.pinterest.com/pin/create/bookmarklet/?url=www.manastlouis.com/services.php/events/upcoming-events/st-louis-new-country-92-3-music-radio-dierks-bentley&amp;media=https://www.manastlouis.com/view_library/images/../../uploads/post_image/newcountry923-1550654051.jpg&amp;is_video=false&amp;description=Saint Louis Upcoming Events: St. Louis New Country 92.3 is proud to welcome Dierks Bentley with Spec " title="Pin it" target="_blank"><i class="fab fa-pinterest-p"></i></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!--right side ads-->
+                                     <div class="right_side_new_read_more_page_sponser_ads_bg" >
+                                        <div class="right_side_new_read_more_page_share_post_heading_bg">
+                                            <h5 class="right_side_new_read_more_page_post_heading"><i class="fas fa-ad"></i>sponsored ads</h5>
+                                        </div>
+                                        <div class="right_side_new_read_more_page_sponser_ads">
+                                            <a href="#">
+                                                <img src="https://images-na.ssl-images-amazon.com/images/I/5169XnIsYsL.jpg" class="img-responsive" alt ="sponsored ads">
+                                            </a>    
+                                        </div>
+                                        <div class="right_side_new_read_more_page_sponser_ads">
+                                            <a href="#">
+                                                <img src="https://images-na.ssl-images-amazon.com/images/I/5169XnIsYsL.jpg" class="img-responsive" alt ="sponsored ads">
+                                            </a>    
+                                        </div>
+                                    </div>
+                                    <!--END right side ads-->
+                                </div>
+                            </div>
+                        </div>
+                        {% if(rm_type != 'allPosts') %}
+                        <div class="read_more_page_similar_post_bg">
+                            <div class="read_more_page_similar_post_heading_bg">
+                                <h5 class="read_more_page_similar_post_heading"><i class="far fa-copy"></i>similar post</h5>
+                            </div>
+                            <div class="read_more_page_similar_post_inner_bg">
+                                <div class="row">
+                                    {% for similar_post in similar_posts %}
+                                    <div class="col-md-3">
+                                        <div class="read_more_page_similar_post_inner">
+                                            <a href="{{ GLOBAL_DIR_PATH }}services.php/{{catname}}/{{subcat_name}}/{{similar_post.mnst_user_posts.url_name}}">
+                                                <div class="read_more_page_similar_post_inner_image_bg">
+                                                    {% set images = similar_post.mnst_user_posts.post_image|split(',')%}
+                                                    <img src="{{ GLOBAL_DIR_PATH }}uploads/post_image/{{images[0]}}" alt="{{similar_post.mnst_user_posts.post_name}}" class="img-responsive">
+                                                </div>
+                                            </a>    
+                                            <div class="read_more_page_similar_post_inner_description_bg">
+                                                <div class="read_more_page_similar_post_inner_description_heading_bg">
+                                                    <h5 class="read_more_page_similar_post_inner_description_heading">
+                                                        <a href="{{ GLOBAL_DIR_PATH }}services.php/{{catname}}/{{subcat_name}}/{{similar_post.mnst_user_posts.url_name}}" >{{similar_post.mnst_user_posts.post_name}}</a>
+                                                    </h5>
+                                                </div>
+                                                <div class="read_more_page_similar_post_inner_description_loation_bg">
+                                                    <span><i class="fas fa-map-marker-alt"></i></span>
+                                                    {{similar_post.mnst_user_posts.address}} {{similar_post.mnst_user_posts.street}} {{similar_post.mnst_user_posts.city}} {{similar_post.mnst_user_posts.country}}
+                                                </div>
+                                            </div>
+                                            <div class="read_more_page_similar_post_posted_on_bg">
+                                                <div class="read_more_page_similar_post_posted_on">
+                                                    <span><i class="fas fa-clock"></i></span>
+                                                    {{similar_post.mnst_user_posts.created_at}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>    
+                </div>  
+            </div>      
+        </section>
+    </div>   
+    <script src="{{ GLOBAL_DIR_PATH }}view_library/js/google-maps.js" type="text/javascript"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjQhpez-Yj1kN4n5lY4viJkZF6DSNRM0c&callback=initialize ">
+    </script>     
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.js"></script> 
+    <script src="{{ GLOBAL_DIR_PATH }}view_library/js/new-read-more-pages.js" type="text/javascript"></script> 
+    <script type="text/javascript" src="{{ GLOBAL_DIR_PATH }}view_library/js/new-js.js"> </script>
+    <script src="{{ GLOBAL_DIR_PATH }}view_library/js/pop-up-js.js" type="text/javascript"></script>  

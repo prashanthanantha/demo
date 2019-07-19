@@ -1,0 +1,165 @@
+ <section >
+        <div class="new_index_page_listing_posts_bg" >
+            <div class="new_login_page_outter_bg">
+                <div class="container">
+                    <div class="new_login_page_inner_bg">
+                        <div class="edit_form_page_heading_bg">
+                            <h1 class="edit_form_page_heading">forgot password </h1>
+                        </div>  
+                        <div class="new_login_form_bg">
+                    <div id="email-send-msg-error"  class="text-danger text-center"></div>
+                  <div id="email-send-msg" class="text-center" style="color:green;"></div> 
+                            <form action="#" method="POST" class="new_login_form_page" id="forgot-password-form">
+                                <div class="new_login_form_form_group_bg">
+                                    <div class="new_login_form_label_bg">
+                                        <label for="frgt-email" class="new_login_form_label" >Enter Your Email</label>
+                                    </div>
+                                    <div class="new_login_form_input_type_bg">
+                                        <input type="text" id="frgt-email" name="email" class="input_type_text" placeholder="example123@gmail.com">
+                                    </div>
+                                </div>                                
+                                <div class="new_login_form_submit_button_bg">
+                                    <button type="button" name="btn_frtpass" id="btn-frtpass" class="new_button new_button_blue">Submit</button>
+                                    <button type="button" class="new_button new_button_red" id="forgetlink" onclick="window.history.go(-1); return false;" >cancel</button>
+                                </div>
+                            </form>
+                            <div class="new_login_form_account_links_bg">                                
+                                <div class="new_login_form_account_right_link_bg">
+                                    <a href="{{GLOBAL_DIR_PATH}}login.php/login-form" class="new_login_form_account_right_link">go back to login</a>
+                                </div>
+                            </div>
+                        </div>        
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </section> 
+    <!--forgot password Pop Up-->
+   <section>
+       <div class="success_pop_up_bg" id="pop_up_mana1">
+           <div class="registration_pop_up_content_bg">
+               <div class="success_pop_up_header_bg">
+                   <span class="pop_up_close_button1">&times;</span>
+               </div>
+               <div class="registration_pop_up_body_bg">
+                   <div class="registration_pop_up_body_icon_bg">
+                       <i class="far fa-check-circle"></i>
+                   </div>
+                   <div class="registration_pop_up_body_invalid_user_bg">
+                      password has been sent to your  Email
+                   </div>
+                   <div class="registration_pop_up_body_user_name_bg">
+                       we've sent a link to your email <br> please verify your address<br>please check your spam folder just in case
+                   </div>
+               </div>
+           </div>
+       </div>
+   </section>
+   <!--END forgot password Pop Up-->
+   
+<script type="text/javascript">
+	$("#btn-frtpass").click(function(event) {
+		var email = $('#frgt-email').val();
+    $response_usr = forgotValidation();
+    if($response_usr == false){
+      return false;
+    }
+
+        $.ajax({
+            url: "{{ GLOBAL_DIR_PATH }}forgot.php/forgotAdd",
+            type: "post",
+            data: {"email":email},
+            success: function (response) {
+            	if(response == 1){
+					$('#forgot-password-form')[0].reset();
+          modals('pop_up_mana1');
+                 
+          setTimeout(function() {
+                    window.location.href = '{{ GLOBAL_DIR_PATH }}';
+                    }, 5000);
+                       return false;
+
+            	} else {
+					$("#email-send-msg-error").html("Email Address Invalid,  Please Try Again");
+           setTimeout(function() {
+                      $("#email-send-msg-error").html("");
+                    }, 2000);
+           
+                    return false;
+              }
+
+                return false;
+            },
+            error: function () {
+                $("#validationError").addClass('has-error');
+                $("#validationError span").html('Invalid Login Credentials');
+            }
+        });
+        return false;
+    });
+
+
+$('#frgt-email').keypress(function (e) {
+  if (e.which == 13) {
+    var email = $('#frgt-email').prop('value').trim();
+    $response_usr = forgotValidation();
+    if($response_usr == false){
+      return false;
+    }
+    $.ajax({
+            url: "{{ GLOBAL_DIR_PATH }}forgot.php/forgotAdd",
+            type: "post",
+            data: {"email":email},
+            success: function (response) {
+              if(response == 1){
+          $("#email-send-msg").html("Password send to your email please kindly check it");
+          setTimeout(function() {
+                    window.location.href = '{{ GLOBAL_DIR_PATH }}';
+                    }, 2000);
+                       return false;
+
+              } else {
+          $("#email-send-msg-error").html("Email Address Invalid,  Please Try Again");
+           setTimeout(function() {
+                      $("#email-send-msg-error").html("");
+                    }, 2000);
+           
+                    return false;
+              }
+
+                return false;
+            },
+            error: function () {
+                $("#validationError").addClass('has-error');
+                $("#validationError span").html('Invalid Login Credentials');
+            }
+        });
+        return false;
+  }
+});
+
+
+function forgotValidation(){
+ 
+   var errors = '';
+    if($('#frgt-email').prop('value').trim() == '') {
+            $('#frgt-email').addClass('error-placeholder').attr('placeholder', 'Please enter your email');
+                errors += " Please enter your Email. <br/>";
+            }
+
+    if($('#frgt-email').prop('value') != '') {
+            var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if (!filter.test($('#frgt-email').prop('value'))) {
+                $('#frgt-email').addClass('error-placeholder').val('').attr('placeholder', 'Please enter a valid email');
+                errors += " Please enter a valid email. <br/>";
+            }
+            var em = $('#frgt-email').prop('value');
+        }
+
+        if (errors != '') {
+            return false;
+        }
+}
+</script>
+   <script src="{{GLOBAL_DIR_PATH}}view_library/js/new-js.js"></script>
+   <script src="{{GLOBAL_DIR_PATH}}view_library/js/modal-js.js"></script>
